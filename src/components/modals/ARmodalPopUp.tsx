@@ -1,11 +1,13 @@
 
 import React from "react"
 
-const ARURL = "https://google.com";
+const ARURL = process.env.REACT_APP_AR_URL;
+const width = "100%", height = 500;
 
 const ARModalPopUp = () => {
     return (
-        <iframe title="AR-popup" src={ARURL}></iframe>
+        <div dangerouslySetInnerHTML={{ __html: `<iframe src=${ARURL} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
+        // <>Hello</>
     )
 }
 

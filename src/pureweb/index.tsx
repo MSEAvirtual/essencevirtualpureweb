@@ -37,7 +37,7 @@
   import { FullScreen, useFullScreenHandle } from 'react-full-screen';
   import { Button, Icon } from 'semantic-ui-react';
   import useAsyncEffect from 'use-async-effect';
-  import './App.css';
+  import '../App.css';
   import clientConfig from '../client.json';
   
   import { LaunchView } from '../Launch';
