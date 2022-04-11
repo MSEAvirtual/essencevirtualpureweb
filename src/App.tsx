@@ -15,6 +15,7 @@ const App = () => {
     return (
         <>
             <Button onClick={()=>setModalView(<ARModalPopUp />)}>Show AR Link</Button>
+            <Button onClick={()=>setModalView(<ARModalPopUp />)}>Show CTA</Button>
             {/* <PureWeb /> */}
             <ModalLayout Component={component} show={showModal} setOpen={setShowModal}/>
         </>

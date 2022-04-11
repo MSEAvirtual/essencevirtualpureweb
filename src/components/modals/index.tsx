@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal } from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 
 const ModalLayout = ({ Component, show, setOpen }:any) => {
     console.log(show)
@@ -9,9 +9,7 @@ const ModalLayout = ({ Component, show, setOpen }:any) => {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={show}
-      >
-          {Component}
-      </Modal>
+      >{Component}</Modal>
     )
 }
 
