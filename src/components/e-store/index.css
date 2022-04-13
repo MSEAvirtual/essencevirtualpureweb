@@ -1,0 +1,12 @@
+
+.nopadding{
+    padding: 0.5em !important;
+}
+.curved{
+    padding-left: 2.5em !important;
+    padding-right: 2.5em !important;
+    border-radius: 50px !important;
+}
+.mt{
+    margin-top: 10em;
+}
