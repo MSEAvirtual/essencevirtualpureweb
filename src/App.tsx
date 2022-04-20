@@ -1,9 +1,10 @@
 import React from "react";
 import ModalLayout from "./components/modals";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
-import { Button } from 'semantic-ui-react'
+import { Button, Grid } from 'semantic-ui-react'
 import EStore from "./components/e-store";
-// import PureWeb from "./pureweb";
+import PureWeb from "./pureweb";
+import RoundButton from "./components/button";
 
 const App = () => {
     const [component, setComponent] = React.useState(null);
@@ -17,7 +18,14 @@ const App = () => {
         <>
             <Button onClick={()=>setModalView(<ARModalPopUp />)}>Show AR Link</Button>
             <Button onClick={()=>setModalView(<EStore />)}>Shop CTA</Button>
-            {/* <PureWeb /> */}
+            <PureWeb />
+            <Grid>
+                <Grid.Row columns={3} style={{position: "absolute", left: "65%", top:"70%"}}>
+                    <RoundButton label="Music On/off"/>
+                    <RoundButton label="Event Schedule"/>
+                    <RoundButton label="How to Guide"/>
+                </Grid.Row>
+            </Grid>
             <ModalLayout Component={component} show={showModal} setOpen={setShowModal}/>
         </>
     )

@@ -1,0 +1,14 @@
+
+.roundedButton{
+    margin-right: 4em;
+    border-radius: 100%;
+    height: 100px; 
+    width: 100px; 
+    background-color: #696565;
+
+}
+.roundText{
+    margin: 0.3em;
+    position: absolute;
+    top: 100%;
+}
