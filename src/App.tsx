@@ -3,6 +3,7 @@ import ModalLayout from "./components/modals";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
 import { Button, Grid } from 'semantic-ui-react'
 import EStore from "./components/e-store";
+import "./App.css"
 import PureWeb from "./pureweb";
 import RoundButton from "./components/button";
 
@@ -20,7 +21,7 @@ const App = () => {
             <Button onClick={()=>setModalView(<EStore />)}>Shop CTA</Button>
             <PureWeb />
             <Grid>
-                <Grid.Row columns={3} style={{position: "absolute", left: "65%", top:"70%"}}>
+                <Grid.Row columns={3} className="bottomButtons">
                     <RoundButton label="Music On/off"/>
                     <RoundButton label="Event Schedule"/>
                     <RoundButton label="How to Guide"/>

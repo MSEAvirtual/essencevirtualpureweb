@@ -130,3 +130,9 @@ video {
 .hidden {
   display: none !important;
 }
+
+.bottomButtons{
+  position: absolute !important;
+  top: 80%;
+  left: 65%;
+}
