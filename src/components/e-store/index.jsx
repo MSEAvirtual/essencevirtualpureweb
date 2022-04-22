@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css"
 import SimpleImageSlider from "react-simple-image-slider";
 import { Grid, Image, Container, Button  } from 'semantic-ui-react'
-import stores from "../../stores.json";
+import stores from "../../storej.json";
 
 const images = [
     { url: "https://react.semantic-ui.com/images/wireframe/image.png" },
@@ -10,9 +10,10 @@ const images = [
     { url: "https://react.semantic-ui.com/images/wireframe/image.png" },
     { url: "https://react.semantic-ui.com/images/wireframe/image.png" },
 ];
+const width = "100%", height = 500;
 
-const EStore = () => {
-    const img = stores[0];
+const EStored = ({ data }) => {
+    const img = stores[data];
     console.log(img, img['Image 1 Upload:']);
     return(
         <div style={{margin:"1em" }}>
@@ -42,7 +43,7 @@ const EStore = () => {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={6} className={"nopadding"}>
-                            <p style={{ fontSize: "20px"}}>High Waisted Jeans</p>
+                            <p style={{ fontSize: "20px"}}>{img["Legal Business Vendor Name:"]}</p>
                             <p style={{ fontSize: "20px"}}>$89.99</p>
                             <p>Details and Production description</p>
                             <p style={{ fontSize: ".8rem"}}>
@@ -63,4 +64,15 @@ const EStore = () => {
     )
 };
 
+const EStore = ({ data }) => {
+    const s = stores[data];
+    let url = s["Business URL:"];
+    console.log(url, )
+    if (!url.includes("https://") || !url.includes("http://")) {
+        url = "http://" + s["Business URL:"];
+    }
+    return(
+        <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}" target="_parent" allow="camera *;microphone *" />`}} />
+    )
+}
 export default EStore;

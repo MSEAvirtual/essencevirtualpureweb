@@ -18,7 +18,11 @@ const App = () => {
     return (
         <>
             <Button onClick={()=>setModalView(<ARModalPopUp />)}>Show AR Link</Button>
-            <Button onClick={()=>setModalView(<EStore />)}>Shop CTA</Button>
+            <Button onClick={()=>setModalView(<EStore data={0}/>)}>Shop CTA 1</Button>
+            <Button onClick={()=>setModalView(<EStore data={2} />)}>Shop CTA 2</Button>
+            <Button onClick={()=>setModalView(<EStore data={3} />)}>Shop CTA 3</Button>
+            <Button onClick={()=>setModalView(<EStore data={4} />)}>Shop CTA 4</Button>
+            <Button onClick={()=>setModalView(<EStore data={5} />)}>Shop CTA 5</Button>
             <PureWeb />
             <Grid>
                 <Grid.Row columns={3} className="bottomButtons">
