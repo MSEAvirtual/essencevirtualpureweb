@@ -68,8 +68,8 @@ const EStore = ({ data }) => {
     const s = stores[data];
     let url = s["Business URL:"];
     console.log(url, )
-    if (!url.includes("https://") || !url.includes("http://")) {
-        url = "http://" + s["Business URL:"];
+    if (!url.includes("https://") && !url.includes("http://")) {
+        url = "https://" + s["Business URL:"];
     }
     return(
         <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}" target="_parent" allow="camera *;microphone *" />`}} />
