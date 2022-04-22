@@ -67,7 +67,7 @@ const EStored = ({ data }) => {
 const EStore = ({ data }) => {
     const s = stores[data];
     let url = s["Business URL:"];
-    console.log(url, )
+    console.log("url-->", url)
     if (!url.includes("https://") && !url.includes("http://")) {
         url = "https://" + s["Business URL:"];
     }

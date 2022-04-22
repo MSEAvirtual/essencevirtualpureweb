@@ -18,10 +18,10 @@ const App = () => {
     return (
         <>
             <Button onClick={()=>setModalView(<ARModalPopUp />)}>Show AR Link</Button>
-            <Button onClick={()=>setModalView(<EStore data={0}/>)}>Shop CTA 1</Button>
+            <Button onClick={()=>setModalView(<EStore data={18}/>)}>Shop CTA 1</Button>
             <Button onClick={()=>setModalView(<EStore data={2} />)}>Shop CTA 2</Button>
-            <Button onClick={()=>setModalView(<EStore data={3} />)}>Shop CTA 3</Button>
-            <Button onClick={()=>setModalView(<EStore data={4} />)}>Shop CTA 4</Button>
+            <Button onClick={()=>setModalView(<EStore data={15} />)}>Shop CTA 3</Button>
+            <Button onClick={()=>setModalView(<EStore data={17} />)}>Shop CTA 4</Button>
             <Button onClick={()=>setModalView(<EStore data={5} />)}>Shop CTA 5</Button>
             <PureWeb />
             <Grid>
