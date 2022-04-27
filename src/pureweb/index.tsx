@@ -153,6 +153,7 @@
   const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const handle = useFullScreenHandle();
+    const [lightIsOn, toggleLight] = useState(false);
     // Fullscreen API presently supported on iPad, but not iPhone or iPod
     const isIPhone = System.Browser().os === 'iOS' && !window.navigator.userAgent.includes('iPad');
     return (
@@ -181,6 +182,11 @@
             style={{ position: 'absolute', top: 10, right: 10 }}
             className={isIPhone || handle.active || props.StreamerStatus !== StreamerStatus.Connected ? 'hidden' : ''}>
             <Icon name="expand" />
+          </Button>
+          <Button
+            onClick={() => toggleLight(!lightIsOn)}
+            style={{ position: 'absolute', top: 50, right: 10 }}>
+            <Icon name={lightIsOn ? "toggle on" : "toggle off"} />
           </Button>
   
           {props.StreamerStatus !== StreamerStatus.Connected && (
