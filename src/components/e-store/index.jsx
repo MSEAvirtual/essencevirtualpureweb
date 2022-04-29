@@ -12,19 +12,35 @@ const images = [
 ];
 const width = "100%", height = 500;
 
-const EStored = ({ data }) => {
-    const img = stores[data];
-    console.log(img, img['Image 1 Upload:']);
+const EStore = ({ data }) => {
+    const s = stores[data];
+    const bio = s["Business Bio:"];
+    const imgs = [
+        s['Image 1 Upload:'],
+        s['Image 2 Upload:'],
+        s['Image 3 Upload:'],
+    ]
+    let url = s["Business URL:"];
+    const openBUrl = () => {
+        if (!url.includes("https://") && !url.includes("http://")) {
+            url = "https://" + s["Business URL:"];
+        }
+        let a= document.createElement('a');
+        a.target= '_blank';
+        a.href= url;
+        a.click();
+    }
+
     return(
         <div style={{margin:"1em" }}>
             <Container>
                 <Grid columns={3}>
                     <Grid.Row>
                         <Grid.Column width={2} className={"nopadding"}>
-                           {images.map((i)=>{
+                           {imgs.map((im, i)=>{
                                return(
                                 <>
-                                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' size='small' />
+                                    <Image key={i} src={im} size='small' />
                                     <br/>
                                 </>
                                )
@@ -36,26 +52,23 @@ const EStored = ({ data }) => {
                                 <SimpleImageSlider
                                     width={320}
                                     height={500}
-                                    images={images}
+                                    images={imgs}
                                     showBullets={false}
                                     showNavs={true}
                                 />
                             </div>
                         </Grid.Column>
                         <Grid.Column width={6} className={"nopadding"}>
-                            <p style={{ fontSize: "20px"}}>{img["Legal Business Vendor Name:"]}</p>
+                            <p style={{ fontSize: "20px"}}>{s["Legal Business Vendor Name:"]}</p>
                             <p style={{ fontSize: "20px"}}>$89.99</p>
                             <p>Details and Production description</p>
-                            <p style={{ fontSize: ".8rem"}}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. 
-                                Leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
+                            <p style={{ fontSize: ".8rem"}}>{bio}</p>
                             <div style={{ marginTop: "10em" }}>
-                                <Button primary className="curved mt-10">Shop Now</Button>
+                                <Button primary className="curved mt-10" onClick={openBUrl}>Shop Now</Button>
                             </div>                            
                         </Grid.Column>
                         <Grid.Column width={2}>
-                            <Image src={img['Image 1 Upload:']} size='small' />
+                            <Image src={s['Business Logo Upload:']} size='small' />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -64,7 +77,7 @@ const EStored = ({ data }) => {
     )
 };
 
-const EStore = ({ data }) => {
+const EStored = ({ data }) => {
     const s = stores[data];
     let url = s["Business URL:"];
     console.log("url-->", url)
