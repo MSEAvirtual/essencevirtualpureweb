@@ -2,28 +2,19 @@ import React from "react";
 import "./index.css"
 import SimpleImageSlider from "react-simple-image-slider";
 import { Grid, Image, Container, Button  } from 'semantic-ui-react'
-import stores from "../../storej.json";
+import stores from "../../stor.json";
 
-const images = [
-    { url: "https://react.semantic-ui.com/images/wireframe/image.png" },
-    { url: "https://react.semantic-ui.com/images/wireframe/image.png" },
-    { url: "https://react.semantic-ui.com/images/wireframe/image.png" },
-    { url: "https://react.semantic-ui.com/images/wireframe/image.png" },
-];
 const width = "100%", height = 500;
+// const imgU = "https://react.semantic-ui.com/images/wireframe/image.png";
 
 const EStore = ({ data }) => {
     const s = stores[data];
-    const bio = s["Business Bio:"];
-    const imgs = [
-        s['Image 1 Upload:'],
-        s['Image 2 Upload:'],
-        s['Image 3 Upload:'],
-    ]
-    let url = s["Business URL:"];
+    const bio = s.business_bio;
+    const imgs = s.images;
+    let url = s.business_url;
     const openBUrl = () => {
         if (!url.includes("https://") && !url.includes("http://")) {
-            url = "https://" + s["Business URL:"];
+            url = "https://" + s.business_url;
         }
         let a= document.createElement('a');
         a.target= '_blank';
@@ -35,17 +26,16 @@ const EStore = ({ data }) => {
         <div style={{margin:"1em" }}>
             <Container>
                 <Grid columns={3}>
-                    <Grid.Row>
-                        <Grid.Column width={2} className={"nopadding"}>
+                    <Grid.Row style={{padding:"2em 1em 1em"}}>
+                        <Grid.Column width={2} className={"scrollImages nopadding"}>
                            {imgs.map((im, i)=>{
                                return(
-                                <>
-                                    <Image key={i} src={im} size='small' />
+                                <div key={i}>
+                                    <Image src={im} size='small'/>
                                     <br/>
-                                </>
+                                </div>
                                )
                            }) }
-                            {/* <Image src='https://react.semantic-ui.com/images/wireframe/image.png' size='small' /> */}
                         </Grid.Column>
                         <Grid.Column width={6} className={"nopadding"}>
                             <div style={{position: "relative"}}>
@@ -58,17 +48,17 @@ const EStore = ({ data }) => {
                                 />
                             </div>
                         </Grid.Column>
-                        <Grid.Column width={6} className={"nopadding"}>
-                            <p style={{ fontSize: "20px"}}>{s["Legal Business Vendor Name:"]}</p>
-                            <p style={{ fontSize: "20px"}}>$89.99</p>
-                            <p>Details and Production description</p>
-                            <p style={{ fontSize: ".8rem"}}>{bio}</p>
-                            <div style={{ marginTop: "10em" }}>
+                        <Grid.Column width={6} style={{padding: "2em"}}>
+                            <p style={{ fontSize: "20px"}}>{s?.business_name}</p>
+                            <p style={{ paddingTop: "1em",fontSize: "20px"}}>$89.99</p>
+                            <p>Details and Product Description</p>
+                            <p style={{ fontSize: ".8rem"}}>{bio.substring(0, 800)}...</p>
+                            <div style={{ marginTop: "2em" }}>
                                 <Button primary className="curved mt-10" onClick={openBUrl}>Shop Now</Button>
                             </div>                            
                         </Grid.Column>
                         <Grid.Column width={2}>
-                            <Image src={s['Business Logo Upload:']} size='small' />
+                            <Image src={s?.business_logo} size='small' />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
