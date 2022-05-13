@@ -189,13 +189,13 @@
             <Icon name={lightIsOn ? "toggle on" : "toggle off"} />
           </Button>
   
-          {props.StreamerStatus !== StreamerStatus.Connected && (
+          {/* {props.StreamerStatus !== StreamerStatus.Connected && (
             <img
               alt="PureWeb Logo"
               src="/pureweb.svg"
               style={{ width: 100, position: 'absolute', bottom: 50, right: 10 }}
             />
-          )}
+          )} */}
         </FullScreen>
       </div>
     );

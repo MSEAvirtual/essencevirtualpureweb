@@ -134,5 +134,11 @@ video {
 .bottomButtons{
   position: absolute !important;
   top: 80%;
-  left: 65%;
+  left: 75%;
+}
+.form-view{
+  padding: 3em;
+}
+.text-danger{
+  color: red;
 }

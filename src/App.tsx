@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import ModalLayout from "./components/modals";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
 import { Button, Grid } from 'semantic-ui-react'
@@ -6,10 +7,29 @@ import EStore from "./components/e-store";
 import "./App.css"
 import PureWeb from "./pureweb";
 import RoundButton from "./components/button";
+import AuthModal from "./components/modals/AuthModal";
 
+const CUSTOM_MODAL_WIDTH = "1000px";
 const App = () => {
+    const [loggedIn, setLoggedIn] = React.useState(false);
+    const [width, setWidth] = useState(CUSTOM_MODAL_WIDTH);
+    const [allowClose, setAllowClose] = React.useState(true);
     const [component, setComponent] = React.useState(null);
     const [showModal, setShowModal] = React.useState(false);
+
+    const AuthFuc = ()=>{
+        setLoggedIn(true);
+        setWidth(CUSTOM_MODAL_WIDTH)
+        setComponent(null);
+        setShowModal(false);
+    }
+    useEffect(()=>{
+        if (!loggedIn){
+            setAllowClose(false);
+            setWidth("400px")
+            setModalView(<AuthModal setAuth={AuthFuc} />)
+        }
+    }, []);
 
     const setModalView = (component:any) => {
         setComponent(component);
@@ -31,7 +51,7 @@ const App = () => {
                     <RoundButton label="How to Guide"/>
                 </Grid.Row>
             </Grid>
-            <ModalLayout Component={component} show={showModal} setOpen={setShowModal}/>
+            <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width}/>
         </>
     )
 }
