@@ -56,7 +56,7 @@ const EStore = ({ data, closeModal }) => {
             <Grid.Column width={5} style={{ padding: "1em" }}>
               <Image src={s?.business_logo} size="small" />
               <p style={{ fontSize: "20px" }}>{s?.business_name}</p>
-              <p style={{ paddingTop: "1em", fontSize: "20px" }}>$89.99</p>
+              <p style={{ paddingTop: "1em", fontSize: "20px" }}>{s?.title}</p>
               <p>Details and Product Description</p>
               <p style={{ fontSize: ".8rem" }}>{bio.substring(0, 530)}...</p>
               <div style={{ marginTop: "2em" }}>

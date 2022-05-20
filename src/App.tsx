@@ -27,11 +27,11 @@ const App = () => {
         setShowModal(false);
     }
     useEffect(()=>{
-        // if (!loggedIn){
-        //     setAllowClose(false);
-        //     setWidth("400px")
-        //     setModalView(<AuthModal setAuth={AuthFuc} />)
-        // }
+        if (!loggedIn){
+            setAllowClose(false);
+            setWidth("400px")
+            setModalView(<AuthModal setAuth={AuthFuc} />)
+        }
     }, []);
 
     const setModalView = (component:any, close = false) => {
