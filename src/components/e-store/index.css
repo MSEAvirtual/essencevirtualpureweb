@@ -29,3 +29,29 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+  .small-Image{
+    background-repeat: no-repeat;
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .custom-btn{
+    background-color: #e66b60 !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    width: 206px;
+    height: 48px;
+  }
+  /* .your-app { */
+    .rsis-image {
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+    }
+  /* } */
+  .close-btn{
+    font-size: 30px;
+    font-weight: 700 !important;
+    color: #bf4d48 !important;
+  }
+  .bg-{
+    background-image: "./img-7.css";
+  }

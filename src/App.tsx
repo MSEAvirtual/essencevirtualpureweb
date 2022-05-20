@@ -13,36 +13,40 @@ const CUSTOM_MODAL_WIDTH = "1000px";
 const App = () => {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [width, setWidth] = useState(CUSTOM_MODAL_WIDTH);
-    const [allowClose, setAllowClose] = React.useState(true);
+    const [allowClose, setAllowClose] = React.useState(false);
     const [component, setComponent] = React.useState(null);
     const [showModal, setShowModal] = React.useState(false);
 
     const AuthFuc = ()=>{
         setLoggedIn(true);
         setWidth(CUSTOM_MODAL_WIDTH)
+        closeModal();
+    };
+    const closeModal = () => {
         setComponent(null);
         setShowModal(false);
     }
     useEffect(()=>{
-        if (!loggedIn){
-            setAllowClose(false);
-            setWidth("400px")
-            setModalView(<AuthModal setAuth={AuthFuc} />)
-        }
+        // if (!loggedIn){
+        //     setAllowClose(false);
+        //     setWidth("400px")
+        //     setModalView(<AuthModal setAuth={AuthFuc} />)
+        // }
     }, []);
 
-    const setModalView = (component:any) => {
+    const setModalView = (component:any, close = false) => {
         setComponent(component);
         setShowModal(true);
+        setAllowClose(close);
     }
     return (
         <>
-            <Button onClick={()=>setModalView(<ARModalPopUp />)}>Show AR Link</Button>
-            <Button onClick={()=>setModalView(<EStore data={18}/>)}>Shop CTA 1</Button>
-            <Button onClick={()=>setModalView(<EStore data={2} />)}>Shop CTA 2</Button>
-            <Button onClick={()=>setModalView(<EStore data={15} />)}>Shop CTA 3</Button>
-            <Button onClick={()=>setModalView(<EStore data={17} />)}>Shop CTA 4</Button>
-            <Button onClick={()=>setModalView(<EStore data={5} />)}>Shop CTA 5</Button>
+            <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
+            <Button onClick={()=>setModalView(<EStore data={18} closeModal={closeModal} />)}>Shop CTA 1</Button>
+            <Button onClick={()=>setModalView(<EStore data={2} closeModal={closeModal} />)}>Shop CTA 2</Button>
+            <Button onClick={()=>setModalView(<EStore data={15} closeModal={closeModal} />)}>Shop CTA 3</Button>
+            <Button onClick={()=>setModalView(<EStore data={17} closeModal={closeModal} />)}>Shop CTA 4</Button>
+            <Button onClick={()=>setModalView(<EStore data={5} closeModal={closeModal} />)}>Shop CTA 5</Button>
             <PureWeb />
             <Grid>
                 <Grid.Row columns={3} className="bottomButtons">
