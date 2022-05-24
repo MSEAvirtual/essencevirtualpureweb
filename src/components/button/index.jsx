@@ -5,11 +5,11 @@ import { Grid, Image, Container, Button  } from 'semantic-ui-react'
 
 const RoundButton = ({size=100, label}) => {
     return(
-        <>
+        <div className="body-Button">
             <div className="roundedButton" >
-                <p className="roundText">{label}</p>
             </div>
-        </>
+            <p className="roundText">{label}</p>
+        </div>
     )
 };
 

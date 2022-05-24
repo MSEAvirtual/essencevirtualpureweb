@@ -18,6 +18,8 @@
     "react-loader-spinner": "^5.1.4",
     "react-scripts": "^4.0.3",
     "react-simple-image-slider": "^2.4.1",
+    "react-slidy": "^4.3.3",
+    "sass": "^1.52.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.1.2",
     "typescript": "^3.9.10",

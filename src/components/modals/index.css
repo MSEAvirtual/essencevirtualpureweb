@@ -1,0 +1,30 @@
+
+.custom-modal{
+    width: 1000px;
+}
+.rotate-modal{
+    height: 100px; 
+    background: #fff;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px){
+    .modals{
+        width: 100vw !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .custom-modal{
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+    .rotate-modal{
+        height: 100vh;
+        background: #fff;
+    }
+    .rotate-noti{
+        text-align: center;
+        padding-top: 50% !important;
+    }
+}
+

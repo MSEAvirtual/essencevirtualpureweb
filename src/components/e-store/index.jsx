@@ -2,9 +2,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import "./index.css";
-import SimpleImageSlider from "react-simple-image-slider";
+// import SimpleImageSlider from "react-simple-image-slider";
 import { Grid, Image, Container, Button } from "semantic-ui-react";
 import stores from "../../stor.json";
+import ImageSlider from "../ImageSlider";
 
 const width = "100%",
   height = 500;
@@ -26,10 +27,10 @@ const EStore = ({ data, closeModal }) => {
   };
 
   return (
-    <div style={{ padding: "2em", backgroundImage: "url(img-7.svg)" }}>
-      <Container style={{background: "#fff", padding: "1em"}}>
+    <div className="store-body">
+      <div className="store-container">
         <Grid columns={3}>
-          <Grid.Row style={{ padding: "2em 1em 1em" }}>
+          <Grid.Row className="store-row">
             <Grid.Column width={2} className={"scrollImages nopadding"}>
               {imgs.map((im, i) => {
                 return (
@@ -41,25 +42,14 @@ const EStore = ({ data, closeModal }) => {
               })}
             </Grid.Column>
             <Grid.Column width={8} className={"nopadding"}>
-              <div style={{ position: "relative" }}>
-                <SimpleImageSlider
-                  width={450}
-                  height={450}
-                  images={imgs}
-                  showBullets={false}
-                  navSize={20}
-                  navStyle={2}
-                  showNavs={true}
-                />
-              </div>
+                <ImageSlider images={imgs} className="image-slider" />
             </Grid.Column>
-            <Grid.Column width={5} style={{ padding: "1em" }}>
+            <Grid.Column width={5} className="content">
               <Image src={s?.business_logo} size="small" />
-              <p style={{ fontSize: "20px" }}>{s?.business_name}</p>
-              <p style={{ paddingTop: "1em", fontSize: "20px" }}>{s?.title}</p>
-              <p>Details and Product Description</p>
-              <p style={{ fontSize: ".8rem" }}>{bio.substring(0, 530)}...</p>
-              <div style={{ marginTop: "2em" }}>
+              <p className="b-name">{s?.business_name}</p>
+              <p className="details-title">Details and Product Description</p>
+              <p className="details-content">{bio.substring(0, 400)}...</p>
+              <div className="buttonBellow">
                 <Button className="custom-btn curved mt-10" onClick={openBUrl}>
                   Shop Now
                 </Button>
@@ -72,7 +62,7 @@ const EStore = ({ data, closeModal }) => {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Container>
+      </div>
     </div>
   );
 };
