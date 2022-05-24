@@ -10,7 +10,7 @@
 @media screen and (min-width: 320px) and (max-width: 900px){
     .modals{
         width: 100vw !important;
-        height: auto !important;
+        height: 100vh !important;
         padding: 0 !important;
         margin: 0 !important;
     }

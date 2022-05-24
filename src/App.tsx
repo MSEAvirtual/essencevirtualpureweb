@@ -41,7 +41,7 @@ const App = () => {
             } else {
                 setAllowClose(false);
                 if (!isMobile){
-                  setWidth("400px")  
+                  setWidth("400px")
                 }
                 setModalView(<AuthModal setAuth={AuthFuc} />)
                 // screen.orientation.lock("landscape-primary")
