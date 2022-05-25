@@ -17,6 +17,8 @@
     .custom-modal{
         max-width: 100% !important;
         max-height: 100% !important;
+        margin: 0 !important;
+        position: fixed;
     }
     .rotate-modal{
         height: 100vh;
