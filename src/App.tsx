@@ -37,20 +37,15 @@ const App = () => {
     }
     const AuthInitate = () => {
         if (!loggedIn) {
-            // setAllowClose(false);
-            // setWidth("400px")
-            // setModalView(<AuthModal setAuth={AuthFuc} />)
+            setAllowClose(false);
+            setWidth("400px")
+            setModalView(<AuthModal setAuth={AuthFuc} />)
         }
     };
 
     useEffect(() => {
         AuthInitate();
     }, []);
-
-    // window.addEventListener('orientationchange', (fogh) => {
-    //     console.log("here", fogh);
-    //     return AuthInitate();
-    // });
 
     const setModalView = (component: any, close = false) => {
         setComponent(component);
