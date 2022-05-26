@@ -66,11 +66,11 @@ const App = () => {
                 </div>
                 <div id="view">
                     <PureWeb />
-                </div>
-                <div className="bottomButtons" id="view">
-                    {ButtonData.map((b, i) =>
-                      <RoundButton key={i} label={b.title} />   
-                    )};
+                    <div className="bottomButtons">
+                        {ButtonData.map((b, i) =>
+                        <RoundButton key={i} label={b.title} />   
+                        )};
+                    </div>
                 </div>
                 <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
             </div>
