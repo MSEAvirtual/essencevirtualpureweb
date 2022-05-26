@@ -183,11 +183,11 @@
             className={isIPhone || handle.active || props.StreamerStatus !== StreamerStatus.Connected ? 'hidden' : ''}>
             <Icon name="expand" />
           </Button>
-          <Button
+          {/* <Button
             onClick={() => toggleLight(!lightIsOn)}
             style={{ position: 'absolute', top: 50, right: 10 }}>
             <Icon name={lightIsOn ? "toggle on" : "toggle off"} />
-          </Button>
+          </Button> */}
   
           {/* {props.StreamerStatus !== StreamerStatus.Connected && (
             <img
@@ -328,12 +328,20 @@
   
     // Subscribe to game messages
     useEffect(() => {
+      console.log("message hook--->", messageSubject);
       const subscription = messageSubject.subscribe(
         (value: string) => {
-          logger.info('Message: ' + value);
+          logger.info('\n\nMessage: ' + value);
+          // Parse the received messages
+          const message = JSON.parse(value);
+
+          // Check if our "alert" message is inside and do something with it
+          if(message.hasOwnProperty("alert")){
+            alert(message.alert);
+          }
         },
         (err) => {
-          logger.error(err);
+          logger.error("message--> error", err);
         }
       );
   

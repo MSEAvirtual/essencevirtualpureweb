@@ -3,6 +3,15 @@
   height: 100vh;
   width: 100vw;
 }
+#container{
+  height: 100%;
+}
+#view{
+  display: initial !important;
+}
+#notification{
+  display: none !important;
+}
 /* #container { display:block; } */
 /* @media only screen and (min-width: 320px) and (max-width: 767px) and (orientation:portrait){
   #container {
@@ -186,6 +195,14 @@ video {
     flex-direction: column-reverse !important;
     width: fit-content !important;
     top: 10%;
-    left: 85%;
+    left: 90%;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 700px) and  (orientation:portrait){
+  #view{
+    display: none !important;
+  }
+  #notification{
+    display: block !important;
   }
 }

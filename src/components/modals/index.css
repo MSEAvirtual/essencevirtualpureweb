@@ -17,16 +17,19 @@
     .custom-modal{
         max-width: 100% !important;
         max-height: 100% !important;
+        height: 100%;
         margin: 0 !important;
         position: fixed;
     }
     .rotate-modal{
         height: 100vh;
         background: #fff;
+        margin: auto;
+        padding: 50% 0;
     }
     .rotate-noti{
         text-align: center;
-        padding-top: 50% !important;
+        padding: 50% 1em;
     }
 }
 
