@@ -13,12 +13,18 @@ const width = "100%",
 
 const EStore = ({ data, closeModal }) => {
   const s = stores[data];
-  const bio = s.business_bio;
-  const imgs = s.images;
-  let url = s.business_url;
+  console.log("respo-->", s, data);
+  const bio = s?.business_bio || "";
+  const bLogo = `/assets/${data}/logo.png`;
+  const imgs = [
+    `/assets/${data}/1.png`,
+    `/assets/${data}/2.png`,
+    `/assets/${data}/3.png`,
+  ];
+  let url = s?.business_url;
   const openBUrl = () => {
     if (!url.includes("https://") && !url.includes("http://")) {
-      url = "https://" + s.business_url;
+      url = "https://" + s?.business_url;
     }
     let a = document.createElement("a");
     a.target = "_blank";
@@ -45,10 +51,10 @@ const EStore = ({ data, closeModal }) => {
                 <ImageSlider images={imgs} className="image-slider" />
             </Grid.Column>
             <Grid.Column width={5} className="content">
-              <Image src={s?.business_logo} size="small" />
+              <Image src={bLogo} size="small" />
               <p className="b-name">{s?.business_name}</p>
               <p className="details-title">Details and Product Description</p>
-              <p className="details-content">{bio.substring(0, 400)}...</p>
+              <p className="details-content">{bio?.substring(0, 400)}...</p>
               <div className="buttonBellow">
                 <Button className="custom-btn curved mt-10" onClick={openBUrl}>
                   Shop Now

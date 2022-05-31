@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /**
  * This reference template is designed to showcase the elements used to construct your own
  * application.
@@ -11,6 +12,7 @@
  *
  * Copyright (C) PureWeb 2020
  */
+// @ts-nocheck
 
  import {
     LaunchStatusEvent,
@@ -153,7 +155,7 @@
   const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const handle = useFullScreenHandle();
-    const [lightIsOn, toggleLight] = useState(false);
+    // const [lightIsOn, toggleLight] = useState(false);
     // Fullscreen API presently supported on iPad, but not iPhone or iPod
     const isIPhone = System.Browser().os === 'iOS' && !window.navigator.userAgent.includes('iPad');
     return (
@@ -238,7 +240,8 @@
   const platform = new PlatformNext();
   platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
   
-  const App: React.FC = () => {
+  const App: React.FC = ({ShowEModal}:any) => {
+    // console.log(props);
     const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
     const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
     const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
@@ -328,16 +331,16 @@
   
     // Subscribe to game messages
     useEffect(() => {
-      console.log("message hook--->", messageSubject);
+      // console.log("message hook--->", messageSubject);
       const subscription = messageSubject.subscribe(
         (value: string) => {
           logger.info('\n\nMessage: ' + value);
           // Parse the received messages
           const message = JSON.parse(value);
-
-          // Check if our "alert" message is inside and do something with it
-          if(message.hasOwnProperty("alert")){
-            alert(message.alert);
+          if(message.hasOwnProperty("companyid") && message.hasOwnProperty("content")){
+            ShowEModal((message.companyid - 1), message.content);
+            // console.log('\n\nMessage: ' + message);
+            //   alert(message.companyid);
           }
         },
         (err) => {
@@ -502,9 +505,9 @@
     }
   };
   
-  const AppWrapper: React.FC = () => {
+  const AppWrapper: React.FC = ({ ShowEModal }:any) => {
     return System.IsBrowserSupported() ? (
-      <App />
+      <App ShowEModal={ShowEModal} />
     ) : (
       <div className="ui red segment center aligned basic">
         <h2 className="header">Your browser is currently unsupported</h2>

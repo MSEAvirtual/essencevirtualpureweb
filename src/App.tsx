@@ -1,15 +1,16 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react-hooks/exhaustive-deps */
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import ModalLayout from "./components/modals";
-import ARModalPopUp from "./components/modals/ARmodalPopUp";
-import { Button, Grid } from 'semantic-ui-react'
+// import ARModalPopUp from "./components/modals/ARmodalPopUp";
+// import { Button, Grid } from 'semantic-ui-react'
 import EStore from "./components/e-store";
 import 'react-slidy/lib/index.scss'
 import "./App.css"
 import PureWeb from "./pureweb";
-import RoundButton from "./components/button";
-import AuthModal from "./components/modals/AuthModal";
+// import RoundButton from "./components/button";
+// import AuthModal from "./components/modals/AuthModal";
 import RotateScreen from "./components/modals/rotate";
 
 const CUSTOM_MODAL_WIDTH = "1000px";
@@ -37,9 +38,9 @@ const App = () => {
     }
     const AuthInitate = () => {
         if (!loggedIn) {
-            setAllowClose(false);
-            setWidth("400px")
-            setModalView(<AuthModal setAuth={AuthFuc} />)
+            // setAllowClose(false);
+            // setWidth("400px")
+            // setModalView(<AuthModal setAuth={AuthFuc} />)
         }
     };
 
@@ -51,26 +52,29 @@ const App = () => {
         setComponent(component);
         setShowModal(true);
         setAllowClose(close);
-    }
+    };
+
+    const setEcomModalView = (id: any, type: string) => setModalView(<EStore data={id} closeModal={closeModal}/>);
+
     return (
         <div className="webContent">
             <div id="container">
-                {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
-                <Button onClick={()=>setModalView(<EStore data={18} closeModal={closeModal} />)}>Shop CTA 1</Button>
-                <Button onClick={()=>setModalView(<EStore data={2} closeModal={closeModal} />)}>Shop CTA 2</Button>
-                <Button onClick={()=>setModalView(<EStore data={15} closeModal={closeModal} />)}>Shop CTA 3</Button>
-                <Button onClick={()=>setModalView(<EStore data={17} closeModal={closeModal} />)}>Shop CTA 4</Button>
-                <Button onClick={()=>setModalView(<EStore data={5} closeModal={closeModal} />)}>Shop CTA 5</Button> */}
                 <div id="notification">
                     <RotateScreen />
                 </div>
                 <div id="view">
-                    <PureWeb />
-                    <div className="bottomButtons">
+                    {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
+                    <Button onClick={()=>setModalView(<EStore data={18} closeModal={closeModal} />)}>Shop CTA 1</Button>
+                    <Button onClick={()=>setModalView(<EStore data={2} closeModal={closeModal} />)}>Shop CTA 2</Button>
+                    <Button onClick={()=>setModalView(<EStore data={15} closeModal={closeModal} />)}>Shop CTA 3</Button>
+                    <Button onClick={()=>setModalView(<EStore data={17} closeModal={closeModal} />)}>Shop CTA 4</Button>
+                    <Button onClick={()=>setModalView(<EStore data={5} closeModal={closeModal} />)}>Shop CTA 5</Button> */}
+                    <PureWeb ShowEModal={setEcomModalView} />
+                    {/* <div className="bottomButtons">
                         {ButtonData.map((b, i) =>
                         <RoundButton key={i} label={b.title} />   
-                        )};
-                    </div>
+                        )}
+                    </div> */}
                 </div>
                 <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
             </div>
