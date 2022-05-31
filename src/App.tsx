@@ -38,9 +38,9 @@ const App = () => {
     }
     const AuthInitate = () => {
         if (!loggedIn) {
-            // setAllowClose(false);
-            // setWidth("400px")
-            // setModalView(<AuthModal setAuth={AuthFuc} />)
+            setAllowClose(false);
+            setWidth("400px")
+            setModalView(<AuthModal setAuth={AuthFuc} />)
         }
     };
 
