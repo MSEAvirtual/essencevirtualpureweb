@@ -331,6 +331,11 @@
   
     // Subscribe to game messages
     useEffect(() => {
+      const ResumePlay = () => {
+        // console.log("resume-play");
+        const command = { command :"play" };
+        emitter.EmitUIInteraction(command);
+      }
       // console.log("message hook--->", messageSubject);
       const subscription = messageSubject.subscribe(
         (value: string) => {
@@ -338,7 +343,7 @@
           // Parse the received messages
           const message = JSON.parse(value);
           if(message.hasOwnProperty("companyid") && message.hasOwnProperty("content")){
-            ShowEModal((message.companyid - 1), message.content);
+            ShowEModal((message.companyid - 1), message.content, ResumePlay);
             // console.log('\n\nMessage: ' + message);
             //   alert(message.companyid);
           }

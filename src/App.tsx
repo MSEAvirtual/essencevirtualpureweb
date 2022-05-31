@@ -38,9 +38,9 @@ const App = () => {
     }
     const AuthInitate = () => {
         if (!loggedIn) {
-            setAllowClose(false);
-            setWidth("400px")
-            setModalView(<AuthModal setAuth={AuthFuc} />)
+            // setAllowClose(false);
+            // setWidth("400px")
+            // setModalView(<AuthModal setAuth={AuthFuc} />)
         }
     };
 
@@ -54,7 +54,10 @@ const App = () => {
         setAllowClose(close);
     };
 
-    const setEcomModalView = (id: any, type: string) => setModalView(<EStore data={id} closeModal={closeModal}/>);
+    const setEcomModalView = (id: any, type: string, resumFuc: func) => setModalView(<EStore data={id} closeModal={() => {
+        closeModal();
+        resumFuc();
+    }}/>);
 
     return (
         <div className="webContent">
