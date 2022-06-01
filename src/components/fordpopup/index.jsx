@@ -4,17 +4,15 @@ import React from "react";
 import "./index.css";
 // import SimpleImageSlider from "react-simple-image-slider";
 import { Grid, Image, Container, Button } from "semantic-ui-react";
-import stores from "../../stor.json";
+import fords from "../../fords.json";
 import ImageSlider from "../ImageSlider";
 
-const width = "100%",
-  height = 500;
-// const imgU = "https://react.semantic-ui.com/images/wireframe/image.png";
+const width = "100%", height = 500;
 
 const EStore = ({ data, closeModal }) => {
   const cAD = data - 1;
-  const s = stores[cAD];
-  console.log("respo-->", s, data, cAD);
+  const s = fords[cAD];
+  // console.log("respo-->", s, data, cAD);
   const bio = s?.business_bio || "";
   const bLogo = `/assets/${data}/logo.png`;
   const imgs = [

@@ -3,8 +3,8 @@
 // @ts-nocheck
 import React, { useEffect, useState } from "react";
 import ModalLayout from "./components/modals";
-// import ARModalPopUp from "./components/modals/ARmodalPopUp";
-// import { Button, Grid } from 'semantic-ui-react'
+import ARModalPopUp from "./components/modals/ARmodalPopUp";
+import { Button, Grid } from 'semantic-ui-react'
 import EStore from "./components/e-store";
 import 'react-slidy/lib/index.scss'
 import "./App.css"
@@ -38,9 +38,9 @@ const App = () => {
     }
     const AuthInitate = () => {
         if (!loggedIn) {
-            setAllowClose(false);
-            setWidth("400px")
-            setModalView(<AuthModal setAuth={AuthFuc} />)
+            // setAllowClose(false);
+            // setWidth("400px")
+            // setModalView(<AuthModal setAuth={AuthFuc} />)
         }
     };
 
@@ -66,9 +66,9 @@ const App = () => {
                     <RotateScreen />
                 </div>
                 <div id="view">
-                    {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
+                    <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
                     <Button onClick={()=>setModalView(<EStore data={18} closeModal={closeModal} />)}>Shop CTA 1</Button>
-                    <Button onClick={()=>setModalView(<EStore data={2} closeModal={closeModal} />)}>Shop CTA 2</Button>
+                    {/* <Button onClick={()=>setModalView(<EStore data={2} closeModal={closeModal} />)}>Shop CTA 2</Button>
                     <Button onClick={()=>setModalView(<EStore data={15} closeModal={closeModal} />)}>Shop CTA 3</Button>
                     <Button onClick={()=>setModalView(<EStore data={17} closeModal={closeModal} />)}>Shop CTA 4</Button>
                     <Button onClick={()=>setModalView(<EStore data={5} closeModal={closeModal} />)}>Shop CTA 5</Button> */}

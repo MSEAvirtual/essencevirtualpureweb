@@ -343,7 +343,7 @@
           // Parse the received messages
           const message = JSON.parse(value);
           if(message.hasOwnProperty("companyid") && message.hasOwnProperty("content")){
-            ShowEModal((message.companyid - 1), message.content, ResumePlay);
+            ShowEModal(message.companyid, message.content, ResumePlay);
             // console.log('\n\nMessage: ' + message);
             //   alert(message.companyid);
           }
