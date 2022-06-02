@@ -75,14 +75,16 @@ const App = () => {
                 <div id="notification">
                     <RotateScreen />
                 </div>
-                <div className="nav-bar">
-                    <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
-                    <img src="/close-logo.png" className="closeLogo" alt="close-log" />
-                </div>
-                {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
+                <div id="view">
+                    <div className="nav-bar">
+                        <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
+                        <img src="/close-logo.png" className="closeLogo" alt="close-log" />
+                    </div>
+                    {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
                     <Button onClick={()=>setModalView(<FordPopUp data={"2"} company={"ford"} closeModal={closeModal} />)}>Shop CTA 1</Button>
                      */}
-                <PureWeb ShowEModal={setEcomModalView} />
+                    <PureWeb ShowEModal={setEcomModalView} />
+                </div>
                 <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
             </div>
         </div>
