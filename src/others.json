@@ -1,8 +1,38 @@
-[
-    {
-        "title": "Introducing The Achievery",
-        "description": "Where Education is powered by Entertainment, The Achievery connects syudents to a new world of digital learning, totally free.",
-        "button-text": "sign-up",
-        "link": "https://at.com"
-    }
-]
+{
+    "ford":[
+        {
+            "cta_id": "1",
+            "image": "/ctas/ford.svg",
+            "CTA event action": "ford-cta-1",
+            "event action (time in room)": "ford-timeinroom",
+            "title": "Experience the Bronco now!",
+            "url": "https://www.ford.com/suvs/bronco-sport/?gnav=header-suvs-vhp",
+            "description": "Due to high demand, the current model year is no longer available for retail order. Limited inventory may be available at selected dealers. Contact your dealer for more information or sign up to be the first to know when 2023 Mustang Mach-E orders go on sale.",
+            "button-text": "Drive Now",
+            "type": 2
+        },
+        {
+            "cta_id": "2",
+            "image": "/ctas/ford.svg",
+            "CTA event action": "ford-cta-2",
+            "title": "Experience the Mach-E now!",
+            "url": "https://www.ford.com/suvs/mach-e/?gnav=header-suvs-vhp",
+            "description": "Due to high demand, the current model year is no longer available for retail order. Limited inventory may be available at selected dealers. Contact your dealer for more information or sign up to be the first to know when 2023 Mustang Mach-E orders go on sale.",
+            "button-text": "Drive Now",
+            "type": 2
+        },
+        {
+            "cta_id": "3", 
+            "image": "/ctas/ford.svg",
+            "title": "Experience the Maverick now!",
+            "CTA event action": "ford-cta-3",
+            "url": "https://www.ford.com/trucks/maverick/?gnav=header-trucks-vhp",
+            "description": "Due to high demand, the current model year is no longer available for retail order. Limited inventory may be available at selected dealers. Contact your dealer for more information or sign up to be the first to know when 2023 Maverick orders go on sale.",
+            "button-text": "Drive Now",
+            "type": 2
+        }
+    ],
+    "att":[
+
+    ]
+}

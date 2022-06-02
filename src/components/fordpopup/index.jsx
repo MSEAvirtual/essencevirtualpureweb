@@ -2,23 +2,24 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import "./index.css";
-// import SimpleImageSlider from "react-simple-image-slider";
-import { Grid, Image, Container, Button } from "semantic-ui-react";
-import fords from "../../fords.json";
-import ImageSlider from "../ImageSlider";
+import { Grid, Image, Button } from "semantic-ui-react";
+import sponsorData from "../../others.json";
 
-const width = "100%", height = 500;
-
-const EStore = ({ data, closeModal }) => {
-  const cAD = data - 1;
-  const s = fords[cAD];
-  // console.log("respo-->", s, data, cAD);
+const SponorPopUp = ({ data, company, closeModal }) => {
+  const cAD = data;
+  const fData = sponsorData[company];
+  // find by cta id
+  const rData = fData ? fData.filter((f) => f["cta_id"] === cAD) : [];
+  const s = rData.length > 0 ? rData[0] : {};
+  console.log("suppress--->", s);
+  const type = s?.type || 1;
   const bio = s?.description || "";
-  const bLogo = `/assets/${data}/logo.png`;
-  let url = s?.link;
+  const bLogo = s?.image;
+  let url = s?.url;
+  
   const openBUrl = () => {
     if (!url.includes("https://") && !url.includes("http://")) {
-      url = "https://" + s?.business_url;
+      url = "https://" + s?.url;
     }
     let a = document.createElement("a");
     a.target = "_blank";
@@ -27,22 +28,22 @@ const EStore = ({ data, closeModal }) => {
   };
 
   return (
-    <div className="ford-body">
+    <div className={`ford-body ${type===2 ? "ford-color": "ex-color"}`}>
       <div className="ford-container">
         <Grid columns={3}>
           <Grid.Row className="ford-row">
             <Grid.Column width={14} className="content text-center">
-              <Image src={bLogo} size="small" className="logo-img"/>
+              <Image src={bLogo} size="small" className="logo-img" />
               <p className="content-title">{s?.title}</p>
-              <p className="content-description">{bio?.substring(0, 400)}...</p>
+              <div className={type===2 ? "content-description-ford" :"content-description"} dangerouslySetInnerHTML={{ __html: `<p className="content-description">${bio?.substring(0, 400)}</p>`}}/>
               <div className="content-button">
-                <Button className="custom-btn curved mt-10" onClick={openBUrl}>
-                  Sign Up
+                <Button className={`custom-btn curved mt-10 ${type===2 ? "ford-color": "ex-color"}`} onClick={openBUrl}>
+                  {s["button-text"] || "sign up"}
                 </Button>
               </div>
             </Grid.Column>
             <Grid.Column width={1} className={"nopadding close-btn-pd"}>
-              <span className="close-btn" onClick={closeModal}>
+              <span className={`close-btn ${type===2? "ford-t-color": "ex-t-color"}`} onClick={closeModal}>
                 X
               </span>
             </Grid.Column>
@@ -53,4 +54,4 @@ const EStore = ({ data, closeModal }) => {
   );
 };
 
-export default EStore;
+export default SponorPopUp;

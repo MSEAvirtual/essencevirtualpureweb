@@ -179,12 +179,12 @@
             PointerLockRelease={props.PointerLockRelease}
           />
   
-          <Button
+          {/* <Button
             onClick={handle.enter}
             style={{ position: 'absolute', top: 10, right: 10 }}
             className={isIPhone || handle.active || props.StreamerStatus !== StreamerStatus.Connected ? 'hidden' : ''}>
             <Icon name="expand" />
-          </Button>
+          </Button> */}
           {/* <Button
             onClick={() => toggleLight(!lightIsOn)}
             style={{ position: 'absolute', top: 50, right: 10 }}>
@@ -343,7 +343,7 @@
           // Parse the received messages
           const message = JSON.parse(value);
           if(message.hasOwnProperty("companyid") && message.hasOwnProperty("content")){
-            ShowEModal(message.companyid, message.content, ResumePlay);
+            ShowEModal(message.companyid, message.content, message, ResumePlay);
             // console.log('\n\nMessage: ' + message);
             //   alert(message.companyid);
           }

@@ -6,20 +6,16 @@ import ModalLayout from "./components/modals";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
 import { Button, Grid } from 'semantic-ui-react'
 import EStore from "./components/e-store";
-import FordPopUp from "./components/archModal";
+import FordPopUp from "./components/fordpopup";
 import 'react-slidy/lib/index.scss'
 import "./App.css"
 import PureWeb from "./pureweb";
-import RoundButton from "./components/button";
 import AuthModal from "./components/modals/AuthModal";
 import RotateScreen from "./components/modals/rotate";
 
 const CUSTOM_MODAL_WIDTH = "1000px";
-const ButtonData = [
-    { title: "Music On/off" },
-    { title: "Event Schedule" },
-    { title: "How to Guide" }
-]
+const CUSTOM_SPONSOR_WIDTH = "800px";
+
 const App = () => {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [width, setWidth] = useState(CUSTOM_MODAL_WIDTH);
@@ -55,10 +51,23 @@ const App = () => {
         setAllowClose(close);
     };
 
-    const setEcomModalView = (id: any, type: string, resumFuc: func) => setModalView(<EStore data={id} closeModal={() => {
-        closeModal();
-        resumFuc();
-    }}/>);
+    const setEcomModalView = (id: any, type: string, data: any, resumFuc: func) => {
+        console.log(id, type, data)
+        let comp = <EStore data={id} closeModal={() => {
+            closeModal();
+            resumFuc();
+        }} />
+        if (type === "sponsor") {
+            setWidth(CUSTOM_SPONSOR_WIDTH)
+            comp = <FordPopUp data={id} company={data.companyname} closeModal={() => {
+                closeModal();
+                resumFuc();
+            }} />
+        } else {
+            setWidth(CUSTOM_MODAL_WIDTH)
+        }
+        setModalView(comp);
+    }
 
     return (
         <div className="webContent">
@@ -66,20 +75,14 @@ const App = () => {
                 <div id="notification">
                     <RotateScreen />
                 </div>
-                <div id="view">
-                    {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
-                    <Button onClick={()=>setModalView(<FordPopUp data={1} closeModal={closeModal} />)}>Shop CTA 1</Button>
-                    <Button onClick={()=>setModalView(<EStore data={2} closeModal={closeModal} />)}>Shop CTA 2</Button>
-                    <Button onClick={()=>setModalView(<EStore data={15} closeModal={closeModal} />)}>Shop CTA 3</Button>
-                    <Button onClick={()=>setModalView(<EStore data={17} closeModal={closeModal} />)}>Shop CTA 4</Button>
-                    <Button onClick={()=>setModalView(<EStore data={5} closeModal={closeModal} />)}>Shop CTA 5</Button> */}
-                    <PureWeb ShowEModal={setEcomModalView} />
-                    {/* <div className="bottomButtons">
-                        {ButtonData.map((b, i) =>
-                        <RoundButton key={i} label={b.title} />   
-                        )}
-                    </div> */}
+                <div className="nav-bar">
+                    <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
+                    <img src="/close-logo.png" className="closeLogo" alt="close-log" />
                 </div>
+                {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
+                    <Button onClick={()=>setModalView(<FordPopUp data={"2"} company={"ford"} closeModal={closeModal} />)}>Shop CTA 1</Button>
+                     */}
+                <PureWeb ShowEModal={setEcomModalView} />
                 <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
             </div>
         </div>

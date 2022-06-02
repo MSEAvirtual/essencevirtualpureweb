@@ -172,7 +172,22 @@ video {
 .hidden {
   display: none !important;
 }
-
+.nav-bar{
+  position: relative;
+}
+.siteLogo{
+  position: absolute;
+  width: 100px;
+  top: 0;
+  left: 0;
+}
+.closeLogo{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  right: 10px;
+}
 .bottomButtons{
   display: flex;
   position: absolute !important;

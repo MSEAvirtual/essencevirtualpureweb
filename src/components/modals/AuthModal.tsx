@@ -37,7 +37,6 @@ const AuthModal = ({ setAuth }: any) => {
         }),
         onSubmit: async (formData: any) => {
             setSubmitting(true);
-            console.log(formData);
             if (formData.email === ADMIN_EMAIL && formData.password === ADMIN_PASSWORD) {
                 setAuth(true);
             } else {

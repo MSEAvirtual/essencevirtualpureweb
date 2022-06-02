@@ -1,16 +1,31 @@
 .content-button {
   bottom: 0% !important;
 }
+/* .custom-modal{ */
+  /* width: 700px !important; */
+/* } */
 
 .ford-row {
   margin: auto !important;
   padding: 2em 1.5em !important;
 }
+.ford-color{
+  background: #1f1d58 !important;
+}
+.ex-color{
+  background: #0057B8 !important;
+}
 
+.ford-t-color{
+  color: #1f1d58 !important;
+}
+.ex-t-color{
+  color: #0057B8 !important;
+}
 .ford-body {
   position: relative;
   padding: 4em;
-  background: #1f1d58;
+  /* background: #1f1d58; */
 }
 .ford-container {
   position: relative;
@@ -27,7 +42,7 @@
 }
 .logo-img{
   margin: auto !important;
-  width: 100px !important;
+  width: 200px !important;
   padding-bottom: 1em;
 }
 .content {
@@ -41,7 +56,11 @@
   font-weight: 700;
 }
 .content-description {
-  font-size: 2em;
+  font-size: 1.5em;
+}
+.content-description-ford{
+  font-size: 1.1em;
+  text-align: center;
 }
 .d-title {
   padding-top: 1em;
@@ -89,12 +108,13 @@
 }
 
 .custom-btn {
-  background-color: #0057B8 !important;
+  background-color: #0057B8;
   color: #ffffff !important;
   font-size: 20px !important;
   width: 206px;
   height: 68px;
   margin-top: 1em !important;
+  padding: 0.4em !important;
   text-transform: uppercase !important;
 }
 
@@ -107,9 +127,9 @@
   font-size: 40px;
   position: absolute;
   font-weight: 700 !important;
-  color: #1f1d58 !important;
+  color: #1f1d58;
   cursor: pointer !important;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-top: -20px;
 }
 
