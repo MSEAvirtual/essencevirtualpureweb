@@ -73,20 +73,4 @@ const EStore = ({ data, closeModal }) => {
   );
 };
 
-const EStored = ({ data }) => {
-  const s = stores[data];
-  let url = s["Business URL:"];
-  console.log("url-->", url);
-  if (!url.includes("https://") && !url.includes("http://")) {
-    url = "https://" + s["Business URL:"];
-  }
-  return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `<object type="text/html" data=${url} width="${width}" height="${height}" target="_parent" allow="camera *;microphone *" />`,
-      }}
-    />
-    // <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}" target="_parent" allow="camera *;microphone *" />`}} />
-  );
-};
 export default EStore;

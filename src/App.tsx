@@ -6,6 +6,7 @@ import ModalLayout from "./components/modals";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
 import { Button, Grid } from 'semantic-ui-react'
 import EStore from "./components/e-store";
+import FordPopUp from "./components/archModal";
 import 'react-slidy/lib/index.scss'
 import "./App.css"
 import PureWeb from "./pureweb";
@@ -67,17 +68,17 @@ const App = () => {
                 </div>
                 <div id="view">
                     {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
-                    <Button onClick={()=>setModalView(<EStore data={18} closeModal={closeModal} />)}>Shop CTA 1</Button>
+                    <Button onClick={()=>setModalView(<FordPopUp data={1} closeModal={closeModal} />)}>Shop CTA 1</Button>
                     <Button onClick={()=>setModalView(<EStore data={2} closeModal={closeModal} />)}>Shop CTA 2</Button>
                     <Button onClick={()=>setModalView(<EStore data={15} closeModal={closeModal} />)}>Shop CTA 3</Button>
                     <Button onClick={()=>setModalView(<EStore data={17} closeModal={closeModal} />)}>Shop CTA 4</Button>
                     <Button onClick={()=>setModalView(<EStore data={5} closeModal={closeModal} />)}>Shop CTA 5</Button> */}
                     <PureWeb ShowEModal={setEcomModalView} />
-                    <div className="bottomButtons">
+                    {/* <div className="bottomButtons">
                         {ButtonData.map((b, i) =>
                         <RoundButton key={i} label={b.title} />   
                         )}
-                    </div>
+                    </div> */}
                 </div>
                 <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
             </div>
