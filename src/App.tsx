@@ -51,10 +51,9 @@ const App = () => {
     }
 
     useEffect(() => {
-        AuthInitate();
+        // AuthInitate();
         const isMo = isMobileTablet();
         setIsMobile(isMo);
-        console.log("device--->", window.navigator.userAgent, isMobile, isMo);
         if (isMo) window.scrollTo(0, document.body.scrollHeight);
     }, []);
 
@@ -65,7 +64,7 @@ const App = () => {
     };
 
     const setEcomModalView = (id: any, type: string, data: any, resumFuc: func) => {
-        console.log(id, type, data)
+        // console.log(id, type, data)
         let comp = <EStore data={id} closeModal={() => {
             closeModal();
             resumFuc();
