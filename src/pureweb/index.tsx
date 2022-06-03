@@ -179,12 +179,12 @@
             PointerLockRelease={props.PointerLockRelease}
           />
   
-          {/* <Button
+          <Button
             onClick={handle.enter}
             style={{ position: 'absolute', top: 10, right: 10 }}
             className={isIPhone || handle.active || props.StreamerStatus !== StreamerStatus.Connected ? 'hidden' : ''}>
             <Icon name="expand" />
-          </Button> */}
+          </Button>
           {/* <Button
             onClick={() => toggleLight(!lightIsOn)}
             style={{ position: 'absolute', top: 50, right: 10 }}>
@@ -240,7 +240,7 @@
   const platform = new PlatformNext();
   platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
   
-  const App: React.FC = ({ShowEModal}:any) => {
+  const App: React.FC = ({ShowEModal, isMobile }:any) => {
     // console.log(props);
     const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
     const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
@@ -328,6 +328,11 @@
     useEffect(() => {
       logger.info('Status', status, streamerStatus);
     }, [status, streamerStatus]);
+
+    useEffect(()=>{
+      const command = { device : isMobile ? "mobile" : "desktop" };
+      emitter.EmitUIInteraction(command);
+    }, [isMobile])
   
     // Subscribe to game messages
     useEffect(() => {

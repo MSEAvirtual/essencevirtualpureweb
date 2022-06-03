@@ -1,4 +1,6 @@
-
+.modals{
+    background-color: transparent !important;
+}
 .custom-modal{
     width: 1000px;
 }

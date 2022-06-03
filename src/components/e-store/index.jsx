@@ -62,7 +62,7 @@ const EStore = ({ data, closeModal }) => {
               </div>
             </Grid.Column>
             <Grid.Column width={1} className={"nopadding close-btn-pd-estore"}>
-              <span className="close-btn" onClick={closeModal}>
+              <span className="close-btn-estore" onClick={closeModal}>
                 X
               </span>
             </Grid.Column>
