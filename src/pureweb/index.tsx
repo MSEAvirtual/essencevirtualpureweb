@@ -158,6 +158,7 @@
     // const [lightIsOn, toggleLight] = useState(false);
     // Fullscreen API presently supported on iPad, but not iPhone or iPod
     const isIPhone = System.Browser().os === 'iOS' && !window.navigator.userAgent.includes('iPad');
+    
     return (
       <div style={{ height: '100%' }}>
         <FullScreen handle={handle}>

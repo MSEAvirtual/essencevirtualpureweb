@@ -504,5 +504,35 @@
             "https://www.jotform.com/uploads/essenceexperiential/220514424954150/5239772143016409231/DSC07496%203.jpg"
         ],
         "Vendor Registration Payment:": "EFOC Vendor Fee (Amount: 500.00 USD) \nTotal: $500.00Transaction ID: tEL2s9PpNlqT98CcCo7TlbmvrvJZY\n==Payer Info==First Name JasmeenLast Name KelleyE-Mail Jasmeenkelley@gmail.com"
+    },
+    {
+        "business_name": "Be Rooted Co.",
+        "business_url": "https://www.target.com/b/be-rooted/-/N-q643levit9k",
+        "type": "target"
+    },
+    {
+        "business_name": "Black Girl Sunscreen",
+        "business_url": "https://www.target.com/b/black-girl-sunscreen/-/N-u4o5n",
+        "type": "target"
+    },
+    {
+        "business_name": "The Doux",
+        "business_url": "https://www.target.com/b/the-doux/-/N-pmp9m",
+        "type": "target"
+    },
+    {
+        "business_name": "Kyutee Nails",
+        "business_url": "https://www.target.com/b/kyutee/-/N-q643leiitro",
+        "type": "target"
+    },
+    {
+        "business_name": "Frederick Benjamin Grooming",
+        "business_url": "https://www.target.com/b/frederick-benjamin/-/N-q643lemijwe",
+        "type": "target"
+    },
+    {
+        "business_name": "Camille Rose Naturals",
+        "business_url": "https://www.target.com/b/camille-rose/-/N-q643lehpjyy",
+        "type": "target"
     }
 ]
