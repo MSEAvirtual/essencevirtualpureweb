@@ -42,7 +42,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        AuthInitate();
+        // AuthInitate();
     }, []);
 
     const setModalView = (component: any, close = false) => {
@@ -57,9 +57,9 @@ const App = () => {
             closeModal();
             resumFuc();
         }} />
-        if (type === "sponsor") {
+        if (type !== "bob") {
             setWidth(CUSTOM_SPONSOR_WIDTH)
-            comp = <FordPopUp data={id} company={data.companyname} closeModal={() => {
+            comp = <FordPopUp data={type} company={data.companyname} closeModal={() => {
                 closeModal();
                 resumFuc();
             }} />
@@ -81,8 +81,9 @@ const App = () => {
                         <img src="/close-logo.png" className="closeLogo" alt="close-log" />
                     </div>
                     {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
-                    <Button onClick={()=>setModalView(<FordPopUp data={"2"} company={"ford"} closeModal={closeModal} />)}>Shop CTA 1</Button>
-                     */}
+                    <Button onClick={()=>setModalView(<FordPopUp data={"att-4"} company={"att"} closeModal={closeModal} />)}>Shop CTA 1</Button>
+                    <Button onClick={()=>setModalView(<EStore data={"11"} closeModal={closeModal} />)}>Shop CTA 1</Button> */}
+                    
                     <PureWeb ShowEModal={setEcomModalView} />
                 </div>
                 <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />

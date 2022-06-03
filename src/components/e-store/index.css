@@ -1,4 +1,4 @@
-.buttonBellow {
+.buttonBellow-estore {
   position: absolute;
   bottom: 10% !important;
   left: 10% !important;
@@ -26,19 +26,20 @@
   padding-right: 2.5em !important;
   border-radius: 50px !important;
 }
-.logo-img{
+.logo-img-estore{
   width: 100px !important;
+  height: 100px !important;
   padding-bottom: 1em;
 }
-.content {
+.content-estore {
   padding: 1em;
   padding-left: 2em !important;
 }
-.details-title {
+.details-title-estore {
   font-size: 0.85em;
   font-weight: 700;
 }
-.details-content {
+.details-content-estore {
   font-size: 0.8em;
 }
 .d-title {
@@ -49,7 +50,7 @@
   font-weight: 700;
   font-size: 20px;
 }
-.close-btn-pd{
+.close-btn-pd-estore{
   padding: 0em !important;
 }
 .image-slider {
@@ -86,7 +87,7 @@
   margin-bottom: 0.5em;
 }
 
-.custom-btn {
+.custom-btn-estore {
   background-color: #e66b60 !important;
   color: #ffffff !important;
   font-size: 20px !important;
@@ -151,12 +152,12 @@
     font-size: 15px;
     font-weight: 700;
   }
-  .custom-btn {
+  .custom-btn-estore {
     font-size: 10px !important;
     width: 106px;
     height: 28px;
   }
-  .close-btn {
+  .close-btn-estore {
     font-size: 25px;
     margin-left: 20px;
   }

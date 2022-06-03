@@ -50,18 +50,18 @@ const EStore = ({ data, closeModal }) => {
             <Grid.Column width={8} className={"nopadding"}>
                 <ImageSlider images={imgs} className="image-slider" />
             </Grid.Column>
-            <Grid.Column width={5} className="content">
-              <Image src={bLogo} size="small" className="logo-img"/>
+            <Grid.Column width={5} className="content-estore">
+              <Image src={bLogo} size="small" className="logo-img-estore"/>
               <p className="b-name">{s?.business_name}</p>
-              <p className="details-title">Details and Product Description</p>
-              <p className="details-content">{bio?.substring(0, 400)}...</p>
-              <div className="buttonBellow">
-                <Button className="custom-btn curved mt-10" onClick={openBUrl}>
+              <p className="details-title-estore">Details and Product Description</p>
+              <p className="details-content-estore">{bio?.substring(0, 400)}...</p>
+              <div className="buttonBellow-estore">
+                <Button className="custom-btn-estore curved mt-10" onClick={openBUrl}>
                   Shop Now
                 </Button>
               </div>
             </Grid.Column>
-            <Grid.Column width={1} className={"nopadding close-btn-pd"}>
+            <Grid.Column width={1} className={"nopadding close-btn-pd-estore"}>
               <span className="close-btn" onClick={closeModal}>
                 X
               </span>
