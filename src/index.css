@@ -20,8 +20,8 @@ code {
 @media screen and (min-width: 320px) and (max-width: 900px) and  (orientation:landscape){
   html, body{
     height: 100vh !important;
-    overflow-y: scroll;
-    -webkit-text-size-adjust: 100% !important;
+    overflow: scroll;
+    /* -webkit-text-size-adjust: 100% !important; */
   }
 }
 @supports(padding:max(0px)) {
