@@ -23,6 +23,9 @@ code {
   html, body{
     /* -webkit-text-size-adjust: 100% !important; */
   }
+  video{
+    padding-top: 14.51%;
+  }
 }
 /* @supports(padding:max(0px)) {
   body, header, footer {
