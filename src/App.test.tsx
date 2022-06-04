@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import App from "./Appold";
+import App from "./App";
 
 // TODO: should we remove this?
 test("renders learn react link", () => {
