@@ -99,14 +99,14 @@ i.icon.hidden {
 video {
   cursor:none;
   position: fixed; 
-  right: 0; bottom: 0;
+  /* right: 0; bottom: 0; */
   min-width: 100vh; 
   min-height: 100vh;
-  z-index: -100;
+  /* z-index: -100; */
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
-  background-size: contain !important;
+  object-fit: cover !important;
+  background-size: cover !important;
 }
 
 /* .small-view{
