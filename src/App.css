@@ -97,12 +97,18 @@ i.icon.hidden {
 }
 
 video {
+  position: relative;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   cursor:none;
 }
 
+/* .small-view{
+  width: 900px;
+  height: 300px;
+  border: 2px solid #222;
+} */
 .logobacking {
   display: flex;
   flex-direction: row;

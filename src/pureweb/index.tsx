@@ -334,7 +334,7 @@
         emitter.EmitUIInteraction(command);
         console.log("sestion--->")
       }
-      if (status === "connected"){
+      if (status.status === "ready"){
         SendMobileType();
       }
     }, [status, streamerStatus]);

@@ -95,8 +95,9 @@ const App = () => {
                     {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
                     <Button onClick={()=>setModalView(<FordPopUp data={"att-4"} company={"att"} closeModal={closeModal} />)}>Shop CTA 1</Button>
                     <Button onClick={()=>setModalView(<EStore data={"23"} closeModal={closeModal} />)}>Shop CTA 1</Button> */}
-
-                    <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} />
+                    {/* <div className="small-view"> */}
+                        <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} />
+                    {/* </div> */}
                 </div>
                 <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
             </div>
