@@ -20,15 +20,9 @@ code {
 @media screen and (min-width: 320px) and (max-width: 900px) and  (orientation:landscape){
   html, body{
     height: 100vh !important;
-    /* -webkit-text-size-adjust: 100% !important; */
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100% !important;
   }
-
-  /* video {
-    width: 100vw !important;
-    height: 100vh !important;
-    object-fit: cover !important;
-    cursor:none;
-  } */
 }
 @supports(padding:max(0px)) {
   body, header, footer {
