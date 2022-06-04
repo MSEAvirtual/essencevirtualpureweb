@@ -97,11 +97,16 @@ i.icon.hidden {
 }
 
 video {
-  position: relative;
-  width: 100vw !important;
-  height: 100vh !important;
-  object-fit: cover;
+  object-fit: contain;
   cursor:none;
+  position: fixed; 
+  right: 0; bottom: 0;
+  min-width: 100vh; 
+  min-height: 100vh;
+  width: 100% !important; 
+  height: 100% !important; 
+  z-index: -100;
+  background-size: contain;
 }
 
 /* .small-view{
