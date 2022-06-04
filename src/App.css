@@ -1,12 +1,10 @@
 .container{
-  border: 21px solid #333;
-  background: white;
   box-sizing: border-box;
   resize: horizontal;
-  border: 1px dashed;
+  /* border: 1px dashed; */
   overflow: auto;
   max-width: 100%;
-  height: calc(100vh - 25px);
+  height: 100%;
 }
 #view{
   position: relative;
