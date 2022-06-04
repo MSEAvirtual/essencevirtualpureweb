@@ -22,6 +22,13 @@ code {
     height: 100% !important;
     /* -webkit-text-size-adjust: 100% !important; */
   }
+
+  video {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: contain !important;
+    cursor:none;
+  }
 }
 @supports(padding:max(0px)) {
   body, header, footer {
