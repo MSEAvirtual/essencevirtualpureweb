@@ -6,7 +6,7 @@
   border: 1px dashed;
   overflow: auto;
   max-width: 100%;
-  height: calc(100vh - 16px);
+  height: calc(100vh - 25px);
 }
 #view{
   position: relative;
