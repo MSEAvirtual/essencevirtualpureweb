@@ -101,7 +101,7 @@ i.icon.hidden {
 
 video {
   cursor:none;
-  position: fixed; 
+  /* position: fixed;  */
   /* right: 0; bottom: 0; */
   min-width: 100vh; 
   min-height: 100vh;

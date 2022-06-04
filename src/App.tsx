@@ -51,7 +51,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        AuthInitate();
+        // AuthInitate();
         const isMo = isMobileTablet();
         setIsMobile(isMo);
         if (isMo) window.scrollTo(0, document.body.scrollHeight);
