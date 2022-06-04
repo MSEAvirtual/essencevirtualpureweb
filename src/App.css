@@ -1,6 +1,12 @@
 .container{
-  height: 100%;
   border: 21px solid #333;
+  background: white;
+  box-sizing: border-box;
+  resize: horizontal;
+  border: 1px dashed;
+  overflow: auto;
+  max-width: 100%;
+  height: calc(100vh - 16px);
 }
 #view{
   position: relative;
