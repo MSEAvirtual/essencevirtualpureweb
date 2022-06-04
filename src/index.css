@@ -23,8 +23,8 @@ code {
   html, body{
     /* -webkit-text-size-adjust: 100% !important; */
   }
-  video{
-    padding-top: 14.51%;
+  #view {
+    padding-bottom: 1%;
   }
 }
 /* @supports(padding:max(0px)) {
