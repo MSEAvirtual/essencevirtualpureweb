@@ -88,10 +88,10 @@ const App = () => {
                     <RotateScreen />
                 </div>
                 <div id="view">
-                    <div className="nav-bar">
+                    {/* <div className="nav-bar">
                         <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
-                        {/* <img src="/close-logo.png" className="closeLogo" alt="close-log" /> */}
-                    </div>
+                        <img src="/close-logo.png" className="closeLogo" alt="close-log" />
+                    </div> */}
                     {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
                     <Button onClick={()=>setModalView(<FordPopUp data={"att-4"} company={"att"} closeModal={closeModal} />)}>Shop CTA 1</Button>
                     <Button onClick={()=>setModalView(<EStore data={"23"} closeModal={closeModal} />)}>Shop CTA 1</Button> */}

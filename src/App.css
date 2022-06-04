@@ -7,11 +7,11 @@
   height: 100%;
 }
 #view{
-  display: initial !important;
+  /* display: initial !important; */
   /* background-color: red; */
   position: relative;
+  height: 100%;
   width: 100%;
-  padding-top: 100%; 
 }
 #notification{
   display: none !important;
@@ -101,17 +101,17 @@ i.icon.hidden {
 }
 
 video {
-  cursor:none;
-  /* position: fixed;  */
-  /* right: 0; bottom: 0; */
+/*   cursor:none;
+  position: fixed; 
+  right: 0; bottom: 0;
   min-width: 100vh; 
   min-height: 100vh;
-  /* z-index: -100; */
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: fill !important;
+  z-index: -100;
+  object-fit: cover !important;
   background-size: fill !important;
-  /* transform: translate(0%, -1%);  */
+  transform: translate(0%, -1%);  */
+  width: 95%;
+  height: 100%;
 }
 
 /* .small-view{

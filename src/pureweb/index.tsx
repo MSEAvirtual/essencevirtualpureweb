@@ -160,8 +160,8 @@
     const isIPhone = System.Browser().os === 'iOS' && !window.navigator.userAgent.includes('iPad');
     
     return (
-      <div style={{ height: '100%' }}>
-        <FullScreen handle={handle}>
+      <>
+        {/* <FullScreen handle={handle}> */}
           <IdleTimeout
             Status={props.StreamerStatus}
             WarningThreshold={300}
@@ -180,12 +180,12 @@
             PointerLockRelease={props.PointerLockRelease}
           />
   
-          <Button
+          {/* <Button
             onClick={handle.enter}
             style={{ position: 'absolute', top: 10, right: 10 }}
             className={isIPhone || handle.active || props.StreamerStatus !== StreamerStatus.Connected ? 'hidden' : ''}>
             <Icon name="expand" />
-          </Button>
+          </Button> */}
           {/* <Button
             onClick={() => toggleLight(!lightIsOn)}
             style={{ position: 'absolute', top: 50, right: 10 }}>
@@ -199,8 +199,8 @@
               style={{ width: 100, position: 'absolute', bottom: 50, right: 10 }}
             />
           )} */}
-        </FullScreen>
-      </div>
+        {/* </FullScreen> */}
+      </>
     );
   };
   
