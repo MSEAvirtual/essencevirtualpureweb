@@ -251,11 +251,11 @@
   
     useAsyncEffect(async () => {
       if (clientOptions.ProjectId) {
-        logger.info('Initializing available models: ' + clientOptions.ProjectId);
+        // logger.info('Initializing available models: ' + clientOptions.ProjectId);
         try {
           await platform.useAnonymousCredentials(clientOptions.ProjectId, clientOptions.EnvironmentId);
           await platform.connect();
-          logger.info('Agent Connected: ' + platform.agent.id);
+          // logger.info('Agent Connected: ' + platform.agent.id);
           streamerOptions.iceServers = platform.agent.serviceCredentials.iceServers as RTCIceServer[];
           streamerOptions.forceRelay = clientOptions.ForceRelay;
           const models = await platform.getModels();
@@ -328,11 +328,18 @@
     // Log status messages
     useEffect(() => {
       logger.info('Status', status, streamerStatus);
+      const SendMobileType = () => {
+        const d = isMobile ? "mobile" : "desktop" 
+        const command = `device :${d}`;
+        emitter.EmitUIInteraction(command);
+        console.log("sestion--->")
+      }
+      if (status === "connected"){
+        SendMobileType();
+      }
     }, [status, streamerStatus]);
 
     useEffect(()=>{
-      const command = { device : isMobile ? "mobile" : "desktop" };
-      emitter.EmitUIInteraction(command);
     }, [isMobile])
   
     // Subscribe to game messages

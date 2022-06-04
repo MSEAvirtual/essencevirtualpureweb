@@ -68,13 +68,13 @@ const App = () => {
         let comp = <EStore data={id} closeModal={() => {
             closeModal();
             resumFuc();
-        }} />
+        }} setClose={setAllowClose} />
         if (type !== "bob") {
             setWidth(CUSTOM_SPONSOR_WIDTH)
             comp = <FordPopUp data={type} company={data.companyname} closeModal={() => {
                 closeModal();
                 resumFuc();
-            }} />
+            }} setClose={setAllowClose} />
         } else {
             setWidth(CUSTOM_MODAL_WIDTH)
         }

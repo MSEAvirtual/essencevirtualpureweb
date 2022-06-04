@@ -9,7 +9,7 @@ import ImageSlider from "../ImageSlider";
 
 const width = "100%", height = 500;
 
-const EStore = ({ data, closeModal }) => {
+const EStore = ({ data, closeModal, setClose }) => {
   const cAD = data - 1;
   const s = stores[cAD];
   // console.log("respo-->", s, data, cAD);
@@ -32,6 +32,7 @@ const EStore = ({ data, closeModal }) => {
   };
 
   if (s?.type === "target"){
+    setClose(true);
     return ( 
       <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
     )

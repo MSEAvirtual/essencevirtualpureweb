@@ -5,7 +5,9 @@ import "./index.css";
 import { Grid, Image, Button } from "semantic-ui-react";
 import sponsorData from "../../others.json";
 
-const SponorPopUp = ({ data, company, closeModal }) => {
+const width = "100%", height = 500;
+
+const SponorPopUp = ({ data, company, closeModal, setClose }) => {
   const cAD = data;
   const fData = sponsorData[company];
   // find by cta id
@@ -26,6 +28,13 @@ const SponorPopUp = ({ data, company, closeModal }) => {
     a.href = url;
     a.click();
   };
+
+  if (s?.type === "target"){
+    setClose(true);
+    return ( 
+      <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
+    )
+  }
 
   return (
     <div className={`ford-body ${type===2 ? "ford-color": "ex-color"}`}>
