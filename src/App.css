@@ -98,9 +98,9 @@ i.icon.hidden {
 
 video {
   position: relative;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain;
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: cover;
   cursor:none;
 }
 
