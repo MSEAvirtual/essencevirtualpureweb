@@ -19,14 +19,14 @@ code {
 
 @media screen and (min-width: 320px) and (max-width: 900px) and  (orientation:landscape){
   html, body{
-    height: 100% !important;
+    height: 100vh !important;
     /* -webkit-text-size-adjust: 100% !important; */
   }
 
   video {
     width: 100% !important;
     height: 80% !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
     cursor:none;
   }
 }
