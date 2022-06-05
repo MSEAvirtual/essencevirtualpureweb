@@ -96,7 +96,7 @@ const App = () => {
                 <Button onClick={()=>setModalView(<EStore data={"23"} closeModal={closeModal} />)}>Shop CTA 1</Button> */}
                 <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} />
             </div>
-            {/* <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} /> */}
+            <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
         </div>
     )
 }
