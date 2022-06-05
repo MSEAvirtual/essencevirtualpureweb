@@ -161,7 +161,7 @@
     
     return (
       <>
-        {/* <FullScreen handle={handle}> */}
+        <FullScreen handle={handle}>
           <IdleTimeout
             Status={props.StreamerStatus}
             WarningThreshold={300}
@@ -199,7 +199,7 @@
               style={{ width: 100, position: 'absolute', bottom: 50, right: 10 }}
             />
           )} */}
-        {/* </FullScreen> */}
+        </FullScreen>
       </>
     );
   };
