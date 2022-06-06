@@ -8,6 +8,8 @@ import stores from "../../bobs.json";
 import ImageSlider from "../ImageSlider";
 
 const width = "100%", height = 500;
+const STORAGE_URL = "";
+// const STORAGE_URL = process.env.REACT_APP_STORAGE_URL;
 
 const EStore = ({ data, closeModal, setClose }) => {
   const cAD = data - 1;
@@ -16,9 +18,9 @@ const EStore = ({ data, closeModal, setClose }) => {
   const bio = s?.business_bio || "";
   const bLogo = `/assets/${data}/logo.png`;
   const imgs = [
-    `/assets/${data}/1.png`,
-    `/assets/${data}/2.png`,
-    `/assets/${data}/3.png`,
+    `${STORAGE_URL}/assets/${data}/1.png`,
+    `${STORAGE_URL}/assets/${data}/2.png`,
+    `${STORAGE_URL}/assets/${data}/3.png`,
   ];
   let url = s?.business_url;
   const openBUrl = () => {

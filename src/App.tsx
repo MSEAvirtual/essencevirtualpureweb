@@ -91,9 +91,9 @@ const App = () => {
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                     {/* <img src="/close-logo.png" className="closeLogo" alt="close-log" /> */}
                 </div>
-                {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
-                <Button onClick={()=>setModalView(<FordPopUp data={"att-4"} company={"att"} closeModal={closeModal} />)}>Shop CTA 1</Button>
-                <Button onClick={()=>setModalView(<EStore data={"23"} closeModal={closeModal} />)}>Shop CTA 1</Button> */}
+                <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
+                <Button onClick={()=>setModalView(<FordPopUp data={"att-4"} company={"att"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
+                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
                 <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} />
             </div>
             <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
