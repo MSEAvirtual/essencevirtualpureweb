@@ -12,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: -webkit-fill-available !important;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 
