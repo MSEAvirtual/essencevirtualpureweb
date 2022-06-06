@@ -3,7 +3,7 @@ name: Heroku Deployment
 on:
   push:
     branches:
-      - main
+      - master
 
 # .github/workflows/heroku-deploy.yml
 jobs:
