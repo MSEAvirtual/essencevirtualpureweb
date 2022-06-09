@@ -66,22 +66,26 @@
         "cta_id": "target-1",
         "CTA event action": "target-cta-1",
         "event action (time in room)": "target-timeinroom",
-        "url": "https://www.target.com/c/black-owned-or-founded-brands-at-target/-/N-q8v16"
+        "url": "https://www.target.com/c/black-owned-or-founded-brands-at-target/-/N-q8v16",
+        "type": "direct"
     },
     {
         "cta_id": "target-2",
         "CTA event action": "target-cta-2",
-        "url": "https://www.target.com/c/black-beyond-measure/-/N-4utaz"
+        "url": "https://www.target.com/c/black-beyond-measure/-/N-4utaz",
+        "type": "direct"
     },
     {
         "cta_id": "target-3",
         "CTA event action": "target-cta-3",
-        "url": "https://www.target.com/c/-/N-3k8lx"
+        "url": "https://www.target.com/c/-/N-3k8lx",
+        "type": "direct"
     },
     {
         "cta_id": "target-4",
         "CTA event action": "target-cta-4",
-        "url": "https://www.target.com/finds"
+        "url": "https://www.target.com/finds",
+        "type": "direct"
     },
     {
         "cta_id": "ford-1",
@@ -120,6 +124,6 @@
         "CTA event action": "ford-cta-4",
         "url": " www.ford2022.essence.com (not live yet)",
         "info": "Fourth button goes to a contest www.ford2022.essence.com (not live yet)",
-        "type": 2
+        "type": "direct"
     }
 ]

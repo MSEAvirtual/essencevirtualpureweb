@@ -10,10 +10,11 @@ const width = "100%", height = 500;
 const SponorPopUp = ({ data, company, closeModal, setClose }) => {
   const cAD = data;
   const fData = sponsorData[company];
+  console.log(fData, cAD);
   // find by cta id
   const rData = fData ? fData.filter((f) => f["cta_id"] === cAD) : [];
   const s = rData.length > 0 ? rData[0] : {};
-  console.log("suppress--->", s);
+  console.log("suppress--->", s, rData);
   const type = s?.type || 1;
   const bio = s?.description || "";
   const bLogo = s?.image;
@@ -29,11 +30,14 @@ const SponorPopUp = ({ data, company, closeModal, setClose }) => {
     a.click();
   };
 
-  if (s?.type === "target"){
+  if (s?.type === "direct"){
     setClose(true);
-    return ( 
-      <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
-    )
+    openBUrl();
+    closeModal();
+    return <></>
+    // ( 
+    //   <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
+    // )
   }
 
   return (

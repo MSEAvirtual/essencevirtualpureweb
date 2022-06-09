@@ -30,6 +30,14 @@
             "description": "Due to high demand, the current model year is no longer available for retail order. Limited inventory may be available at selected dealers. Contact your dealer for more information or sign up to be the first to know when 2023 Maverick orders go on sale.",
             "button-text": "Drive Now",
             "type": 2
+        },
+        {
+            "cta_id": "ford-4",
+            "image": "/ctas/ford.svg",
+            "CTA event action": "ford-cta-4",
+            "url": "https://www.ford2022.essence.com",
+            "info": "Fourth button goes to a contest www.ford2022.essence.com (not live yet)",
+            "type": "direct"
         }
     ],
     "att":[
@@ -76,6 +84,34 @@
             "url": "www.att.com/5Gforyou",
             "button-text": "5G For You", 
             "type": 1
+        }
+    ],
+    "target":[
+        {
+            "title": "target",
+            "cta_id": "target-1",
+            "CTA event action": "target-cta-1",
+            "event action (time in room)": "target-timeinroom",
+            "url": "https://www.target.com/c/black-owned-or-founded-brands-at-target/-/N-q8v16",
+            "type": "direct"
+        },
+        {
+            "cta_id": "target-2",
+            "CTA event action": "target-cta-2",
+            "url": "https://www.target.com/c/black-beyond-measure/-/N-4utaz",
+            "type": "direct"
+        },
+        {
+            "cta_id": "target-3",
+            "CTA event action": "target-cta-3",
+            "url": "https://www.target.com/c/-/N-3k8lx",
+            "type": "direct"
+        },
+        {
+            "cta_id": "target-4",
+            "CTA event action": "target-cta-4",
+            "url": "https://www.target.com/finds",
+            "type": "direct"
         }
     ]
 }

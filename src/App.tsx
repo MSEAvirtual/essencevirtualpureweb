@@ -55,7 +55,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        AuthInitate();
+        // AuthInitate();
         const isMo = isMobileTablet();
         setIsMobile(isMo);
         // if (isMo) window.scrollTo(0, document.body.scrollHeight);
@@ -94,9 +94,9 @@ const App = () => {
                 <div className="nav-bar">
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
-                {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
-                <Button onClick={()=>setModalView(<FordPopUp data={"ford-2"} company={"ford"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
-                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button> */}
+                <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
+                <Button onClick={()=>setModalView(<FordPopUp data={"ford-4"} company={"ford"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
+                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
                 <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} />
                 {/* <LoaderChartView  msg={<h2>Loading...</h2>}/> */}
             </div>
