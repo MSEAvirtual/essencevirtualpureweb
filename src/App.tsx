@@ -54,7 +54,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        // AuthInitate();
+        AuthInitate();
         const isMo = isMobileTablet();
         setIsMobile(isMo);
         // if (isMo) window.scrollTo(0, document.body.scrollHeight);
@@ -96,8 +96,8 @@ const App = () => {
                 {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
                 <Button onClick={()=>setModalView(<FordPopUp data={"ford-2"} company={"ford"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
                 <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button> */}
-                {/* <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} /> */}
-                <LoaderChartView  msg={<h2>Loading...</h2>}/>
+                <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} />
+                {/* <LoaderChartView  msg={<h2>Loading...</h2>}/> */}
             </div>
             <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
         </div>
