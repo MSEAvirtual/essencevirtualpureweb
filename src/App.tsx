@@ -12,6 +12,8 @@ import "./App.css"
 import PureWeb from "./pureweb";
 import AuthModal from "./components/modals/AuthModal";
 import RotateScreen from "./components/modals/rotate";
+import LoaderChartView from "./components/loader";
+// import LoaderChartView from "./components/loader";
 
 const CUSTOM_MODAL_WIDTH = "1000px";
 const CUSTOM_SPONSOR_WIDTH = "800px";
@@ -52,7 +54,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        AuthInitate();
+        // AuthInitate();
         const isMo = isMobileTablet();
         setIsMobile(isMo);
         // if (isMo) window.scrollTo(0, document.body.scrollHeight);
@@ -90,12 +92,12 @@ const App = () => {
             <div id="view">
                 <div className="nav-bar">
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
-                    {/* <img src="/close-logo.png" className="closeLogo" alt="close-log" /> */}
                 </div>
                 {/* <Button onClick={()=>setModalView(<ARModalPopUp />, true)}>Show AR Link</Button>
-                <Button onClick={()=>setModalView(<FordPopUp data={"att-4"} company={"att"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
+                <Button onClick={()=>setModalView(<FordPopUp data={"ford-2"} company={"ford"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button>
                 <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />)}>Shop CTA 1</Button> */}
                 <PureWeb ShowEModal={setEcomModalView} mobileDevice={isMobile} />
+                {/* <LoaderChartView  msg={<h2>Loading...</h2>}/> */}
             </div>
             <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} width={width} />
         </div>

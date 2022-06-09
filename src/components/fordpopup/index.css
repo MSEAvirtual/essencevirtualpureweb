@@ -1,14 +1,6 @@
 .content-button {
   bottom: 0% !important;
 }
-/* .custom-modal{ */
-  /* width: 700px !important; */
-/* } */
-
-.ford-row {
-  margin: auto !important;
-  padding: 2em 1.5em !important;
-}
 .ford-color{
   background: #1f1d58 !important;
 }
@@ -25,12 +17,13 @@
 .ford-body {
   position: relative;
   padding: 4em;
-  /* background: #1f1d58; */
 }
 .ford-container {
   position: relative;
   background: #fff;
-  padding: 1em;
+  /* padding: 1em; */
+  margin: auto !important;
+  padding: 2em 1.5em !important;
 }
 .nopadding {
   padding: 0.5em !important;
@@ -46,8 +39,8 @@
   padding-bottom: 1em;
 }
 .content {
-  padding: 1em;
-  padding-left: 2em !important;
+  /* padding: 1em;
+  padding-left: 2em !important; */
   margin: auto !important;
   text-align: center;
 }
@@ -100,7 +93,7 @@
   scrollbar-width: none; /* Firefox */
 }
 
-.small-Image {
+.small-Image-ford {
   background-repeat: no-repeat;
   width: 100px !important;
   height: 100px !important;
@@ -129,8 +122,8 @@
   font-weight: 700 !important;
   color: #1f1d58;
   cursor: pointer !important;
-  margin-left: 20px;
-  margin-top: -20px;
+  right: 20px;
+  top: 20px;
 }
 
 .bg- {
@@ -138,51 +131,52 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 900px) {
+  .custom-modal{
+    width: 600px !important;
+  }
   .content {
     padding: 0 !important;
     margin: 0 !important;
   }
   .ford-body {
+    height: 100% !important;
     position: relative;
     padding: 2em;
   }
   .ford-container {
-    padding: 0;
-    height: 90vh !important;
+    padding: 0.1em 4em !important;
+    height: 100% !important;
   }
-  .small-Image {
+  .logo-img {
     background-repeat: no-repeat;
-    width: 70px !important;
-    height: 70px !important;
+    margin-top: 1em !important;
+    width: 100px !important;
   }
   .image-slider {
     position: relative;
     width: 280px;
     height: 280px;
   }
-  .details-title {
-    font-size: 0.5em;
+  .content-title {
+    font-size: 1.5em;
     font-weight: 700;
   }
-  .details-content {
-    font-size: 0.4em;
-  }
-  .d-title {
-    padding-top: 0.5em;
-    font-size: 10px;
-  }
-  .b-name {
-    font-size: 15px;
-    font-weight: 700;
+  .content-description {
+    font-size: 1em;
+    margin-bottom: 1em !important;
   }
   .custom-btn {
     font-size: 10px !important;
-    width: 106px;
-    height: 28px;
+    width: 126px;
+    height: 48px;
   }
-
   .close-btn {
+    position: absolute;
     font-size: 25px;
-    margin-left: 20px;
+    right: 30px;
+    top: 10px;
+  }
+  .content-button {
+    bottom: 0 !important;
   }
 }

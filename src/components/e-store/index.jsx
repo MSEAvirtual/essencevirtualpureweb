@@ -43,7 +43,34 @@ const EStore = ({ data, closeModal, setClose }) => {
   return (
     <div className="store-body">
       <div className="store-container">
-        <Grid columns={3}>
+        <div className="store-row">
+          <div className="store-items pl-lo">
+          {imgs.map((im, i) => {
+                return (
+                  <div key={i}>
+                    <Image src={im} className="small-Image" />
+                  </div>
+                );
+              })}
+          </div>
+          <div className="store-items">
+            <ImageSlider images={imgs} className="image-slider" />
+          </div>
+          <div className="store-items content-estore">
+              <Image src={bLogo} size="small" className="logo-img-estore"/>
+              <p className="b-name">{s?.business_name}</p>
+              <p className="details-title-estore">Details and Product Description</p>
+              <p className="details-content-estore">{bio?.substring(0, 400)}...</p>
+              <div className="buttonBellow-estore">
+                <Button className="custom-btn-estore curved mt-10" onClick={openBUrl}>
+                  Shop Now
+                </Button>
+                
+              </div>
+          </div>
+          <span className="close-btn-estore" onClick={closeModal}>X</span>
+        </div>
+        {/* <Grid columns={3}>
           <Grid.Row className="store-row">
             <Grid.Column width={2} className={"scrollImages nopadding"}>
               {imgs.map((im, i) => {
@@ -74,7 +101,7 @@ const EStore = ({ data, closeModal, setClose }) => {
               </span>
             </Grid.Column>
           </Grid.Row>
-        </Grid>
+        </Grid> */}
       </div>
     </div>
   );

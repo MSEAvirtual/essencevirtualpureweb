@@ -39,25 +39,19 @@ const SponorPopUp = ({ data, company, closeModal, setClose }) => {
   return (
     <div className={`ford-body ${type===2 ? "ford-color": "ex-color"}`}>
       <div className="ford-container">
-        <Grid columns={3}>
-          <Grid.Row className="ford-row">
-            <Grid.Column width={14} className="content text-center">
-              <Image src={bLogo} size="small" className="logo-img" />
-              <p className="content-title">{s?.title}</p>
-              <div className={type===2 ? "content-description-ford" :"content-description"} dangerouslySetInnerHTML={{ __html: `<p className="content-description">${bio?.substring(0, 400)}</p>`}}/>
-              <div className="content-button">
-                <Button className={`custom-btn curved mt-10 ${type===2 ? "ford-color": "ex-color"}`} onClick={openBUrl}>
-                  {s["button-text"] || "sign up"}
-                </Button>
-              </div>
-            </Grid.Column>
-            <Grid.Column width={1} className={"nopadding close-btn-pd"}>
-              <span className={`close-btn ${type===2? "ford-t-color": "ex-t-color"}`} onClick={closeModal}>
-                X
-              </span>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <div className="content text-center">
+          <Image src={bLogo} size="small" className="logo-img" />
+          <p className="content-title">{s?.title}</p>
+          <div className={type===2 ? "content-description-ford" :"content-description"} dangerouslySetInnerHTML={{ __html: `<p className="content-description">${bio?.substring(0, 400)}</p>`}}/>
+          <div className="content-button">
+            <Button className={`custom-btn curved mt-10 ${type===2 ? "ford-color": "ex-color"}`} onClick={openBUrl}>
+              {s["button-text"] || "sign up"}
+            </Button>
+          </div>
+          <span className={`close-btn ${type===2? "ford-t-color": "ex-t-color"}`} onClick={closeModal}>
+            X
+          </span>
+        </div>
       </div>
     </div>
   );
