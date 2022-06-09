@@ -16,7 +16,7 @@ import LoaderChartView from "./components/loader";
 // import LoaderChartView from "./components/loader";
 
 const CUSTOM_MODAL_WIDTH = "1000px";
-const CUSTOM_SPONSOR_WIDTH = "800px";
+const CUSTOM_SPONSOR_WIDTH = "600px";
 
 const App = () => {
     const [loggedIn, setLoggedIn] = React.useState(false);
@@ -35,7 +35,8 @@ const App = () => {
     const closeModal = () => {
         setComponent(null);
         setShowModal(false);
-    }
+    };
+
     const AuthInitate = () => {
         if (!loggedIn) {
             setAllowClose(false);

@@ -1,7 +1,7 @@
 .lds-ellipsis {
   display: inline-block;
   position: relative;
-  width: 150px;
+  width: 200px;
   height: 80px;
 }
 .lds-ellipsis div {
@@ -69,7 +69,7 @@
   .lds-ellipsis {
     display: inline-block;
     position: relative;
-    width: 200px;
+    width: 100px;
     height: 50px;
   }
   .lds-ellipsis div {
