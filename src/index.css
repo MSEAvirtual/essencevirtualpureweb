@@ -31,8 +31,8 @@ code {
 }
 @supports(padding:max(0px)) {
   html{
-    padding-top: min(0vmin, env(safe-area-inset-top));
-    padding-bottom: min(0vmin, env(safe-area-inset-bottom));
+    /* padding-top: min(0vmin, env(safe-area-inset-top)); */
+    /* padding-bottom: min(0vmin, env(safe-area-inset-bottom)); */
     padding-left: min(0vmin, env(safe-area-inset-left));
     padding-right: min(0vmin, env(safe-area-inset-right));
   }
