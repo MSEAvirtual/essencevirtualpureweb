@@ -1,3 +1,7 @@
+
+.custom-modal{
+  width: 900px !important;
+}
 .content-button {
   bottom: 0% !important;
 }
@@ -66,20 +70,9 @@
 .close-btn-pd{
   padding: 0em !important;
 }
-.image-slider {
-  position: relative;
-  width: 450px;
-  height: 450px;
-}
 
 .mt {
   margin-top: 10em;
-}
-
-.scrollImages {
-  overflow-y: scroll !important;
-  height: 500px;
-  overflow-x: hidden;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

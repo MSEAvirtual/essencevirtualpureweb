@@ -5,6 +5,7 @@ import "./index.css";
 import { Image, Button } from "semantic-ui-react";
 import stores from "../../bobs.json";
 import ImageSlider from "../ImageSlider";
+import ModalLayout from "../modals";
 
 const width = "100%", height = 500;
 const STORAGE_URL = "";
@@ -32,7 +33,7 @@ const EStore = ({ data, closeModal, setClose }) => {
     a.click();
   };
 
-  if (s?.type === "target"){
+  if (s?.type === "direct"){
     setClose(true);
     return ( 
       <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
@@ -105,5 +106,6 @@ const EStore = ({ data, closeModal, setClose }) => {
     </div>
   );
 };
+
 
 export default EStore;

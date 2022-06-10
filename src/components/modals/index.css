@@ -1,8 +1,17 @@
 .modals{
     background-color: transparent !important;
 }
-.custom-modal{
-    width: 1000px;
+.estore-custom-modal{
+    width: 1000px !important;;
+}
+.ford-custom-modal{
+    width: 700px !important;;
+}
+.auth-custom-modal{
+    width: 400px !important;;
+}
+.ar-custom-modal{
+    width: 1000px !important;;
 }
 .rotate-modal{
     height: 100px; 
@@ -10,19 +19,31 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 900px){
+    .estore-custom-modal{
+        width: 600px !important;;
+    }
+    .ford-custom-modal{
+        width: 600px !important;;
+    }
+    .auth-custom-modal{
+        width: 400px !important;;
+    }
+    .ar-custom-modal{
+        width: 600px !important;;
+    }
     .modals{
         width: 100vw !important;
-        height: 100vh !important;
+        height: 95% !important;
         padding: 0 !important;
-        margin: auto !important;
-        overflow-y: hidden !important;
-    }
-    .custom-modal{
-        max-width: 80% !important;
-        max-height: 100% !important;
-        height: 100%;
-        margin: auto !important;
+        margin: 0 !important;
+        overflow: hidden !important;
         position: fixed;
+    }
+    .ui.modal{
+        top: 0% !important;
+        max-height: 100% !important;
+        /* margin-top: 3px !important; */
+        /* position: fixed !important; */
     }
     .rotate-modal{
         height: 100vh;

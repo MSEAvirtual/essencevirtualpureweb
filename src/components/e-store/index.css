@@ -103,12 +103,6 @@
   width: 206px;
   height: 48px;
 }
-
-.rsis-image {
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-}
-
 .close-btn-estore {
   font-size: 40px;
   position: absolute;
@@ -130,13 +124,8 @@
   .store-row {
     height: 100%;
     display: grid;
-    grid-template-columns: auto 300px auto !important;
+    grid-template-columns: auto 270px auto !important;
     padding: 2.5em 1.5em !important;
-    /* justify-content: center;
-    align-items: center; */
-  }
-  .custom-modal{
-    width: 100vw !important;
   }
   .content-estore {
     padding: 1em 0 !important;
@@ -145,10 +134,11 @@
   .store-body {
     position: relative;
     padding: 2em;
+    height: 98vh !important;
   }
   .store-container {
     padding: 0;
-    height: 90vh !important;
+    height: 100% !important;
   }
   .small-Image {
     width: 70px !important;
@@ -161,8 +151,8 @@
   }
   .image-slider {
     position: relative;
-    width: 280px;
-    height: 280px;
+    width: 250px !important;
+    height: 250px !important;
   }
   .details-title-estore {
     font-size: 0.5em;

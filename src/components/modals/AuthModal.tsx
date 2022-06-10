@@ -5,6 +5,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { object, string } from "yup";
+import "./auth.css";
 
 /* -------------------------------------------------------------------------- */
 /*                             Internal Dependency                            */

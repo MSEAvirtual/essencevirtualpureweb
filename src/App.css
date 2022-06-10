@@ -187,6 +187,7 @@ video {
 .form-view{
   padding: 3em;
   background-color: #fff;
+  width: 400px;
 }
 .text-danger{
   color: red;
