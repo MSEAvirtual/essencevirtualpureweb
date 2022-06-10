@@ -37,7 +37,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        // AuthInitate();
+        AuthInitate();
         /* iOS re-orientation fix */
         if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
             console.log("scrolling....")
@@ -86,11 +86,11 @@ const App = () => {
                 {/* <Button onClick={()=>setModalView(<ARModalPopUp />, "ar", true)}>Show AR Link</Button>
                 <Button onClick={()=>setModalView(<FordPopUp data={"ford-3"} company={"ford"} closeModal={closeModal} setClose={setAllowClose} />, "ford")}>Shop CTA 1</Button>
                 <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />, "estore")}>Shop CTA 1</Button> */}
-                {/* <PureWeb ShowEModal={setEcomModalView} /> */}
+                <PureWeb ShowEModal={setEcomModalView} />
                 
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />, "estore")}>Shop CTA 1</Button>
-            </div>
+                {/* <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                    <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />, "estore")}>Shop CTA 1</Button>
+                </div> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>
         </div>
