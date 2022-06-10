@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import "./index.css";
-import { Grid, Image, Button } from "semantic-ui-react";
+import { Image, Button } from "semantic-ui-react";
 import sponsorData from "../../others.json";
 
-const width = "100%", height = 500;
+// const width = "100%", height = 500;
 
 const SponorPopUp = ({ data, company, closeModal, setClose }) => {
   const cAD = data;

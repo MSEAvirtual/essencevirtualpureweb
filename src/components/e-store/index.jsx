@@ -2,8 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import "./index.css";
-// import SimpleImageSlider from "react-simple-image-slider";
-import { Grid, Image, Button } from "semantic-ui-react";
+import { Image, Button } from "semantic-ui-react";
 import stores from "../../bobs.json";
 import ImageSlider from "../ImageSlider";
 

@@ -19,10 +19,10 @@ const AuthModal = ({ setAuth }: any) => {
         handleChange,
         handleBlur,
         handleSubmit,
-        setFieldValue,
-        isSubmitting,
+        // setFieldValue,
+        // isSubmitting,
         setSubmitting,
-        isValid,
+        // isValid,
         errors,
         touched,
         resetForm

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const isMobileTablet = () => {
   var check = false;
   (function (a) {

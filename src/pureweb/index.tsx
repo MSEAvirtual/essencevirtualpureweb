@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable eqeqeq */
 /**
  * This reference template is designed to showcase the elements used to construct your own
@@ -37,7 +38,7 @@
   import * as qs from 'query-string';
   import React, { useEffect, useState, useRef } from 'react';
   import { FullScreen, useFullScreenHandle } from 'react-full-screen';
-  import { Button, Icon } from 'semantic-ui-react';
+  // import { Button, Icon } from 'semantic-ui-react';
   import useAsyncEffect from 'use-async-effect';
   import '../App.css';
   import clientConfig from '../client.json';
@@ -154,7 +155,7 @@ import { isMobileTablet } from '../utils';
     const handle = useFullScreenHandle();
     // const [lightIsOn, toggleLight] = useState(false);
     // Fullscreen API presently supported on iPad, but not iPhone or iPod
-    const isIPhone = System.Browser().os === 'iOS' && !window.navigator.userAgent.includes('iPad');
+    // const isIPhone = System.Browser().os === 'iOS' && !window.navigator.userAgent.includes('iPad');
     
     return (
       <>
@@ -238,7 +239,7 @@ import { isMobileTablet } from '../utils';
   const platform = new PlatformNext();
   platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
   
-  const App: React.FC = ({ShowEModal, isMobile }:any) => {
+  const App: React.FC = ({ShowEModal }:any) => {
     // console.log(props);
     const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
     const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
@@ -324,32 +325,24 @@ import { isMobileTablet } from '../utils';
   
     // Log status messages
     useEffect(() => {
-      // logger.info('Status', status, streamerStatus);
-      const isMobile = isMobileTablet();
-      console.log("\n\nis-mobile-->", isMobile, status)
-      const SendMobileType = () => {
-        const d = isMobile ? "mobile" : "desktop" 
-        const command = `device:${d}`;
-        console.log("command--->", command, isMobile)
-        emitter.EmitUIInteraction(command);
-        console.log("sent requests--->")
-      }
-      if (status.status === "queued"){
-        SendMobileType();
-      }
+      logger.info('Status', status, streamerStatus);
     }, [status, streamerStatus]);
-
-    useEffect(()=>{
-    }, [isMobile])
   
     // Subscribe to game messages
     useEffect(() => {
+      // send mobile request
+      const SendMobileType = () => {
+        const isMobile = isMobileTablet();
+        const d = isMobile ? "mobile" : "desktop" 
+        const command = { device: d };
+        emitter.EmitUIInteraction(command);
+        logger.info("sent controller requests--->")
+      }
+      // resume experience
       const ResumePlay = () => {
-        // console.log("resume-play");
         const command = { command :"play" };
         emitter.EmitUIInteraction(command);
       }
-      // console.log("message hook--->", messageSubject);
       const subscription = messageSubject.subscribe(
         (value: string) => {
           logger.info('\n\nMessage: ' + value, "\n\n");
@@ -357,8 +350,8 @@ import { isMobileTablet } from '../utils';
           const message = JSON.parse(value);
           if(message.hasOwnProperty("companyid") && message.hasOwnProperty("content")){
             ShowEModal(message.companyid, message.content, message, ResumePlay);
-            // console.log('\n\nMessage: ' + message);
-            //   alert(message.companyid);
+          } else if (message.hasOwnProperty("requestdevice")) {
+            SendMobileType();
           }
         },
         (err) => {
