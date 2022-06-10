@@ -2,17 +2,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // @ts-nocheck
 import React, { useEffect, useState } from "react";
-import ModalLayout from "./components/modals";
-import EStore from "./components/e-store";
+import EStore from "./components/storeView";
 import FordPopUp from "./components/fordpopup";
 import 'react-slidy/lib/index.scss'
 import "./App.css"
 import PureWeb from "./pureweb";
 import AuthModal from "./components/modals/AuthModal";
 import RotateScreen from "./components/modals/rotate";
-import LoaderChartView from "./components/loader";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
 import { Button } from 'semantic-ui-react'
+import Modal from "./components/custom-modal";
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -23,7 +22,6 @@ const App = () => {
 
     const AuthFuc = () => {
         setLoggedIn(true);
-        setWidth(CUSTOM_MODAL_WIDTH)
         closeModal();
     };
 
@@ -34,30 +32,27 @@ const App = () => {
 
     const AuthInitate = () => {
         if (!loggedIn) {
-            setAllowClose(false);
-            setWidth("400px")
             setModalView(<AuthModal setAuth={AuthFuc} />, "auth")
         }
     };
 
     useEffect(() => {
-        // AuthInitate();
-        // if (isMo) window.scrollTo(0, document.body.scrollHeight);
+        AuthInitate();
         /* iOS re-orientation fix */
-if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
-    /* iOS hides Safari address bar */
-    window.addEventListener("load",function() {
-        setTimeout(function() {
-            window.scrollTo(0, 1);
-        }, 1000);
-    });
-}
+        if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+            console.log("scrolling....")
+            /* iOS hides Safari address bar */
+            window.addEventListener("load",function() {
+                setTimeout(function() {
+                    window.scrollTo(0, document.body.scrollHeight);
+                }, 1000);
+            });
+        }
     }, []);
 
     const setModalView = (component: any, name:string, close = false) => {
         setComponent(component);
         setShowModal(true);
-        setAllowClose(close);
         setModalName(name)
     };
 
@@ -88,12 +83,12 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
                 <div className="nav-bar">
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
-                {/* <Button onClick={()=>setModalView(<ARModalPopUp />, "ar", true)}>Show AR Link</Button>
+                <Button onClick={()=>setModalView(<ARModalPopUp />, "ar", true)}>Show AR Link</Button>
                 <Button onClick={()=>setModalView(<FordPopUp data={"ford-3"} company={"ford"} closeModal={closeModal} setClose={setAllowClose} />, "ford")}>Shop CTA 1</Button>
-                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />, "estore")}>Shop CTA 1</Button> */}
-                <PureWeb ShowEModal={setEcomModalView} />
+                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />, "estore")}>Shop CTA 1</Button>
+                {/* <PureWeb ShowEModal={setEcomModalView} /> */}
             </div>
-            <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} modalName={modalname} />
+            <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>
         </div>
     )
 }

@@ -48,40 +48,42 @@ const AuthModal = ({ setAuth }: any) => {
     });
     return (
         <div className="form-view">
-            <h3>Login to proceed</h3>
-            <form onSubmit={handleSubmit} className="ui form">
-                <div className="field">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        id="email"
-                        name="email"
-                        onChange={handleChange}
-                        value={values.email}
-                        onBlur={handleBlur} 
-                    />
-                    {touched.email && errors.email && (
-                        <p className="text-danger">{errors.email}</p>
-                    )}
-                </div>
-                <div className="field">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        placeholder="Password..."
-                        id="password"
-                        name="password"
-                        onChange={handleChange}
-                        value={values.password}
-                        onBlur={handleBlur}
-                    />
-                    {touched.password && errors.password && (
-                        <p className="text-danger">{errors.password}</p>
-                    )}
-                </div>
-                <button className="ui button" type="submit">Login</button>
-            </form>
+            <div className="form-body">
+                <h3>Login to proceed</h3>
+                <form onSubmit={handleSubmit} className="ui form">
+                    <div className="field">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            id="email"
+                            name="email"
+                            onChange={handleChange}
+                            value={values.email}
+                            onBlur={handleBlur} 
+                        />
+                        {touched.email && errors.email && (
+                            <p className="text-danger">{errors.email}</p>
+                        )}
+                    </div>
+                    <div className="field">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            placeholder="Password..."
+                            id="password"
+                            name="password"
+                            onChange={handleChange}
+                            value={values.password}
+                            onBlur={handleBlur}
+                        />
+                        {touched.password && errors.password && (
+                            <p className="text-danger">{errors.password}</p>
+                        )}
+                    </div>
+                    <button className="ui button" type="submit">Login</button>
+                </form>
+            </div>
         </div>
     )
 };

@@ -1,23 +1,22 @@
 html {
   display: block;
-  height: 95%;
+  height: 100%;
   height: -webkit-fill-available;
   width: 100%;
-  border: 2px solid #333;
+  /* border: 2px solid #333; */
 }
 #root{
-  height: 100%;
+  height: 100vh;
 }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100% !important;
   min-height: -webkit-fill-available !important;
-  overflow: hidden !important;
+  overflow: hidden;
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -25,11 +24,10 @@ code {
 
 @media screen and (min-width: 320px) and (max-width: 900px) and  (orientation:landscape){
   html, body{
-    /* -webkit-text-size-adjust: 100% !important; */
+    -webkit-text-size-adjust: 100% !important;
+    height: 100vh !important;
+    overflow-y: scroll !important;
   }
-  /* #view {
-    padding-top: 14.56%;
-  } */
 }
 @supports(padding:max(0px)) {
   html{

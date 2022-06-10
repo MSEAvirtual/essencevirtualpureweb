@@ -20,7 +20,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 900px){
     .estore-custom-modal{
-        width: 80% !important;;
+        width: 80vw !important;;
     }
     .ford-custom-modal{
         width: 600px !important;;
@@ -51,6 +51,7 @@
         background: #fff;
         margin: auto;
         padding: 50% 0;
+        z-index: 99999999 !important;
     }
     .rotate-noti{
         text-align: center;

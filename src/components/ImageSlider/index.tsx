@@ -1,8 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from "react";
 // import SimpleImageSlider from "react-simple-image-slider";
 import "./index.css";
 
-const ImageSlider = ({ images, className }) => { 
+
+const ImageSlider = ({ images, className }:any) => { 
     console.log("img--->", images);
     const [index, setIndex] = useState(0); // create state to keep track of images index, set the default index to 0
   
@@ -20,18 +23,17 @@ const ImageSlider = ({ images, className }) => {
     };
   
     return (
-      images.length > 0 && (
+      images.length > 0 ? (
         <div className={"img-slider-component " + className}>
-          <button className="img-slider-nav left" onClick={slideLeft}>{"<"}</button>
-          {/* <img className={className} src={images[index]} alt={index} /> */}
+          <button className="img-slider-nav left" onClick={slideLeft}>
+            <FontAwesomeIcon icon={faChevronLeft} color="#fff"/>
+          </button>
           <div className="image-slider-image" style={{backgroundImage: `url(${images[index]})`}} />
-          <button className="img-slider-nav right" onClick={slideRight}>{">"}</button>
+          <button className="img-slider-nav right" onClick={slideRight}>
+            <FontAwesomeIcon icon={faChevronRight} color="#fff"/>
+          </button>
         </div>
-        // <SimpleImageSlider 
-        // width={}
-        //     images={images}
-        // />
-      )
+      ) : <></>
     );
 };
 

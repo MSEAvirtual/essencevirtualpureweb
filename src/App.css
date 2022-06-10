@@ -185,9 +185,19 @@ video {
 }
 
 .form-view{
+  display: flex;
   padding: 3em;
   background-color: #fff;
   width: 400px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-body{
+  display: block;
+  width: 100%;
 }
 .text-danger{
   color: red;
