@@ -43,6 +43,15 @@ const App = () => {
     useEffect(() => {
         // AuthInitate();
         // if (isMo) window.scrollTo(0, document.body.scrollHeight);
+        /* iOS re-orientation fix */
+if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+    /* iOS hides Safari address bar */
+    window.addEventListener("load",function() {
+        setTimeout(function() {
+            window.scrollTo(0, 1);
+        }, 1000);
+    });
+}
     }, []);
 
     const setModalView = (component: any, name:string, close = false) => {
@@ -79,9 +88,9 @@ const App = () => {
                 <div className="nav-bar">
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
-                <Button onClick={()=>setModalView(<ARModalPopUp />, "ar", true)}>Show AR Link</Button>
+                {/* <Button onClick={()=>setModalView(<ARModalPopUp />, "ar", true)}>Show AR Link</Button>
                 <Button onClick={()=>setModalView(<FordPopUp data={"ford-3"} company={"ford"} closeModal={closeModal} setClose={setAllowClose} />, "ford")}>Shop CTA 1</Button>
-                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />, "estore")}>Shop CTA 1</Button>
+                <Button onClick={()=>setModalView(<EStore data={"20"} closeModal={closeModal} setClose={setAllowClose} />, "estore")}>Shop CTA 1</Button> */}
                 <PureWeb ShowEModal={setEcomModalView} />
             </div>
             <ModalLayout Component={component} show={showModal} setOpen={setShowModal} allowClose={allowClose} modalName={modalname} />

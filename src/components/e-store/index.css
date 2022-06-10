@@ -134,7 +134,7 @@
   .store-body {
     position: relative;
     padding: 2em;
-    height: 98vh !important;
+    height: 100% !important;
   }
   .store-container {
     padding: 0;

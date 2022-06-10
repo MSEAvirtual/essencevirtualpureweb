@@ -20,7 +20,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 900px){
     .estore-custom-modal{
-        width: 600px !important;;
+        width: 80% !important;;
     }
     .ford-custom-modal{
         width: 600px !important;;
@@ -33,17 +33,18 @@
     }
     .modals{
         width: 100vw !important;
-        height: 95% !important;
+        height: 100% !important;
         padding: 0 !important;
-        margin: 0 !important;
+        margin: 0px 0px !important;
         overflow: hidden !important;
         position: fixed;
     }
     .ui.modal{
+        position: fixed !important;
         top: 0% !important;
-        max-height: 100% !important;
-        /* margin-top: 3px !important; */
-        /* position: fixed !important; */
+        /* max-height: 100% !important; */
+        height: 100% !important;
+        margin: 0px !important;
     }
     .rotate-modal{
         height: 100vh;
