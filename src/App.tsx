@@ -37,7 +37,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        AuthInitate();
+        // AuthInitate();
         /* iOS re-orientation fix */
         if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
             console.log("scrolling....")
