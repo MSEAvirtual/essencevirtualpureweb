@@ -1,4 +1,8 @@
 {
   "projectId": "6ed96550-90d2-46e6-9711-3b30e37429d2",
-  "modelId": "b3ff8c2b-b680-4c19-98e6-3eaf2ee9656a"
+  "modelId": "b3ff8c2b-b680-4c19-98e6-3eaf2ee9656a",
+  "versionId": "cipfif",
+  "useNativeTouchEvents": false,
+  "usePointerLock": true,
+  "pointerLockRelease":false
 }

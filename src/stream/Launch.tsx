@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 
 import './Launch.css';
-import clientConfig from './client.json';
+import clientConfig from '../client.json';
 const client: ClientJson = clientConfig as ClientJson;
 
 class ClientJson {
