@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /**
  * This reference template is designed to showcase the elements used to construct your own
  * application.
@@ -42,6 +43,7 @@ import clientConfig from './client.json';
 
 import { LaunchView } from './Launch';
 import logger from './Log';
+import { isMobileTablet } from './utils';
 
 const client: ClientJson = clientConfig as ClientJson;
 
@@ -207,7 +209,7 @@ audio.volume = 0.5;
 const query = qs.parse(window.location.search);
 const clientOptions: ClientOptions = new ClientOptions();
 clientOptions.LaunchType = (query['launchType'] as string) ?? client.launchType;
-if( query['collaboration'] &&  query['collaboration'] == 'true')  
+if( query['collaboration'] &&  query['collaboration'] === 'true')  
   clientOptions.LaunchType = 'local';
 
 clientOptions.Endpoint = (query['endpoint'] as string) ?? client.endpoint;
@@ -322,9 +324,21 @@ const App: React.FC = () => {
 
   // Subscribe to game messages
   useEffect(() => {
+    // send mobile request
+    const SendMobileType = () => {
+      const isMobile = isMobileTablet();
+      const d = isMobile ? "mobile" : "desktop" 
+      const command = { device: d };
+      emitter.EmitUIInteraction(command);
+      logger.info("sent controller requests--->")
+    }
     const subscription = messageSubject.subscribe(
       (value: string) => {
         logger.info('Message: ' + value);
+        const message = JSON.parse(value);
+        if (message.hasOwnProperty("requestdevice")) {
+          SendMobileType();
+        }
       },
       (err) => {
         logger.error(err);
