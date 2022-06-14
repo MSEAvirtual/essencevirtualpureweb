@@ -3,7 +3,7 @@
   "modelId": "b3ff8c2b-b680-4c19-98e6-3eaf2ee9656a",
   "versionId": "cipfif",
   "useNativeTouchEvents": true,
-  "usePointerLock": true,
+  "usePointerLock": false,
   "fakeMouseTouches": false,
   "pointerLockRelease":false
 }
