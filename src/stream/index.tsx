@@ -12,6 +12,7 @@
  *
  * Copyright (C) PureWeb 2020
  */
+// @ts-nocheck
 
 import {
   LaunchStatusEvent,
@@ -234,7 +235,7 @@ clientOptions.UseNativeTouchEvents =
 const platform = new PlatformNext();
 platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
 
-const App: React.FC = () => {
+const App: React.FC = ({ ShowEModal }:any) => {
   const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
   const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
   const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
@@ -324,6 +325,11 @@ const App: React.FC = () => {
 
   // Subscribe to game messages
   useEffect(() => {
+    // resume experience
+    const ResumePlay = () => {
+      const command = { command :"play" };
+      emitter.EmitUIInteraction(command);
+    }
     // send mobile request
     const SendMobileType = () => {
       const isMobile = isMobileTablet();
@@ -336,7 +342,9 @@ const App: React.FC = () => {
       (value: string) => {
         logger.info('Message: ' + value);
         const message = JSON.parse(value);
-        if (message.hasOwnProperty("requestdevice")) {
+        if(message.hasOwnProperty("companyid") && message.hasOwnProperty("content")){
+          ShowEModal(message.companyid, message.content, message, ResumePlay);
+        } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
         }
       },
@@ -502,9 +510,9 @@ const App: React.FC = () => {
   }
 };
 
-const AppWrapper: React.FC = () => {
+const AppWrapper: React.FC = (props:any) => {
   return System.IsBrowserSupported() ? (
-    <App />
+    <App ShowEModal={props.ShowEModal} />
   ) : (
     <div className="ui red segment center aligned basic">
       <h2 className="header">Your browser is currently unsupported</h2>

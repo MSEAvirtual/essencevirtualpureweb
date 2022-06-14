@@ -1,0 +1,29 @@
+.img-slider-component{
+    position: relative !important;
+}
+.img-slider-nav{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    border: none !important;
+    background-color: transparent;
+    color: #333;
+    line-height: 12px;
+    font-size: 25px;
+    font-weight: 900;
+    z-index: 999;
+}
+.left{
+    left:0 !important;
+}
+.right{
+    right: 0 !important;
+}
+
+.image-slider-image{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: #333; */
+}

@@ -1,0 +1,34 @@
+
+.roundedButton{
+    margin-right: 4em;
+    border-radius: 100%;
+    height: 70px; 
+    width: 70px; 
+    background-color: #696565;
+
+}
+.roundText{
+    margin: 0.3em;
+    position: absolute;
+    top: 100%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px)  and  (orientation:landscape){
+    .body-Button{
+        margin-bottom: 1em;
+    }
+    .roundedButton{
+        margin: auto;
+        border-radius: 100%;
+        height: 40px; 
+        width: 40px; 
+        background-color: #696565;
+
+    }
+    .roundText{
+        margin: 0.3em;
+        font-size: 0.6rem;
+        position: relative;
+        /* width: ; */
+    }
+}

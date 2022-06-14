@@ -1,0 +1,61 @@
+.modals{
+    background-color: transparent !important;
+}
+.estore-custom-modal{
+    width: 1000px !important;;
+}
+.ford-custom-modal{
+    width: 700px !important;;
+}
+.auth-custom-modal{
+    width: 400px !important;;
+}
+.ar-custom-modal{
+    width: 1000px !important;;
+}
+.rotate-modal{
+    height: 100%; 
+    background: #fff;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px){
+    .estore-custom-modal{
+        width: 80vw !important;;
+    }
+    .ford-custom-modal{
+        width: 600px !important;;
+    }
+    .auth-custom-modal{
+        width: 400px !important;;
+    }
+    .ar-custom-modal{
+        width: 600px !important;;
+    }
+    .modals{
+        width: 100vw !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: 0px 0px !important;
+        overflow: hidden !important;
+        position: fixed;
+    }
+    .ui.modal{
+        position: fixed !important;
+        top: 0% !important;
+        /* max-height: 100% !important; */
+        height: 100% !important;
+        margin: 0px !important;
+    }
+    .rotate-modal{
+        height: 100vh;
+        background: #fff;
+        margin: auto;
+        padding: 50% 0;
+        z-index: 99999999 !important;
+    }
+    .rotate-noti{
+        text-align: center;
+        padding: 50% 1em;
+    }
+}
+
