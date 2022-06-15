@@ -113,5 +113,33 @@
             "url": "https://www.target.com/finds",
             "type": "direct"
         }
+    ],
+    "coke":[
+        {
+            "title": "coke",
+            "cta_id": "coke-1",
+            "CTA event action": "coke-cta-1",
+            "event action (time in room)": "coke-timeinroom",
+            "url": "http://sprite.com/summermusic",
+            "type": "direct"
+        },
+        {
+            "cta_id": "coke-2",
+            "CTA event action": "coke-cta-2",
+            "url": "http://coke.com/cokestudio",
+            "type": "direct"
+        },
+        {
+            "cta_id": "coke-3",
+            "CTA event action": "coke-cta-3",
+            "url": "http://drinksmartwater.com/",
+            "type": "direct"
+        },
+        {
+            "cta_id": "coke-4",
+            "CTA event action": "coke-cta-4",
+            "url": "https://www.target.com/c/black-owned-or-founded-brands-at-target/-/N-q8v16",
+            "type": "direct"
+        }
     ]
 }

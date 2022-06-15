@@ -63,6 +63,7 @@
 .store-logo-img{
     width: 100px !important;
     height: 100px !important;
+    object-fit: contain !important;
     padding: 0.3em 0px;
 }
 .store-business-name{

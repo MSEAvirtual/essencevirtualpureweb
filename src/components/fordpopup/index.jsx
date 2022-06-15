@@ -10,6 +10,7 @@ import sponsorData from "../../others.json";
 const SponorPopUp = ({ data, company, closeModal, setClose }) => {
   const cAD = data;
   const fData = sponsorData[company];
+  console.log(fData, cAD);
   // find by cta id
   const rData = fData ? fData.filter((f) => f["cta_id"] === cAD) : [];
   const s = rData.length > 0 ? rData[0] : {};

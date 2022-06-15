@@ -10,6 +10,7 @@ import RotateScreen from "./components/modals/rotate";
 // import { Button } from 'semantic-ui-react'
 import Modal from "./components/custom-modal";
 import sponsorData from "./others.json";
+import { Button } from "semantic-ui-react";
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -35,7 +36,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        AuthInitate();
+        // AuthInitate();
     }, []);
 
     const setModalView = (component: any, name:string, close = false) => {
@@ -92,6 +93,7 @@ const App = () => {
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
                 <StreamApp ShowEModal={setEcomModalView} /> 
+                {/* <Button onClick={()=>setEcomModalView(18, "bob", {})}>Open CTA</Button> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>
         </>
