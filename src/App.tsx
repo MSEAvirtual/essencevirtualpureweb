@@ -9,6 +9,7 @@ import RotateScreen from "./components/modals/rotate";
 // import ARModalPopUp from "./components/modals/ARmodalPopUp";
 // import { Button } from 'semantic-ui-react'
 import Modal from "./components/custom-modal";
+import sponsorData from "./others.json";
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -52,10 +53,32 @@ const App = () => {
         }} setClose={setAllowClose} />
         if (type !== "bob") {
             name = "ford";
-            comp = <FordPopUp data={type} company={data.companyname} closeModal={() => {
-                closeModal();
-                resumFuc();
-            }} setClose={setAllowClose} />
+            // find data and check if it's direct
+            // const cAD = type;
+            // const fData = sponsorData[data.companyname];
+            // // find by cta id
+            // const rData = fData ? fData.filter((f) => f["cta_id"] === cAD) : [];
+            // const s = rData.length > 0 ? rData[0] : {};
+            // console.log(s, 's---p');
+            // if (s?.type === "direct"){
+            //     console.log("directtt");
+            //     let url = s?.url;
+            //     const openBUrl = () => {
+            //       if (!url.includes("https://") && !url.includes("http://")) {
+            //         url = "https://" + s?.url;
+            //       }
+            //       let a = document.createElement("a");
+            //       a.target = "_blank";
+            //       a.href = url;
+            //       a.click();
+            //     };
+            //     return openBUrl();
+            // }else{
+                comp = <FordPopUp data={type} company={data.companyname} closeModal={() => {
+                    closeModal();
+                    resumFuc();
+                }} setClose={setAllowClose} />   
+            // }
         } else {
         }
         setModalView(comp, name);
