@@ -33,9 +33,11 @@ const EStore = ({ data, closeModal, setClose }:any) => {
   };
 
   if (s?.type === "direct"){
-    setClose(true);
     return ( 
-      <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
+      <>
+        <span className="store-close-btn" onClick={closeModal}>X</span>
+        <div dangerouslySetInnerHTML={{ __html: `<iframe src=${url} width="${width}" height="${height}"  allow="camera *;microphone *" />`}} />
+      </>
     )
   }
 
