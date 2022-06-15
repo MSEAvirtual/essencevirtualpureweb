@@ -36,7 +36,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        // AuthInitate();
+        AuthInitate();
     }, []);
 
     const setModalView = (component: any, name:string, close = false) => {
