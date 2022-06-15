@@ -12,7 +12,7 @@
             "type": 2
         },
         {
-            "cta_id": "ford-2",
+            "cta_id": "ford-3",
             "image": "/ctas/ford.svg",
             "CTA event action": "ford-cta-2",
             "title": "Experience the Mach-E now!",
@@ -22,7 +22,7 @@
             "type": 2
         },
         {
-            "cta_id": "ford-3", 
+            "cta_id": "ford-2", 
             "image": "/ctas/ford.svg",
             "title": "Experience the Maverick now!",
             "CTA event action": "ford-cta-3",
