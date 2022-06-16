@@ -211,7 +211,7 @@ audio.volume = 0.5;
 const query = qs.parse(window.location.search);
 const clientOptions: ClientOptions = new ClientOptions();
 clientOptions.LaunchType = (query['launchType'] as string) ?? client.launchType;
-if( query['collaboration'] &&  query['collaboration'] === 'true')  
+if (query['collaboration'] && query['collaboration'] === 'true')
   clientOptions.LaunchType = 'local';
 
 clientOptions.Endpoint = (query['endpoint'] as string) ?? client.endpoint;
@@ -236,7 +236,7 @@ clientOptions.UseNativeTouchEvents =
 const platform = new PlatformNext();
 platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
 
-const App: React.FC = ({ ShowEModal }:any) => {
+const App: React.FC = ({ ShowEModal }: any) => {
   const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
   const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
   const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
@@ -328,13 +328,13 @@ const App: React.FC = ({ ShowEModal }:any) => {
   useEffect(() => {
     // resume experience
     const ResumePlay = () => {
-      const command = { command :"play" };
+      const command = { command: "play" };
       emitter.EmitUIInteraction(command);
     }
     // send mobile request
     const SendMobileType = () => {
       const isMobile = isMobileTablet();
-      const d = isMobile ? "mobile" : "desktop" 
+      const d = isMobile ? "mobile" : "desktop"
       const command = { device: d };
       emitter.EmitUIInteraction(command);
       logger.info("sent controller requests--->")
@@ -343,7 +343,7 @@ const App: React.FC = ({ ShowEModal }:any) => {
       (value: string) => {
         logger.info('Message: ' + value);
         const message = JSON.parse(value);
-        if(message.hasOwnProperty("companyid") && message.hasOwnProperty("content")){
+        if (message.hasOwnProperty("companyid") && message.hasOwnProperty("content")) {
           ShowEModal(message.companyid, message.content, message, ResumePlay);
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
@@ -489,7 +489,7 @@ const App: React.FC = ({ ShowEModal }:any) => {
           alignItems: 'center',
           justifyContent: 'center'
         }}>
-        <LoaderChartView msg={<h2>Initializing...</h2>}/>
+        <LoaderChartView msg={<h2>Initializing...</h2>} />
       </div>
     );
   } else if (clientOptions.LaunchType !== 'local' && !availableModels?.length) {
@@ -511,7 +511,7 @@ const App: React.FC = ({ ShowEModal }:any) => {
   }
 };
 
-const AppWrapper: React.FC = (props:any) => {
+const AppWrapper: React.FC = (props: any) => {
   return System.IsBrowserSupported() ? (
     <App ShowEModal={props.ShowEModal} />
   ) : (
