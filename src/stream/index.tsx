@@ -330,11 +330,6 @@ const App: React.FC = ({ ShowEModal }: any) => {
     const ResumePlay = () => {
       const command = { command: "play" };
       emitter.EmitUIInteraction(command);
-      if (window !== undefined) {
-        // window.dispatchEvent(new KeyboardEvent('keydown', {
-        //   'key': 'j'
-        // }));
-      }
     }
     // send mobile request
     const SendMobileType = () => {
