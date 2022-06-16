@@ -6,14 +6,10 @@ import { Image, Button } from "semantic-ui-react";
 import stores from "../../bobs.json";
 import ImageSlider from "../ImageSlider";
 
-const width = "100%", height = 500;
 const STORAGE_URL = "";
-// const STORAGE_URL = process.env.REACT_APP_STORAGE_URL;
 
-const EStore = ({ data, closeModal, setClose }: any) => {
-  const cAD = data - 1;
-  const s = stores[cAD];
-  // console.log("respo-->", s, data, cAD);
+const EStore = ({ storeData, data, closeModal, setClose }: any) => {
+  const s = storeData;
   const bio = s?.business_bio || "";
   const bLogo = `/assets/${data}/logo.png`;
   const imgs = [
@@ -32,25 +28,6 @@ const EStore = ({ data, closeModal, setClose }: any) => {
     a.click();
   };
 
-  if (s?.type === "direct") {
-    openBUrl();
-    // setClose(true);
-    // closeModal();
-    // useEffect(())
-    return (
-      <div className="store-body-view">
-        <div className="flex-row-container">
-          <div style={{ height: "100%", textAlign: "center", marginTop: "10%" }}>
-            <p className="content-title">Link Opened In new Tab</p>
-            <div className="content-button">
-              <Button className="store-btn curved" onClick={closeModal}>Continue</Button>
-              <span className={`store-close-btn`} onClick={closeModal}>X</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  } else {
     return (
       <div className="store-body-view">
         <div className="flex-row-container">
@@ -81,7 +58,6 @@ const EStore = ({ data, closeModal, setClose }: any) => {
         </div>
       </div>
     );
-  }
 };
 
 
