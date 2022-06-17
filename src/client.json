@@ -5,5 +5,5 @@
   "useNativeTouchEvents": true,
   "usePointerLock": true,
   "fakeMouseTouches": false,
-  "pointerLockRelease":false
+  "pointerLockRelease":true
 }
