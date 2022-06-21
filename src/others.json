@@ -35,7 +35,7 @@
             "cta_id": "ford-4",
             "image": "/ctas/ford.svg",
             "CTA event action": "ford-cta-4",
-            "url": "https://www.ford2022.essence.com",
+            "url": "https://ford2022.essence.com",
             "info": "Fourth button goes to a contest www.ford2022.essence.com (not live yet)",
             "type": "direct"
         }
