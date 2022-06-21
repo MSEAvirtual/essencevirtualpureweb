@@ -68,3 +68,10 @@
         /* transform: scale(1) !important; */
     }
 }
+
+@media screen and (min-width: 1800px){
+    .modal{
+        width: 50%;
+        height: 41%;
+    }
+}
