@@ -336,13 +336,13 @@ const App: React.FC = ({ ShowEModal }: any) => {
   // Log status messages
   useEffect(() => {
     logger.info('Status', status, streamerStatus);
-    // if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal) {
-    //   setTimeout(() => {
-    //     PausePlay();
-    //     ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
-    //     setShowEnterModal(true);
-    //   }, 3000)
-    // }
+    if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal) {
+      // setTimeout(() => {
+        PausePlay();
+        ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
+        setShowEnterModal(true);
+      // }, 3000)
+    }
   }, [status, streamerStatus]);
 
   // Subscribe to game messages
@@ -363,10 +363,10 @@ const App: React.FC = ({ ShowEModal }: any) => {
           ShowEModal(message.companyid, message.content, message, ResumePlay);
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
-          if (!showEnterModal) {
-            ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
-            setShowEnterModal(true);
-          }
+          // if (!showEnterModal) {
+          //   ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
+          //   setShowEnterModal(true);
+          // }
         }
       },
       (err) => {

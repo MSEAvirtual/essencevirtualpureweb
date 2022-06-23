@@ -7,12 +7,12 @@ import EStore from "./components/storeView";
 import FordPopUp from "./components/fordpopup";
 import AuthModal from "./components/modals/AuthModal";
 import RotateScreen from "./components/modals/rotate";
-// import ARModalPopUp from "./components/modals/ARmodalPopUp";
-// import { Button } from 'semantic-ui-react'
 import Modal from "./components/custom-modal";
 import stores from "./bobs.json";
 import sponsorData from "./others.json";
 import EnteModalView from "./components/enterModal";
+import ARModalPopUp from "./components/modals/ARmodalPopUp";
+
 const STORAGE_URL = "";
 
 const App = () => {
@@ -97,7 +97,7 @@ const App = () => {
     }
 
     const HandleEnterModal = (id: any, type: string, data: any, resumFuc: func) => {
-        resumFuc();
+        resumFuc && resumFuc();
         const comp = <EnteModalView data={type} company={data.companyname} closeModal={() => {
             closeModal();
             resumFuc();
@@ -105,15 +105,30 @@ const App = () => {
         setModalView(comp, "enter-modal");
     }
 
+    const HandleARModal = (id: any, type: string, data: any, resumFuc: func) => {
+        resumFuc && resumFuc();
+        setAllowClose(true);
+        const comp = <ARModalPopUp data={type} company={data.companyname} closeModal={() => {
+            closeModal();
+            resumFuc();
+            setAllowClose(false);
+        }} setClose={setAllowClose} />
+        setModalView(comp, "enter-modal");
+    }
+    
+
     const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
         if (type === "bob") {
             return HandleBoBPopUps(id, type, data, resumFuc);
         } else if (type === "enter-modal") {
             return HandleEnterModal(id, type, data, resumFuc);
+        } else if (type === "ar"){
+            return HandleARModal(id, type, data, resumFuc);
         } else if (type !== "bob") {
             return HandleFordPopUps(id, type, data, resumFuc);
         }
         // {"companyid":"1","content":"ford-1","style":"0","companyname":"ford"}
+        // {"companyid":"0","content":"ar","style":"0","companyname":"essence"}
     };
 
     return (
@@ -124,7 +139,7 @@ const App = () => {
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
                 <StreamApp ShowEModal={setEcomModalView} />
-                {/* <Button onClick={() => setEcomModalView(1, "enter-modal", {"companyid":"1","content":"ford-1","style":"0","companyname":"ford"})}>Open CTA</Button> */}
+                {/* <Button onClick={() => setEcomModalView(0, "ar", {"companyid":"0","content":"ar","style":"0","companyname":"essence"})}>Open CTA</Button> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>
         </>
