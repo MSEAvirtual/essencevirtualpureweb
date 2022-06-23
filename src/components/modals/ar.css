@@ -1,0 +1,31 @@
+.store-close-ar-btn{
+    position: absolute;
+    font-size: 25px;
+    right: 35px;
+    top: 30px !important;
+}
+#ar-view{
+    display: block;
+}
+#rotate-view{
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+.rotate-mobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+@media screen and (min-width: 320px) and (max-width: 900px) and  (orientation:landscape){
+    #ar-view{
+      display: none !important;
+    }
+    #rotate-view{
+        display: block;
+    }
+  }
