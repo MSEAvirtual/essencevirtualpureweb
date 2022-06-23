@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useEffect, useState } from "react";
+import { isMobile } from 'react-device-detect';
 import { Button } from "semantic-ui-react";
 import "./App.css";
 import StreamApp from "./stream";
@@ -21,7 +22,7 @@ const App = () => {
     const [component, setComponent] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [modalname, setModalName] = useState("auth");
-
+    console.log("mobile--->", isMobile)
     const AuthFuc = () => {
         setLoggedIn(true);
         closeModal();
@@ -115,6 +116,13 @@ const App = () => {
         }} setClose={setAllowClose} />
         setModalView(comp, "enter-modal");
     }
+
+    const HandlePosterModal = (id: any, type: string, data: any, resumFuc: func) => {
+        const url = "https://www.essence.com/efoc22appdownload/";
+        openBUrl(url);
+        closeModal();
+        resumFuc && resumFuc();
+    }
     
 
     const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
@@ -124,11 +132,14 @@ const App = () => {
             return HandleEnterModal(id, type, data, resumFuc);
         } else if (type === "ar"){
             return HandleARModal(id, type, data, resumFuc);
+        }  else if (type === "poster"){
+            return HandlePosterModal(id, type, data, resumFuc);
         } else if (type !== "bob") {
             return HandleFordPopUps(id, type, data, resumFuc);
         }
         // {"companyid":"1","content":"ford-1","style":"0","companyname":"ford"}
         // {"companyid":"0","content":"ar","style":"0","companyname":"essence"}
+        // {"companyid":"0","content":"poster","style":"0","companyname":"essence"}
     };
 
     return (
@@ -139,7 +150,7 @@ const App = () => {
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
                 <StreamApp ShowEModal={setEcomModalView} />
-                {/* <Button onClick={() => setEcomModalView(0, "ar", {"companyid":"0","content":"ar","style":"0","companyname":"essence"})}>Open CTA</Button> */}
+                {/* <Button onClick={() => setEcomModalView(0, "poster", {"companyid":"0","content":"poster","style":"0","companyname":"essence"})}>Open CTA</Button> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>
         </>
