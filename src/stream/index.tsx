@@ -44,7 +44,8 @@ import clientConfig from '../client.json';
 
 import { LaunchView } from './Launch';
 import logger from '../Log';
-import { isMobileTablet } from '../utils';
+// import { isMobileTablet } from '../utils';
+import { isMobile } from 'react-device-detect';
 import LoaderChartView from '../components/loader';
 
 const client: ClientJson = clientConfig as ClientJson;
@@ -349,7 +350,7 @@ const App: React.FC = ({ ShowEModal }: any) => {
   useEffect(() => {
     // send mobile request
     const SendMobileType = () => {
-      const isMobile = isMobileTablet();
+      // const isMobile = isMobileTablet();
       const d = isMobile ? "mobile" : "desktop"
       const command = { device: d };
       emitter.EmitUIInteraction(command);

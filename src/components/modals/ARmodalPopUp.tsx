@@ -4,7 +4,7 @@
 import React from "react"
 import "./ar.css"
 
-const ARURL = process.env.REACT_APP_AR_URL || "https://theimmersivepath.8thwall.app/essence";
+const ARURL = process.env.REACT_APP_AR_URL || "https://essencephotobooth.live/";
 const width = "100%", height = "100%";
 
 const ARModalPopUp = ({ closeModal }:any) => {
