@@ -12,6 +12,7 @@ import RotateScreen from "./components/modals/rotate";
 import Modal from "./components/custom-modal";
 import stores from "./bobs.json";
 import sponsorData from "./others.json";
+import EnteModalView from "./components/enterModal";
 const STORAGE_URL = "";
 
 const App = () => {
@@ -95,9 +96,20 @@ const App = () => {
         }
     }
 
+    const HandleEnterModal = (id: any, type: string, data: any, resumFuc: func) => {
+        resumFuc();
+        const comp = <EnteModalView data={type} company={data.companyname} closeModal={() => {
+            closeModal();
+            resumFuc();
+        }} setClose={setAllowClose} />
+        setModalView(comp, "enter-modal");
+    }
+
     const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
         if (type === "bob") {
             return HandleBoBPopUps(id, type, data, resumFuc);
+        } else if (type === "enter-modal") {
+            return HandleEnterModal(id, type, data, resumFuc);
         } else if (type !== "bob") {
             return HandleFordPopUps(id, type, data, resumFuc);
         }
@@ -111,8 +123,8 @@ const App = () => {
                 <div className="nav-bar">
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
-                <StreamApp ShowEModal={setEcomModalView} /> 
-                {/* <Button onClick={() => setEcomModalView(1, "ford-1", {"companyid":"1","content":"ford-1","style":"0","companyname":"ford"})}>Open CTA</Button> */}
+                <StreamApp ShowEModal={setEcomModalView} />
+                {/* <Button onClick={() => setEcomModalView(1, "enter-modal", {"companyid":"1","content":"ford-1","style":"0","companyname":"ford"})}>Open CTA</Button> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>
         </>

@@ -1,0 +1,151 @@
+.p-0{
+  padding: 0em !important;
+}
+/* container css */
+.flex-row-container {
+  background-color: #ffffff !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  height: 100%;
+}
+.flex-row-container > .flex-row-item {
+  flex: 1;
+  height: 100%;
+}
+
+.store-body-view {
+  position: relative;
+  padding: 2em;
+  background-image: url("img-7.svg");
+  height: 100%;
+}
+
+.store-btn {
+  background-color: #e66b60 !important;
+  color: #ffffff !important;
+  font-size: 20px !important;
+  width: 246px;
+  height: 74px;
+  border-radius: 10px !important;
+}
+.store-close-btn {
+  font-size: 40px;
+  position: absolute;
+  font-weight: 700 !important;
+  color: #bf4d48 !important;
+  cursor: pointer !important;
+  right: 40px;
+  top: 40px;
+}
+.intro-div {
+  text-align: center !important;
+}
+.introLogo {
+  position: relative;
+  width: 500px;
+  top: 0;
+}
+.title-first {
+  font-size: 2.5em;
+  color: #0057b8;
+  font-weight: 600;
+  margin: 0 !important;
+}
+.title-second {
+  margin: 0 !important;
+  font-size: 2.5em;
+  font-weight: 900;
+  color: #0057b8;
+}
+.text-first {
+  margin: 15px;
+  color: #0057b8;
+  font-size: 30px;
+}
+.tm {
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+.strong {
+  font-weight: 700;
+}
+.ml-2 {
+  margin-left: 2em;
+}
+.text-inline {
+  margin: 15px;
+  color: #0057b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text-inline > img {
+  width: 50px;
+}
+.map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* mobile responsiveness css */
+@media screen and (min-width: 320px) and (max-width: 900px) {
+  .store-btn {
+    font-size: 10px !important;
+    width: 106px;
+    height: 38px;
+  }
+  .store-close-btn {
+    font-size: 25px;
+    right: 35px;
+    top: 30px !important;
+  }
+
+  .introLogo {
+    width: 300px;
+  }
+  .title-first {
+    font-size: 1.5em;
+    color: #0057b8;
+    font-weight: 600;
+    margin: 0 !important;
+  }
+  .title-second {
+    margin: 10px !important;
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #0057b8;
+  }
+  .text-first {
+    margin: 10px;
+    color: #0057b8;
+    font-size: 20px;
+  }
+  .tm {
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+  .strong {
+    font-weight: 700;
+  }
+  .ml-2 {
+    margin-left: 2em;
+  }
+  .text-inline {
+    margin: 10px;
+    color: #0057b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-inline > img {
+    width: 50px;
+  }
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

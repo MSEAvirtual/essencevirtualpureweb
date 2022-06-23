@@ -237,6 +237,7 @@ const platform = new PlatformNext();
 platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
 
 const App: React.FC = ({ ShowEModal }: any) => {
+  const [showEnterModal, setShowEnterModal] = useState(false);
   const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
   const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
   const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
@@ -300,6 +301,7 @@ const App: React.FC = ({ ShowEModal }: any) => {
     if (streamerStatus === StreamerStatus.Failed) {
       platform.disconnect();
     }
+    console.log("StreamStatus-->", streamerStatus)
   }, [streamerStatus]);
 
   if (audioStream) {
@@ -319,18 +321,32 @@ const App: React.FC = ({ ShowEModal }: any) => {
     }
   };
 
+  // resume experience
+  const ResumePlay = () => {
+    const command = { command: "play" };
+    emitter.EmitUIInteraction(command);
+  }
+
+  // resume experience
+  const PausePlay = () => {
+    const command = { command: "pause" };
+    emitter.EmitUIInteraction(command);
+  }
+
   // Log status messages
   useEffect(() => {
     logger.info('Status', status, streamerStatus);
+    // if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal) {
+    //   setTimeout(() => {
+    //     PausePlay();
+    //     ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
+    //     setShowEnterModal(true);
+    //   }, 3000)
+    // }
   }, [status, streamerStatus]);
 
   // Subscribe to game messages
   useEffect(() => {
-    // resume experience
-    const ResumePlay = () => {
-      const command = { command: "play" };
-      emitter.EmitUIInteraction(command);
-    }
     // send mobile request
     const SendMobileType = () => {
       const isMobile = isMobileTablet();
@@ -347,6 +363,10 @@ const App: React.FC = ({ ShowEModal }: any) => {
           ShowEModal(message.companyid, message.content, message, ResumePlay);
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
+          if (!showEnterModal) {
+            ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
+            setShowEnterModal(true);
+          }
         }
       },
       (err) => {
