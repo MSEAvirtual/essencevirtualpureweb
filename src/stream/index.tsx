@@ -342,7 +342,7 @@ const App: React.FC = ({ ShowEModal }: any) => {
         PausePlay();
         ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
         setShowEnterModal(true);
-      }, 3000)
+      }, 10000)
     }
   }, [status, streamerStatus]);
 
