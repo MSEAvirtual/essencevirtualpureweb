@@ -93,10 +93,13 @@ class ClientOptions {
 interface LoadingProps {
   LaunchRequestStatus: LaunchStatusEvent;
   StreamerStatus: StreamerStatus;
+  IsServerReady: boolean
 }
 
 const LoadingView: React.FC<LoadingProps> = (props: LoadingProps) => {
-  if (props.StreamerStatus === StreamerStatus.Connected || props.StreamerStatus === StreamerStatus.Completed) {
+
+  // if (props.StreamerStatus === StreamerStatus.Connected || props.StreamerStatus === StreamerStatus.Completed) {
+  if (props.IsServerReady) {
     return <div />;
   }
 
@@ -153,6 +156,7 @@ interface ViewProps {
   UseNativeTouchEvents: boolean;
   UsePointerLock: boolean;
   PointerLockRelease: boolean;
+  IsServerReady: boolean
 }
 
 const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
@@ -171,8 +175,14 @@ const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
           ExitCallback={() => window.location.reload()} // TODO: How to 'close' a contribution?
         />
 
-        <LoadingView LaunchRequestStatus={props.LaunchRequestStatus} StreamerStatus={props.StreamerStatus} />
-        <VideoStream
+        <LoadingView
+          LaunchRequestStatus={props.LaunchRequestStatus}
+          StreamerStatus={props.StreamerStatus}
+          IsServerReady={props.IsServerReady}
+        />
+
+        {props.IsServerReady ? (
+          <VideoStream
           VideoRef={videoRef}
           Emitter={props.InputEmitter}
           Stream={props.VideoStream}
@@ -180,7 +190,8 @@ const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
           UsePointerLock={props.UsePointerLock}
           PointerLockRelease={props.PointerLockRelease}
         />
-
+        ) : ( <> </> )}
+        
         <Button
           onClick={handle.enter}
           style={{ position: 'absolute', top: 10, right: 10 }}
@@ -250,6 +261,7 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
   const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
   const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
   const [launchRequestError, setLaunchRequestError] = useState<Error>();
+  const [serverReady, setServerReady] = useState(false);
   const streamerOptions = DefaultStreamerOptions;
 
   useAsyncEffect(async () => {
@@ -367,10 +379,7 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
           ShowEModal(message.companyid, message.content, message, ResumePlay);
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
-          // if (!showEnterModal) {
-          //   ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
-          //   setShowEnterModal(true);
-          // }
+          setServerReady(true)
         }
       },
       (err) => {
@@ -500,6 +509,7 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
         UseNativeTouchEvents={clientOptions.UseNativeTouchEvents!}
         UsePointerLock={clientOptions.UsePointerLock!}
         PointerLockRelease={clientOptions.PointerLockRelease!}
+        IsServerReady={serverReady}
       />
     );
   } else if (clientOptions.LaunchType !== 'local' && !availableModels) {
