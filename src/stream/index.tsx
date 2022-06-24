@@ -237,7 +237,14 @@ clientOptions.UseNativeTouchEvents =
 const platform = new PlatformNext();
 platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
 
-const App: React.FC = ({ ShowEModal }: any) => {
+type AppProps = {
+  ShowEModal: any,
+  onLoaded: () => {}
+  onLaunch: () => {}
+  onResumePlay: () => {}
+}
+
+const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay }) => {
   const [showEnterModal, setShowEnterModal] = useState(false);
   const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
   const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
@@ -320,29 +327,24 @@ const App: React.FC = ({ ShowEModal }: any) => {
         setLaunchRequestError(err);
       }
     }
+
+    if (onLaunch) onLaunch()
   };
 
   // resume experience
   const ResumePlay = () => {
     const command = { command: "play" };
     emitter.EmitUIInteraction(command);
+    if (onResumePlay) onResumePlay()
   }
 
-  // resume experience
-  const PausePlay = () => {
-    const command = { command: "pause" };
-    emitter.EmitUIInteraction(command);
-  }
-
-  // Log status messages
   useEffect(() => {
+    // Log status messages
     logger.info('Status', status, streamerStatus);
     if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal) {
-      setTimeout(() => {
-        PausePlay();
         ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
         setShowEnterModal(true);
-      }, 10000)
+        if (onLoaded) onLoaded()
     }
   }, [status, streamerStatus]);
 
@@ -356,6 +358,7 @@ const App: React.FC = ({ ShowEModal }: any) => {
       emitter.EmitUIInteraction(command);
       logger.info("sent controller requests--->")
     }
+
     const subscription = messageSubject.subscribe(
       (value: string) => {
         logger.info('Message: ' + value);
@@ -532,9 +535,9 @@ const App: React.FC = ({ ShowEModal }: any) => {
   }
 };
 
-const AppWrapper: React.FC = (props: any) => {
+const AppWrapper: React.FC<AppProps> = (props) => {
   return System.IsBrowserSupported() ? (
-    <App ShowEModal={props.ShowEModal} />
+    <App ShowEModal={props.ShowEModal} onLoaded={props.onLoaded} onLaunch={props.onLaunch} onResumePlay={props.onResumePlay} />
   ) : (
     <div className="ui red segment center aligned basic">
       <h2 className="header">Your browser is currently unsupported</h2>

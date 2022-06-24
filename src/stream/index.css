@@ -58,7 +58,8 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor: none !important;
+  /* TODO: just a hack, turn be back on once the pointer-lock stuff is working correctly */
+  /* cursor: none !important; */
 }
 
 .logobacking {

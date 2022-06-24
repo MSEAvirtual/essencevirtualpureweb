@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { isMobile } from 'react-device-detect';
 import { Button } from "semantic-ui-react";
 import "./App.css";
@@ -22,7 +22,7 @@ const App = () => {
     const [component, setComponent] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [modalname, setModalName] = useState("auth");
-    console.log("mobile--->", isMobile)
+    
     const AuthFuc = () => {
         setLoggedIn(true);
         closeModal();
@@ -98,7 +98,6 @@ const App = () => {
     }
 
     const HandleEnterModal = (id: any, type: string, data: any, resumFuc: func) => {
-        resumFuc && resumFuc();
         const comp = <EnterModalView data={type} company={data.companyname} closeModal={() => {
             closeModal();
             resumFuc();
@@ -107,7 +106,6 @@ const App = () => {
     }
 
     const HandleARModal = (id: any, type: string, data: any, resumFuc: func) => {
-        resumFuc && resumFuc();
         setAllowClose(true);
         const comp = <ARModalPopUp data={type} company={data.companyname} closeModal={() => {
             closeModal();
@@ -126,10 +124,16 @@ const App = () => {
     
 
     const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
+        if (type !== 'enter-modal') {
+            var myWindow = window.open("", "MsgWindow", "width=1,height=1");
+            myWindow.document.write("<script>window.close()</script>");
+        }
+
         if (type === "bob") {
             return HandleBoBPopUps(id, type, data, resumFuc);
         } else if (type === "enter-modal") {
-            return HandleEnterModal(id, type, data, resumFuc);
+            // FIXME:
+            // return HandleEnterModal(id, type, data, resumFuc);
         } else if (type === "ar"){
             return HandleARModal(id, type, data, resumFuc);
         }  else if (type === "poster"){
@@ -137,9 +141,6 @@ const App = () => {
         } else if (type !== "bob") {
             return HandleFordPopUps(id, type, data, resumFuc);
         }
-        // {"companyid":"1","content":"ford-1","style":"0","companyname":"ford"}
-        // {"companyid":"0","content":"ar","style":"0","companyname":"essence"}
-        // {"companyid":"0","content":"poster","style":"0","companyname":"essence"}
     };
 
     return (
@@ -149,7 +150,11 @@ const App = () => {
                 <div className="nav-bar">
                     <img src="/site-logo.png" className="siteLogo" alt="site-logo" />
                 </div>
-                <StreamApp ShowEModal={setEcomModalView} />
+                <StreamApp
+                    ShowEModal={setEcomModalView}
+                    onLaunch={() => { /* TODO: Pointer lock here */ }}
+                    onResumePlay={() => { /* TODO: Pointer lock here */ }}
+                />
                 {/* <Button onClick={() => setEcomModalView(0, "poster", {"companyid":"0","content":"poster","style":"0","companyname":"essence"})}>Open CTA</Button> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>

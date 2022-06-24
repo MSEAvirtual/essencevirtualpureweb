@@ -4,6 +4,5 @@
   "versionId": "xf301z",
   "useNativeTouchEvents": true,
   "usePointerLock": true,
-  "fakeMouseTouches": false,
-  "pointerLockRelease":true
+  "pointerLockRelease": false
 }
