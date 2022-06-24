@@ -5,7 +5,8 @@
     top: 30px !important;
 }
 #ar-view{
-    display: block;
+    display: grid;
+    justify-items: center;
 }
 #rotate-view{
     display: none;
