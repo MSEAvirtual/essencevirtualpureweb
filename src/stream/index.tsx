@@ -343,8 +343,8 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
     if (onLaunch) onLaunch()
   };
 
-  // resume experience
-  const ResumePlay = () => {
+  // toggles pausing / playing the experience
+  const TogglePlayPause = () => {
     const command = { command: "play" };
     emitter.EmitUIInteraction(command);
     if (onResumePlay) onResumePlay()
@@ -353,12 +353,11 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
   useEffect(() => {
     // Log status messages
     logger.info('Status', status, streamerStatus);
-    if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal) {
-        ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
+    if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal && serverReady) {
+        ShowEModal("enter-modal", "enter-modal", {}, TogglePlayPause);
         setShowEnterModal(true);
-        if (onLoaded) onLoaded()
     }
-  }, [status, streamerStatus]);
+  }, [status, streamerStatus, serverReady]);
 
   // Subscribe to game messages
   useEffect(() => {
@@ -376,10 +375,12 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
         logger.info('Message: ' + value);
         const message = JSON.parse(value);
         if (message.hasOwnProperty("companyid") && message.hasOwnProperty("content")) {
-          ShowEModal(message.companyid, message.content, message, ResumePlay);
+          ShowEModal(message.companyid, message.content, message, TogglePlayPause);
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
           setServerReady(true)
+          TogglePlayPause()
+          if (onLoaded) onLoaded()
         }
       },
       (err) => {

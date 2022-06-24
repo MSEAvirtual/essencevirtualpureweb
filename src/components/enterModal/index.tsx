@@ -13,30 +13,18 @@ const EnterModalView = ({ storeData, data, closeModal, setClose }: any) => {
 
   const handleVideoEnded = () => setShowMap(true);
 
-  const RenderVideoDesktop = (props: {onSkip: () => void}) => {
-    const [skipVisible, setSkipVisible] = useState(false);
-
-    useEffect(() => {
-      setTimeout(() => setSkipVisible(true), 10 * 1000)
-    }, [])
-
+  const RenderVideoDesktop = (props: { onSkip: () => void }) => {
     return (
       <>
         <video className="intro-video" autoPlay onEnded={handleVideoEnded}>
           <source src="/introVideo.mp4" type="video/mp4" />
         </video>
-        {skipVisible ? (
-          <button
-            className="video-skip-button"
-            onClick={(evt) => props.onSkip()}
-          > skip </button>
-    ) : (
-        <></>
-    )}
-        
+        <button className="video-skip-button" onClick={(evt) => props.onSkip()}>
+          skip
+        </button>
       </>
-    )
-  }
+    );
+  };
 
   const RenderIntro = () => {
     // return (
@@ -54,33 +42,52 @@ const EnterModalView = ({ storeData, data, closeModal, setClose }: any) => {
     //     </div>
     //   </div>
     // )
-    return (<div className="intro-image" style={{ backgroundImage: `url("/intro-mobile.png")`}}>
-      <button className="intro-button" onClick={() => setShowMap(true)} />
-    </div>)
-  }
+    return (
+      <div
+        className="intro-image"
+        style={{ backgroundImage: `url("/intro-mobile.png")` }}
+      >
+        <button className="intro-button" onClick={() => setShowMap(true)} />
+      </div>
+    );
+  };
 
   const RenderMap = () => {
     // return (<img className="map-image" src={isMobile ? "/map-mobile.png" : "/map-desktop.png"} alt="map-im" />)
     return (
-      <div className="map-image" style={{ backgroundImage: `url(${isMobile ? "map-mobile.png" : "map-desktop.png"})` }}>
+      <div
+        className="map-image"
+        style={{
+          backgroundImage: `url(${
+            isMobile ? "map-mobile.png" : "map-desktop.png"
+          })`,
+        }}
+      >
         <button className="map-button" onClick={closeModal} />
       </div>
-    )
-  }
+    );
+  };
 
   const handleOnSkip = () => {
-    setShowMap(true)
-  }
+    setShowMap(true);
+  };
 
   return (
     <div className={"store-body-m-view"}>
       <div className={`flex-row-m-container ${showMap ? "p-0" : ""}`}>
-        {!showMap ? !isMobile ? <RenderVideoDesktop onSkip={handleOnSkip}/> : RenderIntro() : RenderMap()}
+        {!showMap ? (
+          !isMobile ? (
+            <RenderVideoDesktop onSkip={handleOnSkip} />
+          ) : (
+            RenderIntro()
+          )
+        ) : (
+          RenderMap()
+        )}
         {/* <span className="store-close-btn" onClick={closeModal}>X</span> */}
       </div>
     </div>
   );
 };
-
 
 export default EnterModalView;

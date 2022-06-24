@@ -1,7 +1,5 @@
 // @ts-nocheck
 import React, { useEffect, useState, useRef } from "react";
-import { isMobile } from 'react-device-detect';
-import { Button } from "semantic-ui-react";
 import "./App.css";
 import StreamApp from "./stream";
 import EStore from "./components/storeView";
@@ -13,15 +11,12 @@ import stores from "./bobs.json";
 import sponsorData from "./others.json";
 import EnterModalView from "./components/enterModal";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
-
-const STORAGE_URL = "";
+import { isMobile } from 'react-device-detect';
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [allowClose, setAllowClose] = useState(false);
     const [component, setComponent] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [modalname, setModalName] = useState("auth");
     
     const AuthFuc = () => {
         setLoggedIn(true);
@@ -46,7 +41,6 @@ const App = () => {
     const setModalView = (component: any, name: string, close = false) => {
         setComponent(component);
         setShowModal(true);
-        setModalName(name)
     };
 
     const openBUrl = (url) => {
@@ -69,10 +63,11 @@ const App = () => {
             closeModal();
             resumFuc && resumFuc();
         } else {
+            pointerUnlockHack();
             const comp = <EStore storeData={s} data={id} closeModal={() => {
                 closeModal();
                 resumFuc();
-            }} setClose={setAllowClose} />
+            }} />
             setModalView(comp, "estore");
         }
     }
@@ -89,10 +84,11 @@ const App = () => {
             closeModal();
             resumFuc && resumFuc();
         } else {
+            pointerUnlockHack();
             const comp = <FordPopUp storeData={s} data={type} company={data.companyname} closeModal={() => {
                 closeModal();
                 resumFuc();
-            }} setClose={setAllowClose} />
+            }} />
             setModalView(comp, "ford");
         }
     }
@@ -101,17 +97,15 @@ const App = () => {
         const comp = <EnterModalView data={type} company={data.companyname} closeModal={() => {
             closeModal();
             resumFuc();
-        }} setClose={setAllowClose} />
+        }} />
         setModalView(comp, "enter-modal");
     }
 
     const HandleARModal = (id: any, type: string, data: any, resumFuc: func) => {
-        setAllowClose(true);
         const comp = <ARModalPopUp data={type} company={data.companyname} closeModal={() => {
             closeModal();
-            resumFuc();
-            setAllowClose(false);
-        }} setClose={setAllowClose} />
+            resumFuc(); 
+        }} />
         setModalView(comp, "enter-modal");
     }
 
@@ -121,26 +115,31 @@ const App = () => {
         closeModal();
         resumFuc && resumFuc();
     }
-    
 
-    const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
-        if (type !== 'enter-modal') {
+    const pointerUnlockHack = () => {
+        if (!isMobile) {
             var myWindow = window.open("", "MsgWindow", "width=1,height=1");
             myWindow.document.write("<script>window.close()</script>");
         }
+    }
+    
+    const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
 
         if (type === "bob") {
+            console.log("BOB")
             return HandleBoBPopUps(id, type, data, resumFuc);
         } else if (type === "enter-modal") {
-            // FIXME:
-            // return HandleEnterModal(id, type, data, resumFuc);
+            return HandleEnterModal(id, type, data, resumFuc);
         } else if (type === "ar"){
+            pointerUnlockHack();
             return HandleARModal(id, type, data, resumFuc);
         }  else if (type === "poster"){
             return HandlePosterModal(id, type, data, resumFuc);
         } else if (type !== "bob") {
+            console.log("NOT BOB")
             return HandleFordPopUps(id, type, data, resumFuc);
         }
+        
     };
 
     return (
@@ -157,7 +156,7 @@ const App = () => {
                 />
                 {/* <Button onClick={() => setEcomModalView(0, "poster", {"companyid":"0","content":"poster","style":"0","companyname":"essence"})}>Open CTA</Button> */}
             </div>
-            <Modal show={showModal} onClose={() => setShowModal(false)} modalname={modalname}>{component}</Modal>
+            <Modal show={showModal} >{component}</Modal>
         </>
     )
 }

@@ -5,9 +5,9 @@
 
 #view{
     position: relative;
-    height: 100%;
+    height: calc(100vh + 1px);
     width: 100%;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 }
 .nav-bar{
   position: relative;
