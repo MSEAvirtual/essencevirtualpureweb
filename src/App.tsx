@@ -11,7 +11,7 @@ import RotateScreen from "./components/modals/rotate";
 import Modal from "./components/custom-modal";
 import stores from "./bobs.json";
 import sponsorData from "./others.json";
-import EnteModalView from "./components/enterModal";
+import EnterModalView from "./components/enterModal";
 import ARModalPopUp from "./components/modals/ARmodalPopUp";
 
 const STORAGE_URL = "";
@@ -99,7 +99,7 @@ const App = () => {
 
     const HandleEnterModal = (id: any, type: string, data: any, resumFuc: func) => {
         resumFuc && resumFuc();
-        const comp = <EnteModalView data={type} company={data.companyname} closeModal={() => {
+        const comp = <EnterModalView data={type} company={data.companyname} closeModal={() => {
             closeModal();
             resumFuc();
         }} setClose={setAllowClose} />
