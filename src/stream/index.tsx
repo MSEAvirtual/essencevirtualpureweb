@@ -338,11 +338,11 @@ const App: React.FC = ({ ShowEModal }: any) => {
   useEffect(() => {
     logger.info('Status', status, streamerStatus);
     if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal) {
-      // setTimeout(() => {
+      setTimeout(() => {
         PausePlay();
         ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
         setShowEnterModal(true);
-      // }, 3000)
+      }, 3000)
     }
   }, [status, streamerStatus]);
 
