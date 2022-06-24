@@ -3,7 +3,7 @@
 }
 /* container css */
 .flex-row-m-container {
-  background-color: #ffffff !important;
+  /* background-color: #ffffff !important; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -15,7 +15,9 @@
   position: relative;
   background-repeat: no-repeat;
   /* padding: 2em; */
-  /* background-image: url("img-7.svg"); */
+  background-image: url("img-7.svg");
+  background-size: cover;
+  background-position: center center;
   height: 100%;
 }
 
@@ -93,10 +95,10 @@
 }
 .map-button{
   position: absolute; 
-  bottom: 15px;
-  left: 18px; 
-  width: 200px; 
-  height: 60px; 
+  bottom: 0;
+  left: 0; 
+  width: 30%; 
+  height: 40%; 
   background: transparent;
   cursor: pointer;
   border: none !important;
@@ -129,7 +131,7 @@
 .intro-button{
   position: absolute; 
   bottom: 8.5%;
-  left: 37%; 
+  left: calc(50% - 100px); 
   width: 200px; 
   height: 60px; 
   background: transparent;

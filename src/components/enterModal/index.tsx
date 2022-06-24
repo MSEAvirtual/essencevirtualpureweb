@@ -61,9 +61,11 @@ const EnterModalView = ({ storeData, data, closeModal, setClose }: any) => {
 
   const RenderMap = () => {
     // return (<img className="map-image" src={isMobile ? "/map-mobile.png" : "/map-desktop.png"} alt="map-im" />)
-    return (<div className="map-image" style={{ backgroundImage: `url(${isMobile ? "map-mobile.png" : "map-desktop.png"})` }}>
-      <button className="map-button" onClick={closeModal} />
-    </div>)
+    return (
+      <div className="map-image" style={{ backgroundImage: `url(${isMobile ? "map-mobile.png" : "map-desktop.png"})` }}>
+        <button className="map-button" onClick={closeModal} />
+      </div>
+    )
   }
 
   const handleOnSkip = () => {
