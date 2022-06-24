@@ -61,11 +61,11 @@
         min-height: 100px;
         min-width: 100px;
         /* margin: 0px !important; */
-        margin-top: -18px !important;
+        margin-top: 0px !important;
     }
 
     .visible .modal {
-        /* transform: scale(1) !important; */
+        transform: scale(.8) !important;
     }
 }
 
