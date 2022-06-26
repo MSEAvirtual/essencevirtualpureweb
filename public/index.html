@@ -12,6 +12,14 @@
       // See https://github.com/facebook/react/issues/20829#issuecomment-802088260
       if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer;
     </script>
+
+    <script>
+      var now = new Date();
+      var start = new Date('Jun 27, 2022 18:50 GMT-7')
+      if (now < start && !window.location.href.includes('?bypass_timer')) {
+        window.location.href = window.location.href + "/timer"
+      }
+    </script>
     
     <!-- Update the content value -->
     <meta name="description" content="Essencevirtualmarketplace" />
