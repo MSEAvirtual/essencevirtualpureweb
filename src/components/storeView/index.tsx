@@ -3,7 +3,6 @@
 import React from "react";
 import "./index.css";
 import { Image, Button } from "semantic-ui-react";
-import stores from "../../bobs.json";
 import ImageSlider from "../ImageSlider";
 
 const STORAGE_URL = "";

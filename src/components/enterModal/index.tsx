@@ -1,27 +1,30 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
 import { isMobileTablet } from "../../utils";
 import "./index.css";
 // import videoFile from "../../introVideo.mp4";
 
-const EnteModalView = ({ storeData, data, closeModal, setClose }: any) => {
+const EnterModalView = ({ storeData, data, closeModal, setClose }: any) => {
   const [showMap, setShowMap] = useState(false);
   const isMobile = isMobileTablet();
 
   const handleVideoEnded = () => setShowMap(true);
 
-  const RenderVideoDesktop = () => {
+  const RenderVideoDesktop = (props: { onSkip: () => void }) => {
     return (
       <>
         <video className="intro-video" autoPlay onEnded={handleVideoEnded}>
           <source src="/introVideo.mp4" type="video/mp4" />
         </video>
+        <button className="video-skip-button" onClick={(evt) => props.onSkip()}>
+          skip
+        </button>
       </>
-    )
-  }
+    );
+  };
 
   const RenderIntro = () => {
     // return (
@@ -39,27 +42,52 @@ const EnteModalView = ({ storeData, data, closeModal, setClose }: any) => {
     //     </div>
     //   </div>
     // )
-    return (<div className="intro-image" style={{ backgroundImage: `url("/intro-mobile.png")`}}>
-      <button className="intro-button" onClick={() => setShowMap(true)} />
-    </div>)
-  }
+    return (
+      <div
+        className="intro-image"
+        style={{ backgroundImage: `url("/intro-mobile.png")` }}
+      >
+        <button className="intro-button" onClick={() => setShowMap(true)} />
+      </div>
+    );
+  };
 
   const RenderMap = () => {
     // return (<img className="map-image" src={isMobile ? "/map-mobile.png" : "/map-desktop.png"} alt="map-im" />)
-    return (<div className="map-image" style={{ background: `url(${isMobile ? "map-mobile.png" : "map-desktop.png"})` }}>
-      <button className="map-button" onClick={closeModal} />
-    </div>)
-  }
+    return (
+      <div
+        className="map-image"
+        style={{
+          backgroundImage: `url(${
+            isMobile ? "map-mobile.png" : "map-desktop.png"
+          })`,
+        }}
+      >
+        <button className="map-button" onClick={closeModal} />
+      </div>
+    );
+  };
+
+  const handleOnSkip = () => {
+    setShowMap(true);
+  };
 
   return (
     <div className={"store-body-m-view"}>
       <div className={`flex-row-m-container ${showMap ? "p-0" : ""}`}>
-        {!showMap ? !isMobile ? RenderVideoDesktop() : RenderIntro() : RenderMap()}
+        {!showMap ? (
+          !isMobile ? (
+            <RenderVideoDesktop onSkip={handleOnSkip} />
+          ) : (
+            RenderIntro()
+          )
+        ) : (
+          RenderMap()
+        )}
         {/* <span className="store-close-btn" onClick={closeModal}>X</span> */}
       </div>
     </div>
   );
 };
 
-
-export default EnteModalView;
+export default EnterModalView;

@@ -3,7 +3,7 @@
 }
 /* container css */
 .flex-row-m-container {
-  background-color: #ffffff !important;
+  /* background-color: #ffffff !important; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -16,6 +16,8 @@
   background-repeat: no-repeat;
   /* padding: 2em; */
   /* background-image: url("img-7.svg"); */
+  background-size: cover;
+  background-position: center center;
   height: 100%;
 }
 
@@ -35,6 +37,9 @@
   cursor: pointer !important;
   right: 40px;
   top: 40px;
+  border-radius: 100px;
+  background-color: white;
+  padding: 20px;
 }
 .intro-div {
   text-align: center !important;
@@ -87,37 +92,50 @@
   width: 100%;
   height: 100%;
   /* object-fit: fill; */
-  background-size: 100% 100% !important;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .map-button{
   position: absolute; 
-  bottom: 15px;
-  left: 18px; 
-  width: 200px; 
-  height: 60px; 
+  bottom: 0;
+  left: 0; 
+  width: 30%; 
+  height: 40%; 
   background: transparent;
   cursor: pointer;
   border: none !important;
 }
 .intro-video{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.video-skip-button {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 10px;
+  bottom: 0;
+  font-size: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .intro-image {
   position: relative;
   width: 100%;
   height: 100%;
-  /* background-size: contain; */
-  background-size: 100% 100%;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: center;
+  background-position: center;
 }
 .intro-button{
   position: absolute; 
   bottom: 8.5%;
-  left: 37%; 
+  left: calc(50% - 100px); 
   width: 200px; 
   height: 60px; 
   background: transparent;

@@ -5,7 +5,9 @@
     top: 30px !important;
 }
 #ar-view{
-    display: block;
+    display: grid;
+    justify-items: center;
+    background-image: url("img-7.svg");
 }
 #rotate-view{
     display: none;

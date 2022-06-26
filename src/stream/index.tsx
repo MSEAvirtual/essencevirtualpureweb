@@ -93,10 +93,13 @@ class ClientOptions {
 interface LoadingProps {
   LaunchRequestStatus: LaunchStatusEvent;
   StreamerStatus: StreamerStatus;
+  IsServerReady: boolean
 }
 
 const LoadingView: React.FC<LoadingProps> = (props: LoadingProps) => {
-  if (props.StreamerStatus === StreamerStatus.Connected || props.StreamerStatus === StreamerStatus.Completed) {
+
+  // if (props.StreamerStatus === StreamerStatus.Connected || props.StreamerStatus === StreamerStatus.Completed) {
+  if (props.IsServerReady) {
     return <div />;
   }
 
@@ -153,6 +156,7 @@ interface ViewProps {
   UseNativeTouchEvents: boolean;
   UsePointerLock: boolean;
   PointerLockRelease: boolean;
+  IsServerReady: boolean
 }
 
 const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
@@ -171,8 +175,14 @@ const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
           ExitCallback={() => window.location.reload()} // TODO: How to 'close' a contribution?
         />
 
-        <LoadingView LaunchRequestStatus={props.LaunchRequestStatus} StreamerStatus={props.StreamerStatus} />
-        <VideoStream
+        <LoadingView
+          LaunchRequestStatus={props.LaunchRequestStatus}
+          StreamerStatus={props.StreamerStatus}
+          IsServerReady={props.IsServerReady}
+        />
+
+        {props.IsServerReady ? (
+          <VideoStream
           VideoRef={videoRef}
           Emitter={props.InputEmitter}
           Stream={props.VideoStream}
@@ -180,7 +190,8 @@ const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
           UsePointerLock={props.UsePointerLock}
           PointerLockRelease={props.PointerLockRelease}
         />
-
+        ) : ( <> </> )}
+        
         <Button
           onClick={handle.enter}
           style={{ position: 'absolute', top: 10, right: 10 }}
@@ -237,12 +248,20 @@ clientOptions.UseNativeTouchEvents =
 const platform = new PlatformNext();
 platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.io' });
 
-const App: React.FC = ({ ShowEModal }: any) => {
+type AppProps = {
+  ShowEModal: any,
+  onLoaded: () => {}
+  onLaunch: () => {}
+  onResumePlay: () => {}
+}
+
+const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay }) => {
   const [showEnterModal, setShowEnterModal] = useState(false);
   const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
   const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
   const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
   const [launchRequestError, setLaunchRequestError] = useState<Error>();
+  const [serverReady, setServerReady] = useState(false);
   const streamerOptions = DefaultStreamerOptions;
 
   useAsyncEffect(async () => {
@@ -320,31 +339,25 @@ const App: React.FC = ({ ShowEModal }: any) => {
         setLaunchRequestError(err);
       }
     }
+
+    if (onLaunch) onLaunch()
   };
 
-  // resume experience
-  const ResumePlay = () => {
+  // toggles pausing / playing the experience
+  const TogglePlayPause = () => {
     const command = { command: "play" };
     emitter.EmitUIInteraction(command);
+    if (onResumePlay) onResumePlay()
   }
 
-  // resume experience
-  const PausePlay = () => {
-    const command = { command: "pause" };
-    emitter.EmitUIInteraction(command);
-  }
-
-  // Log status messages
   useEffect(() => {
+    // Log status messages
     logger.info('Status', status, streamerStatus);
-    if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal) {
-      setTimeout(() => {
-        PausePlay();
-        ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
+    if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal && serverReady) {
+        ShowEModal("enter-modal", "enter-modal", {}, TogglePlayPause);
         setShowEnterModal(true);
-      }, 10000)
     }
-  }, [status, streamerStatus]);
+  }, [status, streamerStatus, serverReady]);
 
   // Subscribe to game messages
   useEffect(() => {
@@ -356,18 +369,18 @@ const App: React.FC = ({ ShowEModal }: any) => {
       emitter.EmitUIInteraction(command);
       logger.info("sent controller requests--->")
     }
+
     const subscription = messageSubject.subscribe(
       (value: string) => {
         logger.info('Message: ' + value);
         const message = JSON.parse(value);
         if (message.hasOwnProperty("companyid") && message.hasOwnProperty("content")) {
-          ShowEModal(message.companyid, message.content, message, ResumePlay);
+          ShowEModal(message.companyid, message.content, message, TogglePlayPause);
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
-          // if (!showEnterModal) {
-          //   ShowEModal("enter-modal", "enter-modal", {}, ResumePlay);
-          //   setShowEnterModal(true);
-          // }
+          setServerReady(true)
+          TogglePlayPause()
+          if (onLoaded) onLoaded()
         }
       },
       (err) => {
@@ -497,6 +510,7 @@ const App: React.FC = ({ ShowEModal }: any) => {
         UseNativeTouchEvents={clientOptions.UseNativeTouchEvents!}
         UsePointerLock={clientOptions.UsePointerLock!}
         PointerLockRelease={clientOptions.PointerLockRelease!}
+        IsServerReady={serverReady}
       />
     );
   } else if (clientOptions.LaunchType !== 'local' && !availableModels) {
@@ -532,9 +546,9 @@ const App: React.FC = ({ ShowEModal }: any) => {
   }
 };
 
-const AppWrapper: React.FC = (props: any) => {
+const AppWrapper: React.FC<AppProps> = (props) => {
   return System.IsBrowserSupported() ? (
-    <App ShowEModal={props.ShowEModal} />
+    <App ShowEModal={props.ShowEModal} onLoaded={props.onLoaded} onLaunch={props.onLaunch} onResumePlay={props.onResumePlay} />
   ) : (
     <div className="ui red segment center aligned basic">
       <h2 className="header">Your browser is currently unsupported</h2>
