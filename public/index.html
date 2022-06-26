@@ -16,7 +16,7 @@
     <script>
       var now = new Date();
       var start = new Date('Jun 27, 2022 18:50 GMT-7')
-      if (now < start) {
+      if (now < start && !window.location.href.includes('?bypass_timer')) {
         window.location.href = window.location.href + "/timer"
       }
     </script>
