@@ -15,7 +15,7 @@
   position: relative;
   background-repeat: no-repeat;
   /* padding: 2em; */
-  background-image: url("img-7.svg");
+  /* background-image: url("img-7.svg"); */
   background-size: cover;
   background-position: center center;
   height: 100%;
@@ -37,6 +37,9 @@
   cursor: pointer !important;
   right: 40px;
   top: 40px;
+  border-radius: 100px;
+  background-color: white;
+  padding: 20px;
 }
 .intro-div {
   text-align: center !important;
@@ -104,9 +107,9 @@
   border: none !important;
 }
 .intro-video{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 .video-skip-button {
   position: absolute;

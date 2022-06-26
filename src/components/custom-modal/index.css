@@ -38,14 +38,19 @@
     margin-bottom: 20px;
     border-radius: 4px;
     /* padding-bottom: 20px; */
-    background-color: #fff;
     align-self: center;
-    box-shadow: 0 12px 25px 0 rgba(199, 175, 189, .25);
+    /* background-color: #fff;
+    box-shadow: 0 12px 25px 0 rgba(199, 175, 189, .25); */
     opacity: 0;
     transform: scale(0.6);
     transition: opacity 250ms 250ms ease, transform 300ms 250ms ease;
     transform: scale(0);
     cursor: pointer !important;
+}
+
+.modal.with_background {
+    background-color: #fff;
+    box-shadow: 0 12px 25px 0 rgba(199, 175, 189, .25);   
 }
 
 .visible .modal {
