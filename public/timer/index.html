@@ -17,6 +17,15 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
   <!-- Google fonts end here -->
+
+  <script>
+    var now = new Date();
+    var start = new Date('Jun 27, 2022 09:00 GMT-7')
+    if (now > start) {
+      window.location.href = window.location.href.replace("/timer", "")
+    }
+  </script>
+  
 </head>
 <body class="bg-img tictoc">
   <div class="bg-overlay"></div>
