@@ -52,10 +52,14 @@
         margin: auto;
         padding: 50% 0;
         z-index: 99999999 !important;
+        background-image: url("img-7.svg");
+        background-size: cover;
     }
     .rotate-noti{
         text-align: center;
         padding: 50% 1em;
+        margin: 0 20%;
+        background: white;
     }
 }
 
