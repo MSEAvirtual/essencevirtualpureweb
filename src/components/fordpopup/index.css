@@ -9,7 +9,10 @@
   background: #1f1d58 !important;
 }
 .ex-color{
-  background: #0057B8 !important;
+  background: linear-gradient(270deg, #00c9ff, #0079b1)
+  /* background: #0057B8 !important; */
+  
+  
 }
 
 .ford-t-color{
