@@ -12,6 +12,7 @@
     "@types/react-dom": "^16.9.16",
     "find-yarn-workspace-root": "^2.0.0",
     "formik": "^2.2.9",
+    "heroku-ssl-redirect": "^0.1.1",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",
     "query-string": "^6.14.1",
