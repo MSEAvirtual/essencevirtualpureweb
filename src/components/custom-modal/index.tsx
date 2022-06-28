@@ -3,7 +3,7 @@ import "./index.css";
 
 interface ModalProps {
   modalStyle?: React.CSSProperties;
-  children: JSX.Element[];
+  children: JSX.Element | JSX.Element[];
   show: boolean;
 }
 
