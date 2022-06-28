@@ -66,7 +66,7 @@ const App = () => {
             closeModal();
             resumFuc && resumFuc();
         } else {
-            pointerUnlockHack();
+            pointerUnlockHack()
             const comp = <EStore storeData={s} data={id} closeModal={() => {
                 closeModal();
                 resumFuc();
@@ -106,7 +106,7 @@ const App = () => {
             closeModal();
             resumFuc && resumFuc();
         } else {
-            pointerUnlockHack();
+            pointerUnlockHack()
             const comp = <FordPopUp storeData={s} data={type} company={data.companyname} closeModal={() => {
                 closeModal();
                 resumFuc();
@@ -122,8 +122,9 @@ const App = () => {
         }} />
         setModalView(comp);
     }
-
+    
     const HandleARModal = (id: any, type: string, data: any, resumFuc: () => void) => {
+        pointerUnlockHack()
         const comp = <ARModalPopUp data={type} company={data.companyname} closeModal={() => {
             closeModal();
             resumFuc(); 
@@ -138,6 +139,7 @@ const App = () => {
         resumFuc && resumFuc();
     }
 
+    // does not work in browsers that block pop-ups
     const pointerUnlockHack = () => {
         if (!isMobile) {
             var myWindow = window.open("", "MsgWindow", "width=1,height=1");
@@ -146,22 +148,19 @@ const App = () => {
             }
         }
     }
-    
-    const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
 
+    const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
         if (type === "bob") {
             return HandleBoBPopUps(id, type, data, resumFuc);
         } else if (type === "enter-modal") {
             return HandleEnterModal(id, type, data, resumFuc);
         } else if (type === "ar"){
-            pointerUnlockHack();
             return HandleARModal(id, type, data, resumFuc);
         }  else if (type === "poster"){
             return HandlePosterModal(id, type, data, resumFuc);
         } else if (type !== "bob") {
             return HandleFordPopUps(id, type, data, resumFuc);
         }
-        
     };
 
     return (
