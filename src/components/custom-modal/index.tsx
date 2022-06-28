@@ -1,7 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import "./index.css";
 
-const Modal = ({ modalStyle, children, show, onClose, backdropStyle }: any) => {
+interface ModalProps {
+  modalStyle?: React.CSSProperties;
+  children: JSX.Element | JSX.Element[];
+  show: boolean;
+}
+
+const Modal = ({ modalStyle, children, show }: ModalProps) => {
   const modalRef: any = useRef(null);
 
   useEffect(() => {

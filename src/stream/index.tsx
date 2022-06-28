@@ -12,7 +12,6 @@
  *
  * Copyright (C) PureWeb 2020
  */
-// @ts-nocheck
 
 import {
   LaunchStatusEvent,
@@ -250,12 +249,9 @@ platform.initialize({ endpoint: clientOptions.Endpoint || 'https://api.pureweb.i
 
 type AppProps = {
   ShowEModal: any,
-  onLoaded: () => {}
-  onLaunch: () => {}
-  onResumePlay: () => {}
 }
 
-const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay }) => {
+const App: React.FC<AppProps> = ({ ShowEModal }) => {
   const [showEnterModal, setShowEnterModal] = useState(false);
   const [modelDefinitionUnavailable, setModelDefinitionUnavailable] = useState(false);
   const [modelDefinition, setModelDefinition] = useState(new UndefinedModelDefinition());
@@ -336,18 +332,15 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
       try {
         await queueLaunchRequest();
       } catch (err) {
-        setLaunchRequestError(err);
+        setLaunchRequestError(err as any);
       }
     }
-
-    if (onLaunch) onLaunch()
   };
 
   // toggles pausing / playing the experience
   const TogglePlayPause = () => {
     const command = { command: "play" };
     emitter.EmitUIInteraction(command);
-    if (onResumePlay) onResumePlay()
   }
 
   useEffect(() => {
@@ -380,7 +373,6 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
           SendMobileType();
           setServerReady(true)
           TogglePlayPause()
-          if (onLoaded) onLoaded()
         }
       },
       (err) => {
@@ -548,7 +540,7 @@ const App: React.FC<AppProps> = ({ ShowEModal, onLoaded, onLaunch, onResumePlay 
 
 const AppWrapper: React.FC<AppProps> = (props) => {
   return System.IsBrowserSupported() ? (
-    <App ShowEModal={props.ShowEModal} onLoaded={props.onLoaded} onLaunch={props.onLaunch} onResumePlay={props.onResumePlay} />
+    <App ShowEModal={props.ShowEModal}/>
   ) : (
     <div className="ui red segment center aligned basic">
       <h2 className="header">Your browser is currently unsupported</h2>

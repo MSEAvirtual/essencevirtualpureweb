@@ -55,9 +55,11 @@
         background-image: url("img-7.svg");
         background-size: cover;
     }
-    .rotate-noti{
+    .rotate-noti {
+        position: relative;
+        top: 30%;
         text-align: center;
-        padding: 50% 1em;
+        padding: 10% 1em;
         margin: 0 20%;
         background: white;
     }

@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect, useState } from "react";
-import { Button } from "semantic-ui-react";
+import React, { useState } from "react";
 import { isMobileTablet } from "../../utils";
 import "./index.css";
 // import videoFile from "../../introVideo.mp4";
