@@ -34,7 +34,7 @@ import {
 } from '@pureweb/platform-sdk-react';
 
 import * as qs from 'query-string';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 import { Button, Icon } from 'semantic-ui-react';
 import useAsyncEffect from 'use-async-effect';
@@ -168,9 +168,8 @@ const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
     if (props.IsServerReady) {
       let videoEl = document.querySelectorAll('video')[0];
       if (videoEl) {
-        videoEl.addEventListener('click', (evt) => {
-          // console.log(window.USE_POINTER_LOCK)
-          // window.USE_POINTER_LOCK ? videoEl.requestPointerLock() : document.exitPointerLock()
+        videoEl.addEventListener('mousedown', (evt) => {
+          window.USE_POINTER_LOCK ? videoEl.requestPointerLock() : document.exitPointerLock()
         })
       }
     }
@@ -271,7 +270,19 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
   const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
   const [launchRequestError, setLaunchRequestError] = useState<Error>();
   const [serverReady, setServerReady] = useState(false);
-  const [pointerLock, setPointerLock] = useState(false);
+  const [pointerLock, setPointerLock] = useReducer((state: boolean, action: 'lock' | 'unlock') => {
+    switch (action) {
+      case 'lock':
+        console.log('locking pointer')
+        window.USE_POINTER_LOCK = true
+        return true
+        
+        case 'unlock':
+          console.log('unlocking pointer')
+          window.USE_POINTER_LOCK = false
+          return false
+    }
+  }, false);
   const streamerOptions = DefaultStreamerOptions;
 
   useAsyncEffect(async () => {
@@ -361,10 +372,8 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
     // Log status messages
     logger.info('Status', status, streamerStatus);
     if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal && serverReady) {
-        setPointerLock(false)
-        // window.USE_POINTER_LOCK = false
-        ShowEModal("enter-modal", "enter-modal", {}, TogglePlayPause);
-        setShowEnterModal(true);
+      ShowEModal("enter-modal", "enter-modal", {}, TogglePlayPause);
+      setShowEnterModal(true);
     }
   }, [status, streamerStatus, serverReady]);
 
@@ -384,14 +393,15 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
         logger.info('Message: ' + value);
         const message = JSON.parse(value);
         if (message.hasOwnProperty("companyid") && message.hasOwnProperty("content")) {
-          // window.USE_POINTER_LOCK = false
-          setPointerLock(false)
-          ShowEModal(message.companyid, message.content, message, TogglePlayPause);
+          setPointerLock('unlock')
+          ShowEModal(message.companyid, message.content, message, () => {
+            setPointerLock('lock')
+            TogglePlayPause()
+          });
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
           setServerReady(true)
-          setPointerLock(true)
-          // window.USE_POINTER_LOCK = true
+          setPointerLock('lock')
           TogglePlayPause()
         }
       },
