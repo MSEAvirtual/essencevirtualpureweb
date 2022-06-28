@@ -116,6 +116,7 @@ const App = () => {
     }
 
     const HandleEnterModal = (id: any, type: string, data: any, resumFuc: () => void) => {
+        pointerUnlockHack();
         const comp = <EnterModalView data={type} company={data.companyname} closeModal={() => {
             closeModal();
             resumFuc();
@@ -145,23 +146,25 @@ const App = () => {
                 myWindow.document.write("<script>window.close()</script>");
             }
         }
+        // window.USE_POINTER_LOCK = false
     }
+
+    const pointerLockHack = () => {
+      // window.USE_POINTER_LOCK = true;
+    };
     
     const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
-
         if (type === "bob") {
             return HandleBoBPopUps(id, type, data, resumFuc);
         } else if (type === "enter-modal") {
             return HandleEnterModal(id, type, data, resumFuc);
         } else if (type === "ar"){
-            pointerUnlockHack();
             return HandleARModal(id, type, data, resumFuc);
         }  else if (type === "poster"){
             return HandlePosterModal(id, type, data, resumFuc);
         } else if (type !== "bob") {
             return HandleFordPopUps(id, type, data, resumFuc);
         }
-        
     };
 
     return (

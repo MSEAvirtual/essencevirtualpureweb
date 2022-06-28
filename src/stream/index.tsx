@@ -163,6 +163,19 @@ const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
   const handle = useFullScreenHandle();
   // Fullscreen API presently supported on iPad, but not iPhone or iPod
   const isIPhone = System.Browser().os === 'iOS' && !window.navigator.userAgent.includes('iPad');
+
+  useEffect(() => {
+    if (props.IsServerReady) {
+      let videoEl = document.querySelectorAll('video')[0];
+      if (videoEl) {
+        videoEl.addEventListener('click', (evt) => {
+          // console.log(window.USE_POINTER_LOCK)
+          // window.USE_POINTER_LOCK ? videoEl.requestPointerLock() : document.exitPointerLock()
+        })
+      }
+    }
+  }, [props.IsServerReady])
+
   return (
     <div style={{ height: '100%' }}>
       <FullScreen handle={handle}>
@@ -258,6 +271,7 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
   const [availableModels, setAvailableModels] = useState<ModelDefinition[]>();
   const [launchRequestError, setLaunchRequestError] = useState<Error>();
   const [serverReady, setServerReady] = useState(false);
+  const [pointerLock, setPointerLock] = useState(false);
   const streamerOptions = DefaultStreamerOptions;
 
   useAsyncEffect(async () => {
@@ -347,6 +361,8 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
     // Log status messages
     logger.info('Status', status, streamerStatus);
     if (status.status === "ready" && streamerStatus === "Connected" && !showEnterModal && serverReady) {
+        setPointerLock(false)
+        // window.USE_POINTER_LOCK = false
         ShowEModal("enter-modal", "enter-modal", {}, TogglePlayPause);
         setShowEnterModal(true);
     }
@@ -368,10 +384,14 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
         logger.info('Message: ' + value);
         const message = JSON.parse(value);
         if (message.hasOwnProperty("companyid") && message.hasOwnProperty("content")) {
+          // window.USE_POINTER_LOCK = false
+          setPointerLock(false)
           ShowEModal(message.companyid, message.content, message, TogglePlayPause);
         } else if (message.hasOwnProperty("requestdevice")) {
           SendMobileType();
           setServerReady(true)
+          setPointerLock(true)
+          // window.USE_POINTER_LOCK = true
           TogglePlayPause()
         }
       },
@@ -500,7 +520,7 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
         LaunchRequestStatus={status}
         InputEmitter={emitter}
         UseNativeTouchEvents={clientOptions.UseNativeTouchEvents!}
-        UsePointerLock={clientOptions.UsePointerLock!}
+        UsePointerLock={pointerLock}
         PointerLockRelease={clientOptions.PointerLockRelease!}
         IsServerReady={serverReady}
       />
