@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import StreamApp from "./stream";
 import EStore from "./components/storeView";
@@ -15,7 +15,7 @@ import { isMobile } from 'react-device-detect';
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [component, setComponent] = useState(null);
+    const [component, setComponent] = useState<JSX.Element>(null);
     const [showModal, setShowModal] = useState(false);
     
     const AuthFuc = () => {
@@ -28,20 +28,20 @@ const App = () => {
         setShowModal(false);
     };
 
+    const setModalView = (component: JSX.Element) => {
+        setComponent(component);
+        setShowModal(true);
+    };
+
     const AuthInitate = () => {
         if (!loggedIn) {
-            setModalView(<AuthModal setAuth={AuthFuc} />, "auth")
+            setModalView(<AuthModal setAuth={AuthFuc} />)
         }
     };
 
     // useEffect(() => {
     //     AuthInitate();
     // }, []);
-
-    const setModalView = (component: any, name: string, close = false) => {
-        setComponent(component);
-        setShowModal(true);
-    };
 
     const openBUrl = (url) => {
         if (!url.includes("https://") && !url.includes("http://")) {
@@ -72,7 +72,7 @@ const App = () => {
                 closeModal();
                 resumFuc();
             }} />
-            setModalView(comp, "estore");
+            setModalView(comp);
         }
     }
 
@@ -93,7 +93,7 @@ const App = () => {
                 closeModal();
                 resumFuc();
             }} />
-            setModalView(comp, "ford");
+            setModalView(comp);
         }
     }
 
@@ -102,7 +102,7 @@ const App = () => {
             closeModal();
             resumFuc();
         }} />
-        setModalView(comp, "enter-modal");
+        setModalView(comp);
     }
 
     const HandleARModal = (id: any, type: string, data: any, resumFuc: func) => {
@@ -110,7 +110,7 @@ const App = () => {
             closeModal();
             resumFuc(); 
         }} />
-        setModalView(comp, "enter-modal");
+        setModalView(comp);
     }
 
     const HandlePosterModal = (id: any, type: string, data: any, resumFuc: func) => {
@@ -160,7 +160,9 @@ const App = () => {
                 />
                 {/* <Button onClick={() => setEcomModalView(0, "poster", {"companyid":"0","content":"poster","style":"0","companyname":"essence"})}>Open CTA</Button> */}
             </div>
-            <Modal show={showModal} >{component}</Modal>
+            <Modal show={showModal} modalStyle={component && component.type.name === 'ARModalPopUp' && isMobile ? {
+                transform: 'scale(1)'
+            } : {}}>{component}</Modal>
         </>
     )
 }
