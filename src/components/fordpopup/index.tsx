@@ -1,19 +1,24 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.css";
 import { Image, Button } from "semantic-ui-react";
-import sponsorData from "../../others.json";
 
 // const width = "100%", height = 500;
 
-const SponorPopUp = ({ storeData, data, company, closeModal, setClose }: any) => {
+const SponsorPopUp = ({
+  storeData,
+  data,
+  company,
+  closeModal,
+  setClose,
+}: any) => {
   const s = storeData;
   const type = s?.type || 1;
   const bio = s?.description || "";
   const bLogo = s?.image;
   let url = s?.url;
-console.log(s, storeData)
+  console.log(s, storeData);
   const openBUrl = () => {
     if (!url.includes("https://") && !url.includes("http://")) {
       url = "https://" + s?.url;
@@ -43,16 +48,18 @@ console.log(s, storeData)
           />
           <div className="content-button">
             <Button
-              className={`custom-btn curved mt-10 ${type === 2 ? "ford-color" : "ex-color"
-                }`}
+              className={`custom-btn curved mt-10 ${
+                type === 2 ? "ford-color" : "ex-color"
+              }`}
               onClick={openBUrl}
             >
-              {s["button-text"] || "sign up"}
+              {s["button-text"].toUpperCase() || "sign up"}
             </Button>
           </div>
           <span
-            className={`close-btn ${type === 2 ? "ford-t-color" : "ex-t-color"
-              }`}
+            className={`close-btn ${
+              type === 2 ? "ford-t-color" : "ex-t-color"
+            }`}
             onClick={closeModal}
           >
             X
@@ -63,4 +70,4 @@ console.log(s, storeData)
   );
 };
 
-export default SponorPopUp;
+export default SponsorPopUp;

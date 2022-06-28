@@ -53,6 +53,7 @@ body {
 	line-height: 22px;
 	background-color: #f2f3f7;
 	font-weight: 300;
+	height: 100vh;
 	min-height: 100vh;
     display: flex;
 	align-items: center;

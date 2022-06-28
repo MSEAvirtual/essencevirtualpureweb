@@ -5,9 +5,9 @@
 
 #view{
     position: relative;
-    height: calc(100vh + 1px);
+    height: 100vh;
     width: 100%;
-    /* overflow: hidden !important; */
+    overflow: hidden !important;
 }
 .nav-bar{
   position: relative;
@@ -22,6 +22,8 @@
 @media screen and (min-width: 320px) and (max-width: 700px) and  (orientation:portrait){
     #view{
       display: none !important;
+      height: calc(100vh + 1px);
+      overflow: auto;
     }
     #notification{
       display: block !important;
