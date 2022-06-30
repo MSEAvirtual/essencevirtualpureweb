@@ -56,7 +56,7 @@ const App = () => {
         a.click();
     };
 
-    const HandleBoBPopUps = (id: any, type: string, data: any, resumFuc: () => void) => {
+    const HandleBoBPopUps = (id: any, resumFuc: () => void) => {
         const cAD = id - 1;
         const s = stores[cAD];
         const url = s?.business_url;
@@ -64,7 +64,7 @@ const App = () => {
         if (s && s.type === "direct") {
             openBUrl(url);
             closeModal();
-            resumFuc && resumFuc();
+            resumFuc();
         } else {
             pointerUnlockHack()
             const comp = <EStore storeData={s} data={id} closeModal={() => {
@@ -82,7 +82,7 @@ const App = () => {
         companyname: string
     }
 
-    const HandleFordPopUps = (id: any, type: string, data: MessageData, resumFuc: () => void) => {
+    const HandleFordPopUps = (type: string, data: MessageData, resumFuc: () => void) => {
         const cAD = type;
         let companyName: 'ford' | 'att' | 'target' | 'coke'
         switch (data.companyname) {
@@ -104,7 +104,7 @@ const App = () => {
         if (s && s.type === "direct") {
             openBUrl(url);
             closeModal();
-            resumFuc && resumFuc();
+            resumFuc();
         } else {
             pointerUnlockHack()
             const comp = <FordPopUp storeData={s} data={type} company={data.companyname} closeModal={() => {
@@ -115,7 +115,7 @@ const App = () => {
         }
     }
 
-    const HandleEnterModal = (id: any, type: string, data: any, resumFuc: () => void) => {
+    const HandleEnterModal = (type: string, data: any, resumFuc: () => void) => {
         const comp = <EnterModalView data={type} company={data.companyname} closeModal={() => {
             closeModal();
             resumFuc();
@@ -123,7 +123,7 @@ const App = () => {
         setModalView(comp);
     }
     
-    const HandleARModal = (id: any, type: string, data: any, resumFuc: () => void) => {
+    const HandleARModal = (type: string, data: any, resumFuc: () => void) => {
         pointerUnlockHack()
         const comp = <ARModalPopUp data={type} company={data.companyname} closeModal={() => {
             closeModal();
@@ -132,11 +132,11 @@ const App = () => {
         setModalView(comp);
     }
 
-    const HandlePosterModal = (id: any, type: string, data: any, resumFuc: () => void) => {
+    const HandlePosterModal = (resumFuc: () => void) => {
         const url = "https://www.essence.com/efoc22appdownload/";
         openBUrl(url);
         closeModal();
-        resumFuc && resumFuc();
+        resumFuc();
     }
 
     // does not work in browsers that block pop-ups
@@ -151,15 +151,15 @@ const App = () => {
 
     const setEcomModalView = (id: any, type: string, data: any, resumFuc: any) => {
         if (type === "bob") {
-            return HandleBoBPopUps(id, type, data, resumFuc);
+            return HandleBoBPopUps(id, resumFuc);
         } else if (type === "enter-modal") {
-            return HandleEnterModal(id, type, data, resumFuc);
+            return HandleEnterModal(type, data, resumFuc);
         } else if (type === "ar"){
-            return HandleARModal(id, type, data, resumFuc);
+            return HandleARModal(type, data, resumFuc);
         }  else if (type === "poster"){
-            return HandlePosterModal(id, type, data, resumFuc);
+            return HandlePosterModal(resumFuc);
         } else if (type !== "bob") {
-            return HandleFordPopUps(id, type, data, resumFuc);
+            return HandleFordPopUps(type, data, resumFuc);
         }
     };
 
@@ -173,7 +173,6 @@ const App = () => {
                 <StreamApp
                     ShowEModal={setEcomModalView}
                 />
-                {/* <Button onClick={() => setEcomModalView(0, "poster", {"companyid":"0","content":"poster","style":"0","companyname":"essence"})}>Open CTA</Button> */}
             </div>
             <Modal
                 show={showModal}

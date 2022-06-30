@@ -392,7 +392,9 @@ const App: React.FC<AppProps> = ({ ShowEModal }) => {
       (value: string) => {
         logger.info('Message: ' + value);
         const message = JSON.parse(value);
-        if (message.hasOwnProperty("companyid") && message.hasOwnProperty("content")) {
+        if (message.hasOwnProperty("companyname") && message.hasOwnProperty("content") && message['companyname'] === 'coke' && message['content'] === 'spotify') {
+          ShowEModal(0, message.content, message, () => {});
+        } else if (message.hasOwnProperty("companyid") && message.hasOwnProperty("content")) {
           setPointerLock('unlock')
           ShowEModal(message.companyid, message.content, message, () => {
             setPointerLock('lock')
