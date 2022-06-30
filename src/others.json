@@ -141,6 +141,12 @@
             "CTA event action": "coke-cta-4",
             "url": "https://www.target.com/c/black-owned-or-founded-brands-at-target/-/N-q8v16",
             "type": "direct"
+        },
+        {
+            "cta_id": "spotify",
+            "CTA event action": "coke-spotify",
+            "url": "https://open.spotify.com/playlist/4aTUgNEjtHYeOIMTQlHqTt?si=a77f6b88cf894102&nd=1",
+            "type": "direct"
         }
     ]
 }
