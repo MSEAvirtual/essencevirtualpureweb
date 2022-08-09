@@ -9,6 +9,29 @@
     width: 100%;
     overflow: hidden !important;
 }
+
+#view.marketplace-closed {
+  background-image: url('marketplace-closed-bg.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#view > .marketplace-closed-copy {
+  position: absolute;
+  margin: auto;
+  width: calc(50vw * 1.2974874372);
+  height: 50vw;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url('marketplace-closed-copy.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .nav-bar{
   position: relative;
 }
